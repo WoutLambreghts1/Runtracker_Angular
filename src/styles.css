@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,400,700');
+
 html, body, .container-fluid{
   padding: 0;
   background: #e8e8e8;
+  font-family: 'Raleway', sans-serif;
 }

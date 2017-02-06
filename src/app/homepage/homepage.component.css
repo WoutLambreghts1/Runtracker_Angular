@@ -1,12 +1,33 @@
 h1, h2{
   text-align: center;
+  font-weight: 100;
+  margin:0;
+}
+
+h1{
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  color: white;
+  letter-spacing: 2rem;
+}
+
+h2{
+  font-size: 2rem;
+  color: #dadada;
+  letter-spacing: 0.3rem;
+}
+
+.heading{
+  padding-bottom: 4rem;
+  padding-top: 2rem;
 }
 
 .login{
-  background: gray;
+  padding-bottom: 3rem;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../assets/img/frontpage_bg.jpg');
+  background-size: cover;
 }
 .info{
-  width: 500px;
   background: #ffffff;
 }
 
