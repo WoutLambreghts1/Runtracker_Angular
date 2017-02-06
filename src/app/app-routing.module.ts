@@ -1,12 +1,11 @@
 import {Routes, RouterModule} from "@angular/router";
-import {AppComponent} from "./app.component";
 import {NgModule} from "@angular/core";
 import {SuccesLoginComponent} from "./succesLogin.component";
-import {LoginComponent} from "./authentication/login.component";
+import {HomePageComponent} from "./homepage/homepage.component";
 
 export const routes: Routes = [
   {path:'succesLogin', component:SuccesLoginComponent},
-  {path:'', component: LoginComponent}
+  {path:'', component: HomePageComponent}
 ];
 
 @NgModule({

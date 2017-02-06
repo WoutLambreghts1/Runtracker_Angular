@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import {Auth} from "./authentication/auth.service";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./authentication/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'test',
-  template: `<div *ngIf="auth.isAuthenticated()">you logged in bro!</div>
+  template: `<div>you logged in bro!</div>
   <button
     type="button"
     class="btn btn-default btn-primary"
@@ -11,6 +12,13 @@ import {Auth} from "./authentication/auth.service";
     Log out
   </button>`
 })
-export class SuccesLoginComponent {
-  constructor(private auth: Auth) {}
+export class SuccesLoginComponent implements OnInit{
+
+  constructor(private auth: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    if (!this.auth.isAuthenticated()){
+      this.router.navigate(['']);
+    }
+  }
 }

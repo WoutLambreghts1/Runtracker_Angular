@@ -1,33 +1,38 @@
 <form>
   <div class="form-group">
-    <label for="name">Username</label>
+    <label for="username">Username</label>
     <input
+      id="username"
       type="text"
       class="form-control"
       #username
       placeholder="Enter your email">
   </div>
   <div class="form-group">
-    <label for="name">Password</label>
+    <label for="password">Password</label>
     <input
+      id="password"
       type="password"
       class="form-control"
       #password
       placeholder="Enter your password">
   </div>
   <button
+    id="login"
     type="submit"
     class="btn btn-default"
     (click)="auth.login(username.value, password.value)">
     Log In
   </button>
   <button
+    id="signup"
     type="submit"
     class="btn btn-default"
     (click)="auth.signup(username.value, password.value)">
     Sign Up
   </button>
   <button
+    id="googleLogin"
     type="button"
     class="btn btn-default btn-primary"
     (click)="auth.loginWithGoogle()">
