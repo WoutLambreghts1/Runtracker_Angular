@@ -35,9 +35,9 @@ describe('LoginComponent', () => {
 
   it('login should contain a signin button', () => {
     expect(signupBtn.nativeElement.textContent).toContain('Sign Up')
-  })
+  });
 
   it('login should contain a login with google button', () => {
     expect(googleBtn.nativeElement.textContent).toContain('Log In with Google')
-  })
+  });
 });

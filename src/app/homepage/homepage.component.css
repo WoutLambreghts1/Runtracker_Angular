@@ -1,0 +1,16 @@
+h1, h2{
+  text-align: center;
+}
+
+.login{
+  background: gray;
+}
+.info{
+  width: 500px;
+  background: #ffffff;
+}
+
+.info_img{
+  height: 300px;
+  background: red;
+}

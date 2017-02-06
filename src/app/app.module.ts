@@ -12,10 +12,11 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from "./homepage/login.component";
 import {SuccesLoginComponent} from "./succesLogin.component";
 import {HomePageComponent} from "./homepage/homepage.component";
+import {PageNotFoundComponent} from "./PageNotFound.component";
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, SuccesLoginComponent, HomePageComponent
+    AppComponent, LoginComponent, SuccesLoginComponent, HomePageComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
