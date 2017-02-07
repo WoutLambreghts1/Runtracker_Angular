@@ -14,11 +14,11 @@ import {SuccesLoginComponent} from "./succesLogin.component";
 import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
 
-import {ProfileEditComponent} from "./profile/profileEdit.component.ts";
+import {EditProfileComponent} from "./profile/edit/editProfile.component.ts";
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, SuccesLoginComponent, HomePageComponent, PageNotFoundComponent, ProfileEditComponent
+    AppComponent, LoginComponent, SuccesLoginComponent, HomePageComponent, PageNotFoundComponent, EditProfileComponent
   ],
   imports: [
     BrowserModule,
