@@ -63,10 +63,16 @@ export class AuthService {
     });
   }
 
+  public forgotPassword(email): void{
+  }
+
   public loginWithGoogle(): void {
     this.auth0.authorize({
       connection: 'google-oauth2',
     });
+  }
+
+  public loginWithFacebook(): void{
   }
 
   public isAuthenticated(): boolean {
