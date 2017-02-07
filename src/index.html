@@ -9,10 +9,19 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.auth0.com/js/auth0/8.0/auth0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 <body class="container-fluid">
   <app-root>Loading...</app-root>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+  <!--TEST DATA-->
+  <script>
+    angular.module('myApp', []).controller('formCtrl', function($scope) {
+      $scope.master = {firstname:"Jan", lastname:"Jansens",city:"Antwerpen",birthday:new Date(80,2,10),plength:190,weight:82,username:"JJ_123",gender:0,address:"Nationalestraat 5"};
+      $scope.user = angular.copy($scope.master);
+    })
+  </script>
 </body>
 </html>

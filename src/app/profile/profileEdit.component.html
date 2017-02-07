@@ -1,0 +1,53 @@
+<div class="col-sm-6 col-sm-offset-3 editProfile" ng-app="myApp" ng-controller="formCtrl">
+  <h1 class="col-sm-10 col-sm-offset-1 pull-left">Edit your profile</h1>
+<form novalidate>
+  <div id="left" class="col-sm-5 col-sm-offset-1 pull-left">
+    <h3>Personal information</h3>
+  <div class="form-group">
+    <label for="inputFirstname">First name</label>
+    <input type="text" class="form-control" id="inputFirstname" ng-model="user.firstname">
+  </div>
+  <div class="form-group">
+    <label for="inputLastname">Last name</label>
+    <input type="text" class="form-control" id="inputLastname" ng-model="user.lastname">
+  </div>
+  <div class="form-group">
+    <label for="addressInput">Address</label>
+    <input type="text" class="form-control" id="addressInput" ng-model="user.address">
+  </div>
+  <div class="form-group">
+    <label for="inputCity">City</label>
+    <input type="text" class="form-control" id="inputCity" ng-model="user.city">
+  </div>
+  <div class="form-group">
+    <label for="inputBirthday">Birthday</label>
+    <input type="date" class="form-control" id="inputBirthday" ng-model="user.birthday">
+  </div>
+  <div class="form-group">
+    <label for="inputGender">Gender</label>
+    <select class="form-control" id="inputGender" data-value="ng-model='user.gender'">
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+      <option value="2">Undefined</option>
+    </select>
+  </div>
+  </div>
+  <div id="right" class="col-sm-5 col-sm-offset-1">
+    <h3>Fysical information</h3>
+  <div class="form-group">
+    <label for="inputLength">Length</label>
+    <input type="number" class="form-control" id="inputLength" ng-model="user.plength">
+  </div>
+  <div class="form-group">
+    <label for="inputWeight">Weight</label>
+    <input type="number" class="form-control" id="inputWeight" ng-model="user.weight">
+  </div>
+  <div class="form-group">
+    <label for="inputProfilePic">Profile picture</label>
+    <input type="file" class="form-control-file" id="inputProfilePic" aria-describedby="fileHelp">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+</div>
+
