@@ -41,3 +41,5 @@ describe('LoginComponent', () => {
     expect(googleBtn.nativeElement.textContent).toContain('Log In with Google')
   });
 });
+
+

@@ -10,15 +10,12 @@ import {AppRoutingModule} from "./app-routing.module";
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from "./homepage/login.component";
-import {SuccesLoginComponent} from "./succesLogin.component";
 import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
 
-import {ProfileEditComponent} from "./profile/profileEdit.component";
-
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, SuccesLoginComponent, HomePageComponent, PageNotFoundComponent, ProfileEditComponent
+    AppComponent, LoginComponent, HomePageComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,7 @@ export class AuthService {
         window.location.hash = '';
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
-        this.router.navigate(['/succesLogin']);
+        this.router.navigate(['/home']);
       } else if (authResult && authResult.error) {
         alert('Error: ' + authResult.error);
       }
@@ -46,7 +46,7 @@ export class AuthService {
       }
       if (authResult && authResult.idToken && authResult.accessToken) {
         this.setUser(authResult);
-        this.router.navigate(['/succesLogin']);
+        this.router.navigate(['/home']);
       }
     });
   }
