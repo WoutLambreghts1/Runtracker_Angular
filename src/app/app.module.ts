@@ -14,7 +14,7 @@ import {SuccesLoginComponent} from "./succesLogin.component";
 import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
 
-import {ProfileEditComponent} from "./profile/profileEdit.component.ts";
+import {ProfileEditComponent} from "./profile/profileEdit.component";
 
 @NgModule({
   declarations: [

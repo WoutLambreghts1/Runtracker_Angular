@@ -51,7 +51,7 @@ export class AuthService {
     });
   }
 
-  public signup(email, password): void {
+  public signup(email: string, password: string): void {
     this.auth0.redirect.signupAndLogin({
       connection: 'Username-Password-Authentication',
       email,
@@ -61,6 +61,8 @@ export class AuthService {
         alert('Error: ' + err.description);
       }
     });
+
+    this.login(email, password);
   }
 
   public forgotPassword(email): void{
