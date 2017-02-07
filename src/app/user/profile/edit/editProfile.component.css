@@ -1,17 +1,32 @@
-.editProfile{
+@import url("http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");
+.container{
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../../../assets/img/profileEdit_bg.jpg');
   background-size: cover;
 }
-h1{
-  color: black;
+.control-label{
+  text-align: left;
 }
-h3{
-  color: red;
+#pictureselector {
+  margin: 10px;
 }
-label{
+#upload-picture-selector {
+  display:none;
+}
+.margin-correction {
+  margin-right: 10px;
+}
+.form-group label{
   color: white;
 }
-input[type='file'] {
-  color: transparent;
+h3{
+  color: whitesmoke;
+}
+h6{
+  color:white;
+}
+#profilepic{
+  border: 4px solid white;
+  height: 60%;
+  width: 60%;
 }
 
