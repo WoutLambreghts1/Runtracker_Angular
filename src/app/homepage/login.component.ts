@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../authentication/auth.service';
+import {Component} from '@angular/core';
+import {AuthService} from '../authentication/auth.service';
 import {LoginMessage} from "./loginMessage";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'login',
@@ -8,28 +9,18 @@ import {LoginMessage} from "./loginMessage";
   styleUrls: ['login.component.css']
 })
 export class LoginComponent {
-  private loginMessage: LoginMessage = {errorMessage: '', succesMessage: ''};
+  private messages: LoginMessage = {errorMessage: '', succesMessage: ''};
 
-  constructor(private auth: AuthService) {}
-
-  loginWithErrorHandling(username, password){
-    if(this.auth.login(username, password)){
-      this.loginMessage.errorMessage = '';
-      console.log('login');
-    }else {
-      this.loginMessage.errorMessage = 'Username and password need to be filled in.';
-      console.log('loginFail');
-    }
+  constructor(private auth: AuthService) {
   }
 
-  signUpWithErrorHandling(username, password){
-    if(this.auth.signup(username, password)){
-      this.loginMessage.succesMessage = 'You will receive a verification mail';
-      console.log('signup');
-    }else{
-      this.loginMessage.errorMessage = 'An error has occurred';
-      console.log('signupFail');
-    }
+  loginWithErrorHandling(username, password) {
+    this.auth.login(username, password);
+  }
+
+  signUpWithErrorHandling(username, password) {
+    this.auth.signup(username, password);
+
   }
 }
 
