@@ -28,6 +28,12 @@
 
       <form class="form-horizontal" role="form">
         <div class="form-group">
+          <label class="col-md-3 control-label">Username:</label>
+          <div class="col-md-4">
+            <input class="form-control" type="text" ng-model="user.username">
+          </div>
+        </div>
+        <div class="form-group">
           <label class="col-md-3 control-label">First name:</label>
           <div class="col-md-4">
             <input class="form-control" type="text" ng-model="user.firstname">
@@ -68,18 +74,6 @@
                 <option value="2">Undefined</option>
               </select>
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Length (cm):</label>
-          <div class="col-md-4">
-            <input class="form-control" type="number" ng-model="user.plength">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Weight (kg):</label>
-          <div class="col-md-4">
-            <input class="form-control" type="number" ng-model="user.weight">
           </div>
         </div>
         <div class="form-group">
