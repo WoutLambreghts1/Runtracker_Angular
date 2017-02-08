@@ -4,9 +4,10 @@ import {UserRoutingModule} from "./user-routing.module";
 import {CommonModule} from "@angular/common";
 import {EditProfileComponent} from "./profile/edit/editProfile.component";
 import {EditProfileService} from "./profile/editProfile.service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [CommonModule, UserRoutingModule],
+  imports: [CommonModule, FormsModule, UserRoutingModule],
   providers: [EditProfileService],
   declarations: [UserHomepageComponent, EditProfileComponent],
 })
