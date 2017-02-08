@@ -7,8 +7,8 @@ describe('angular-project App', function() {
     page = new AngularProjectPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying JAT', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('JAT');
   });
 });

@@ -1,3 +1,4 @@
+<script src="../../../../../UI/Examenproject_Hospitaal/src/app/patient/patient.component.ts"></script>
 <form>
   <h3>Login</h3>
   <a
@@ -33,18 +34,20 @@
       placeholder="Password"
       #password>
   </div>
+  <span class="errorMessage">{{loginMessage.errorMessage}}</span>
+  <span class="succesMessage">{{loginMessage.succesMessage}}</span>
   <button
     id="login"
     type="submit"
     class="btn btn-default btn-primary col-xs-12"
-    (click)="auth.login(username.value, password.value)">
+    (click)="loginWithErrorHandling(username.value, password.value)">
     Log In
   </button>
   <button
     id="signup"
     type="submit"
     class="btn btn-default col-xs-6"
-    (click)="auth.signup(username.value, password.value)">
+    (click)="signUpWithErrorHandling(username.value, password.value)">
     Sign Up
   </button>
   <button

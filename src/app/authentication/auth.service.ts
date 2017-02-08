@@ -34,35 +34,34 @@ export class AuthService {
     });
   }
 
-  public login(username: string, password: string): void {
+  public login(username: string, password: string): boolean {
     this.auth0.client.login({
       realm: 'Username-Password-Authentication',
       username,
       password
     }, (err, authResult) => {
       if (err) {
-        alert('Error: ' + err.description);
-        return;
+        console.log('login error');
       }
-      if (authResult && authResult.idToken && authResult.accessToken) {
+      else if (authResult && authResult.idToken && authResult.accessToken) {
         this.setUser(authResult);
         this.router.navigate(['/home']);
       }
     });
+    return true;
   }
 
-  public signup(email: string, password: string): void {
+  public signup(email: string, password: string): boolean {
     this.auth0.redirect.signupAndLogin({
       connection: 'Username-Password-Authentication',
       email,
       password,
     }, function(err) {
       if (err) {
-        alert('Error: ' + err.description);
+        console.log('signup error');
       }
     });
-
-    this.login(email, password);
+    return true;
   }
 
   public forgotPassword(email): void{
