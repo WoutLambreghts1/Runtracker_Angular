@@ -30,6 +30,16 @@ p{
   padding-right: 0;
 }
 
+.errorMessage{
+  color: red;
+  text-align: center;
+}
+
+.succesMessage{
+  color: forestgreen;
+  text-align: center;
+}
+
 #login{
   padding: 1rem;
   margin-top: 1.5rem;
