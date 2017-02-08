@@ -7,6 +7,6 @@ import {AuthService} from "../authentication/auth.service";
   styleUrls: ['userHomepage.component.css']
   })
 
-export class UserHomepageComponent{
+export class UserHomepageComponent {
   constructor(private auth: AuthService){}
 }

@@ -1,4 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import {EditProfileService} from "../editProfile.service";
+import {Profile} from "../Profile";
 
 @Component({
   selector: 'editProfile',
@@ -6,6 +8,16 @@ import {Component} from "@angular/core";
   styleUrls: ['editProfile.component.css']
 })
 
-export class EditProfileComponent {
+export class EditProfileComponent{
+  private testUser: Profile = {
+    firstname: 'Jan',
+    lastname: 'Janssens',
+    city: 'Antwerpen',
+    birthday: new Date(80, 2, 10),
+    username: 'JJ_123',
+    gender: 0,
+    address: 'Nationalstraat 5'
+  };
+  constructor(private editProfileService: EditProfileService){}
 
 }

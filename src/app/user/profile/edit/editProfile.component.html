@@ -5,7 +5,7 @@
     <!-- left column -->
     <div class="col-md-3">
       <div class="text-center">
-        <img src="assets/img/nopicture.jpg" class="avatar img-circle" alt="avatar" id="profilepic">
+        <img src="../../../../assets/img/nopicture.jpg" class="avatar img-circle" alt="avatar" id="profilepic">
         <h6>Upload a different photo...</h6>
 
         <span id="pictureselector">
@@ -30,56 +30,44 @@
         <div class="form-group">
           <label class="col-md-3 control-label">First name:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" ng-model="user.firstname">
+            <input class="form-control" type="text" [(ngModel)]="testUser.firstname">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Last name:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" ng-model="user.lastname">
+            <input class="form-control" type="text" [(ngModel)]="testUser.lastname">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Address:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" ng-model="user.address">
+            <input class="form-control" type="text" [(ngModel)]="testUser.address">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">City:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" ng-model="user.city">
+            <input class="form-control" type="text" [(ngModel)]="testUser.city">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Birthday:</label>
           <div class="col-md-4">
-            <input type="date" class="form-control" ng-model="user.birthday">
+            <input type="date" class="form-control" [(ngModel)]="testUser.birthday">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Gender:</label>
           <div class="col-md-4">
             <div class="ui-select">
-              <select class="form-control" data-value="ng-model='user.gender'">
+              <select class="form-control" [(ngModel)]='testUser.gender'>
                 <option value="0">Male</option>
                 <option value="1">Female</option>
                 <option value="2">Undefined</option>
               </select>
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Length (cm):</label>
-          <div class="col-md-4">
-            <input class="form-control" type="number" ng-model="user.plength">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Weight (kg):</label>
-          <div class="col-md-4">
-            <input class="form-control" type="number" ng-model="user.weight">
           </div>
         </div>
         <div class="form-group">
