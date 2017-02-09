@@ -15,15 +15,15 @@ export class LoginComponent {
 
   allFieldsFilledIn(username, password): boolean {
     if (username == '' && password == '') {
-      this.messages.errorMessage = 'Username and password has to be filled in.';
+      this.messages.errorMessage = 'Username and password need to be filled in.';
       this.messages.succesMessage = '';
       return false;
     } else if (username == '') {
-      this.messages.errorMessage = 'Username has to be filled in.';
+      this.messages.errorMessage = 'Username need to be filled in.';
       this.messages.succesMessage = '';
       return false;
     } else if (password == '') {
-      this.messages.errorMessage = 'Password has to be filled in.';
+      this.messages.errorMessage = 'Password need to be filled in.';
       this.messages.succesMessage = '';
       return false;
     }

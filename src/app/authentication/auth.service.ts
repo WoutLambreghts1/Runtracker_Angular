@@ -53,7 +53,6 @@ export class AuthService {
     }));
   }
 
-
   public loginWithGoogle(): void {
     this.auth0.authorize({
       connection: 'google-oauth2',
