@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from '../authentication/auth.service';
 import {LoginMessage} from "./loginMessage";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'login',

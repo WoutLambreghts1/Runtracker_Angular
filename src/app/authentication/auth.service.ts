@@ -3,6 +3,7 @@ import {tokenNotExpired} from 'angular2-jwt';
 
 import {Router} from '@angular/router';
 import {Observable} from "rxjs";
+import {Http} from "@angular/http";
 
 // Avoid name not found warnings
 declare let auth0: any;
@@ -19,7 +20,7 @@ export class AuthService {
     responseType: 'token id_token'
   });
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: Http) {
   }
 
   public handleAuthentication(): void {
@@ -35,7 +36,7 @@ export class AuthService {
     });
   }
 
-  public login(username: string, password: string): any {
+  public login(username: string, password: string): Observable<any> {
     return new Observable(obs => this.auth0.client.login({
       realm: 'Username-Password-Authentication',
       username,
@@ -52,7 +53,22 @@ export class AuthService {
     }));
   }
 
-  public signup(email: string, password: string): any {
+
+  public loginWithGoogle(): void {
+    this.auth0.authorize({
+      connection: 'google-oauth2',
+      redirectUri: 'http://localhost:4200/home'
+    });
+  }
+
+  public loginWithFacebook(): void {
+    this.auth0.authorize({
+      connection: 'facebook',
+      redirectUri: 'http://localhost:4200/home'
+    });
+  }
+
+  public signup(email: string, password: string): Observable<any> {
     return new Observable(obs => this.auth0.redirect.signupAndLogin({
       connection: 'Username-Password-Authentication',
       email,
@@ -66,15 +82,15 @@ export class AuthService {
   }
 
   public forgotPassword(email): void {
-  }
-
-  public loginWithGoogle(): void {
-    this.auth0.authorize({
-      connection: 'google-oauth2',
-    });
-  }
-
-  public loginWithFacebook(): void {
+   this.auth0.changePassword({
+     client_id: 'FIml7bePvyWfc2y9UzaRUPjYDenDQSNE',
+     email: email,
+     connection: 'Username-Password-Authentication',
+   }, function(err){
+     if(err){
+       console.log('forgotPassword error');
+     }
+   });
   }
 
   public isAuthenticated(): boolean {
