@@ -1,7 +1,8 @@
-import { Injectable }      from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
+import {Injectable}      from '@angular/core';
+import {tokenNotExpired} from 'angular2-jwt';
 
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
+import {Observable} from "rxjs";
 
 // Avoid name not found warnings
 declare let auth0: any;
@@ -35,34 +36,36 @@ export class AuthService {
   }
 
   public login(username: string, password: string): any {
-     return this.auth0.client.login({
+    return new Observable(obs => this.auth0.client.login({
       realm: 'Username-Password-Authentication',
       username,
       password
     }, (err, authResult) => {
       if (err) {
-        alert('login has failed');
+        return obs.error();
       }
       else if (authResult && authResult.idToken && authResult.accessToken) {
         this.setUser(authResult);
         this.router.navigate(['/home']);
+        return obs.complete();
       }
-    });
+    }));
   }
 
   public signup(email: string, password: string): any {
-     return this.auth0.redirect.signupAndLogin({
+    return new Observable(obs => this.auth0.redirect.signupAndLogin({
       connection: 'Username-Password-Authentication',
       email,
       password,
     }, (err) => {
       if (err) {
-        alert('signup has failed');
+        return obs.error();
       }
-    });
+      return obs.complete();
+    }));
   }
 
-  public forgotPassword(email): void{
+  public forgotPassword(email): void {
   }
 
   public loginWithGoogle(): void {
@@ -71,7 +74,7 @@ export class AuthService {
     });
   }
 
-  public loginWithFacebook(): void{
+  public loginWithFacebook(): void {
   }
 
   public isAuthenticated(): boolean {
