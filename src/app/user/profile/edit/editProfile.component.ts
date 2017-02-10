@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {EditProfileService} from "../editProfile.service";
 import {Profile} from "../Profile";
+import {AuthService} from "../../../authentication/auth.service";
 
 @Component({
   selector: 'editProfile',
@@ -8,7 +9,7 @@ import {Profile} from "../Profile";
   styleUrls: ['editProfile.component.css']
 })
 
-export class EditProfileComponent{
+export class EditProfileComponent implements OnInit{
   private testUser: Profile = {
     firstname: 'Jan',
     lastname: 'Janssens',
@@ -18,6 +19,10 @@ export class EditProfileComponent{
     gender: 0,
     address: 'Nationalstraat 5'
   };
-  constructor(private editProfileService: EditProfileService){}
+  constructor(private auth: AuthService, private editProfileService: EditProfileService){}
 
+
+  ngOnInit(): void {
+   console.log(this.auth.isAuthenticated());
+  }
 }

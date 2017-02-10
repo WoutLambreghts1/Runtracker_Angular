@@ -46,6 +46,7 @@ export class AuthService {
         return obs.error();
       }
       else if (authResult && authResult.idToken && authResult.accessToken) {
+        console.log(authResult);
         this.setUser(authResult);
         this.router.navigate(['/home']);
         return obs.complete();
@@ -81,15 +82,15 @@ export class AuthService {
   }
 
   public forgotPassword(email): void {
-   this.auth0.changePassword({
-     client_id: 'FIml7bePvyWfc2y9UzaRUPjYDenDQSNE',
-     email: email,
-     connection: 'Username-Password-Authentication',
-   }, function(err){
-     if(err){
-       console.log('forgotPassword error');
-     }
-   });
+    this.auth0.changePassword({
+      client_id: 'FIml7bePvyWfc2y9UzaRUPjYDenDQSNE',
+      email: email,
+      connection: 'Username-Password-Authentication',
+    }, function (err) {
+      if (err) {
+        console.log('forgotPassword error');
+      }
+    });
   }
 
   public isAuthenticated(): boolean {

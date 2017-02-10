@@ -5,6 +5,7 @@ import {CommonModule} from "@angular/common";
 import {EditProfileComponent} from "./profile/edit/editProfile.component";
 import {EditProfileService} from "./profile/editProfile.service";
 import {FormsModule} from "@angular/forms";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   imports: [CommonModule, FormsModule, UserRoutingModule],
