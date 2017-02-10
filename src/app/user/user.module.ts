@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
-import {UserHomepageComponent} from "./userHomepage.component";
-import {UserRoutingModule} from "./user-routing.module";
 import {CommonModule} from "@angular/common";
-import {EditProfileComponent} from "./profile/edit/editProfile.component";
-import {EditProfileService} from "./profile/editProfile.service";
 import {FormsModule} from "@angular/forms";
+import {UserRoutingModule} from "./user-routing.module";
+import {EditProfileService} from "./edit/editProfile.service";
+import {UserHomepageComponent} from "./home/userHomepage.component";
+import {EditProfileComponent} from "./edit/editProfile.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, UserRoutingModule],

@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {UserHomepageComponent} from "./userHomepage.component";
-import {EditProfileComponent} from "./profile/edit/editProfile.component";
+import {UserHomepageComponent} from "./home/userHomepage.component";
+import {EditProfileComponent} from "./edit/editProfile.component";
 
 const routes: Routes = [
   { path: '',    component: UserHomepageComponent },

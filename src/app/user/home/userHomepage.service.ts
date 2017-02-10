@@ -1,0 +1,52 @@
+import {Injectable} from '@angular/core';
+import {Http,Headers,Response} from '@angular/http';
+import {User} from "./../../model/user";
+import {Observable} from "rxjs/Observable";
+
+@Injectable()
+export class UserHomepageService {
+
+  constructor(private http:Http){}
+
+  getUser(): Observable<User>{
+    var jwt = localStorage.getItem('id_token');
+    var authHeader = new Headers();
+    if(jwt) {
+      authHeader.append('token', jwt);
+    }
+    return this.http.get('http://localhost:8080/api/users/getUser', {
+          headers: authHeader
+        })
+        .map((res: Response) => res.json())
+        .catch(this.handleErrorObservable)
+  }
+
+
+  createUser(user: User): Observable<User>{
+    var jwt = localStorage.getItem('id_token');
+    var authHeader = new Headers();
+    if(jwt) {
+      authHeader.append('token', jwt);
+    }
+    return this.http.post('http://localhost:8080/api/users/createUser',user, {
+        headers: authHeader
+      })
+      .map((res: Response) => res.json().data)
+      .catch(this.handleErrorObservable);
+  }
+
+
+  private handleErrorObservable(error: Response | any): Observable<any> {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+
+}
