@@ -14,7 +14,7 @@ export class EditProfileComponent implements OnInit{
     firstname: 'Jan',
     lastname: 'Janssens',
     city: 'Antwerpen',
-    birthday: new Date(80, 2, 10),
+    birthday: new Date(1980, 9, 22),
     username: 'JJ_123',
     gender: 0,
     address: 'Nationalstraat 5'
