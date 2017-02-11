@@ -12,9 +12,7 @@ import {User} from "../../model/user";
 
 export class UserHomepageComponent {
   private user;
-  private userProfile: Object;
   constructor(private auth: AuthService,private userHomepageService: UserHomepageService){
-    this.userProfile = JSON.parse(localStorage.getItem('profile'));
   }
 
   ngOnInit(): void{
