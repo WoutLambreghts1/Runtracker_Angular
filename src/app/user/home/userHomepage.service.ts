@@ -20,21 +20,7 @@ export class UserHomepageService {
         .map((res: Response) => res.json())
         .catch(this.handleErrorObservable)
   }
-
-
-  createUser(user: User): Observable<User>{
-    var jwt = localStorage.getItem('id_token');
-    var authHeader = new Headers();
-    if(jwt) {
-      authHeader.append('token', jwt);
-    }
-    return this.http.post('http://localhost:8080/api/users/createUser',user, {
-        headers: authHeader
-      })
-      .map((res: Response) => res.json().data)
-      .catch(this.handleErrorObservable);
-  }
-
+  
 
   private handleErrorObservable(error: Response | any): Observable<any> {
     let errMsg: string;

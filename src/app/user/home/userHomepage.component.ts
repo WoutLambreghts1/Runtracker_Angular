@@ -16,33 +16,6 @@ export class UserHomepageComponent {
   }
 
   ngOnInit(): void{
-    this.userHomepageService.getUser().subscribe((user: User) => this.user = user)
-    this.user =
-    {
-      "userId":0,
-      "username": "New user",
-      "firstname": "",
-      "lastname": "",
-      "gender": "UNDEFINED",
-      "city": "",
-      "birthday": null,
-      "friends": [],
-      "competitionsCreated": [],
-      "trackings": [],
-      "competitionsWon": [],
-      "competitionsRun": [],
-      "maxSpeed": 0,
-      "avgSpeed": 0,
-      "maxDistance": 0,
-      "avgDistance": 0,
-      "totalDistance": 0,
-      "ranTenKm": false,
-      "ranTwentyKm": false,
-      "ranMarathon": false,
-      "nrOfCompetitionsWon": 0
-    };
-    //Fails if token is already in use
-    this.userHomepageService.createUser(this.user).subscribe((user: User) => console.log('user created'));
-
+    this.user = this.userHomepageService.getUser().subscribe((user: User) => this.user = user);
     }
 }
