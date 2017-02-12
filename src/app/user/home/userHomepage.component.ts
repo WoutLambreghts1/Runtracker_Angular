@@ -15,7 +15,10 @@ export class UserHomepageComponent {
   private user;
 
   constructor(private auth: AuthService, private router: Router, private userHomepageService: UserHomepageService) {
-    userHomepageService.storeUserTokens(router.url);
+    if(router.url.split("=").length > 1){
+      userHomepageService.storeUserTokens(router.url);
+    }
+
   }
 
   ngOnInit(): void {

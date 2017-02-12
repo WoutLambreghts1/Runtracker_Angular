@@ -29,4 +29,9 @@ h6{
   height: 13.5rem;
   width: 13.5rem;
 }
+.error{
+  font-weight:bold;
+  color: darkorange;
+  margin-bottom: 2rem;
+}
 

@@ -7,6 +7,7 @@ import {Injectable} from '@angular/core';
 export class EditProfileService {
   private jwt = localStorage.getItem('id_token');
   private authHeader = new Headers();
+  private BASEURL = 'http://localhost:8080';
 
   constructor(private http:Http){
     if(this.jwt) {
@@ -15,7 +16,7 @@ export class EditProfileService {
   }
 
   getUser(): Observable<User>{
-    return this.http.get('http://localhost:8080/api/users/getUser', {
+    return this.http.get(this.BASEURL + '/api/users/getUser', {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
@@ -23,15 +24,20 @@ export class EditProfileService {
   }
 
   updateUser(user : User): Observable<User>{
-    return this.http.put('http://localhost:8080/api/users/updateUser',user, {
+    return this.http.put(this.BASEURL + '/api/users/updateUser',user, {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
   }
 
-  checkUsernameAvailable(username): boolean{
-    return true;
+  checkUsernameAvailable(username): Observable<boolean>{
+    return this.http.get(this.BASEURL + '/api/users/checkUsername/'+username, {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(this.handleErrorObservable);
+
   }
 
 
