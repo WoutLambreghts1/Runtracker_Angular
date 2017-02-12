@@ -18,7 +18,7 @@ export class UserHomepageService {
   }
 
   getUser(): Observable<User> {
-    var jwt = localStorage.getItem('id_token');
+    let jwt = localStorage.getItem('id_token');
     if (jwt) {
       this.authHeader.append('token', jwt);
     }
