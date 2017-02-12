@@ -6,8 +6,10 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class UserHomepageService {
   private BASEURL = 'http://localhost:8080';
+  private authHeader;
 
   constructor(private http: Http) {
+    this.authHeader = new Headers();
   }
 
   storeUserTokens(url: string) {
@@ -17,12 +19,11 @@ export class UserHomepageService {
 
   getUser(): Observable<User> {
     var jwt = localStorage.getItem('id_token');
-    var authHeader = new Headers();
     if (jwt) {
-      authHeader.append('token', jwt);
+      this.authHeader.append('token', jwt);
     }
     return this.http.get(this.BASEURL + '/api/users/getUser', {
-      headers: authHeader
+      headers: this.authHeader
     })
       .map((res: Response) => res.json())
       .catch(this.handleUserError)
@@ -37,12 +38,8 @@ export class UserHomepageService {
   }
 
   createUser(): Observable<User> {
-    var jwt = localStorage.getItem('id_token');
-    let headers = new Headers({'Content-Type': 'application/json'});
-    if (jwt) {
-      headers.append('token', jwt);
-    }
-    let options = new RequestOptions({headers: headers});
+    this.authHeader.append('Content-Type', 'application/json');
+    let options = new RequestOptions({headers: this.authHeader});
 
     let newUser = new User();
 
