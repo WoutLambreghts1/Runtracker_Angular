@@ -20,8 +20,10 @@ export class User{
   ranTwentyKm:boolean;
   totalDistance:number;
   trackings:Tracking[];
-  userId:number;
+  //userId:number;
   username:string;
+
+  constructor(public userId: number){}
 }
 
 

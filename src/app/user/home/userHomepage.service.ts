@@ -26,7 +26,7 @@ export class UserHomepageService {
       headers: this.authHeader
     })
       .map((res: Response) => res.json())
-      .catch(this.handleUserError)
+      .catch(err => this.handleUserError(err))
   }
 
   private handleUserError(error: Response | any): Observable<any> {
@@ -41,7 +41,8 @@ export class UserHomepageService {
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
 
-    let newUser = new User();
+    let newUser = new User(1);
+    console.log(newUser);
 
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
