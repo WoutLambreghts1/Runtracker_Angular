@@ -15,7 +15,6 @@ export class UserHomepageComponent {
   private user;
 
   constructor(private auth: AuthService, private router: Router, private userHomepageService: UserHomepageService) {
-    console.log(router.url.split("=").length);
     if(router.url.split("=").length > 1){
       userHomepageService.storeUserTokens(router.url);
     }
