@@ -2,19 +2,21 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {User} from "./../../model/user";
 import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UserHomepageService {
   private BASEURL = 'http://localhost:8080';
   private authHeader;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,private router: Router) {
     this.authHeader = new Headers();
   }
 
   storeUserTokens(url: string) {
     localStorage.setItem('access_token', url.split('=')[1].split('&')[0]);
     localStorage.setItem('id_token', url.split('=')[5]);
+    this.router.navigateByUrl("/home");
   }
 
   getUser(): Observable<User> {
@@ -65,9 +67,10 @@ export class UserHomepageService {
       "ranMarathon": false,
       "nrOfCompetitionsWon": 0
     };
-    
+
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
+    this.router.navigateByUrl("/home");
   }
 
   private handleError(error: Response | any): Observable<any> {

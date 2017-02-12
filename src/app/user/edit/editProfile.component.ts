@@ -19,6 +19,7 @@ export class EditProfileComponent{
   }
   onClickUpdateUser(user:User): void{
     if(user.username != ""){
+      this.errorMsg = "";
       this.user = this.editProfileService.updateUser(user).subscribe((user: User) => this.user = user);
     }else {
       if(user.username == ""){
