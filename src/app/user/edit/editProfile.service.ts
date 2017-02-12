@@ -5,22 +5,33 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class EditProfileService {
-  constructor(private http:Http){}
+  private jwt = localStorage.getItem('id_token');
+  private authHeader = new Headers();
 
+  constructor(private http:Http){
+    if(this.jwt) {
+      this.authHeader.append('token', this.jwt);
+    }
+  }
 
   getUser(): Observable<User>{
-    var jwt = localStorage.getItem('id_token');
-    var authHeader = new Headers();
-    if(jwt) {
-      authHeader.append('token', jwt);
-    }
-
     return this.http.get('http://localhost:8080/api/users/getUser', {
-        headers: authHeader
+        headers: this.authHeader
       })
       .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
+  }
 
+  updateUser(user : User): Observable<User>{
+    return this.http.put('http://localhost:8080/api/users/updateUser',user, {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(this.handleErrorObservable);
+  }
+
+  checkUsernameAvailable(username): boolean{
+    return true;
   }
 
 
