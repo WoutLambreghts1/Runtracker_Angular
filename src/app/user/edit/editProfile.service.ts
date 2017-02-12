@@ -20,7 +20,20 @@ export class EditProfileService {
       })
       .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
+  }
 
+  updateUser(user : User): Observable<User>{
+    var jwt = localStorage.getItem('id_token');
+    var authHeader = new Headers();
+    if(jwt) {
+      authHeader.append('token', jwt);
+    }
+
+    return this.http.put('http://localhost:8080/api/users/updateUser',user, {
+        headers: authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(this.handleErrorObservable);
   }
 
 
