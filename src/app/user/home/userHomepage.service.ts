@@ -37,35 +37,12 @@ export class UserHomepageService {
       return this.handleError(error);
     }
   }
-
+  
   createUser(): Observable<User> {
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
 
-    let newUser: User=
-    {
-      "userId":0,
-      "username": "New user",
-      "firstname": "",
-      "lastname": "",
-      "gender": "UNDEFINED",
-      "city": "",
-      "birthday": null,
-      "friends": [],
-      "competitionsCreated": [],
-      "trackings": [],
-      "competitionsWon": [],
-      "competitionsRun": [],
-      "maxSpeed": 0,
-      "avgSpeed": 0,
-      "maxDistance": 0,
-      "avgDistance": 0,
-      "totalDistance": 0,
-      "ranTenKm": false,
-      "ranTwentyKm": false,
-      "ranMarathon": false,
-      "nrOfCompetitionsWon": 0
-    };
+    let newUser = new User();
 
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
