@@ -31,18 +31,18 @@ export class UserHomepageService {
 
   private handleUserError(error: Response | any): Observable<any> {
     if (error.status == 404) {
-      console.log("ERROR 404");
       return this.createUser();
     } else {
       return this.handleError(error);
     }
   }
-  
+
   createUser(): Observable<User> {
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
 
     let newUser = new User(1);
+    newUser.username = 'JoskeTestPersoon';
     console.log(newUser);
 
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
