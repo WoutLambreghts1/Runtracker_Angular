@@ -70,7 +70,6 @@ export class UserHomepageService {
 
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
-    this.router.navigateByUrl("/home");
   }
 
   private handleError(error: Response | any): Observable<any> {
