@@ -31,16 +31,12 @@ export class EditProfileService {
       .catch(this.handleErrorObservable);
   }
 
-  checkUsernameAvailable(username): boolean{
-    let available:boolean;
-
-    this.http.get(this.BASEURL + '/api/users/checkUsername/'+username, {
+  checkUsernameAvailable(username): Observable<boolean>{
+    return this.http.get(this.BASEURL + '/api/users/checkUsername/'+username, {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
-      .catch(this.handleErrorObservable).subscribe((inuse: boolean) => available = inuse);
-
-    return available;
+      .catch(this.handleErrorObservable);
 
   }
 

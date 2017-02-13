@@ -12,12 +12,19 @@ import {EditProfileService} from "./editProfile.service";
 export class EditProfileComponent{
   private user;
   private errorMsg;
+  private available: boolean;
 
   ngOnInit(): void{
     this.user = this.editProfileService.getUser().subscribe((user: User) => this.user = user);
+    this.onUsernameChange(this.user.username);
   }
+  onUsernameChange(username:string): void{
+    this.editProfileService.checkUsernameAvailable(username).subscribe((val:boolean) => this.available = val);
+  }
+
   onClickUpdateUser(user:User): void{
-    if(user.username != "" && this.editProfileService.checkUsernameAvailable(user.username)){
+    console.log(this.available);
+    if(user.username != "" && this.available){
       this.errorMsg = "";
       this.user = this.editProfileService.updateUser(user).subscribe((user: User) => this.user = user);
     }else {
