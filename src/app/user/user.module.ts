@@ -5,6 +5,7 @@ import {UserRoutingModule} from "./user-routing.module";
 import {EditProfileService} from "./edit/editProfile.service";
 import {UserHomepageComponent} from "./home/userHomepage.component";
 import {EditProfileComponent} from "./edit/editProfile.component";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   imports: [CommonModule, FormsModule, UserRoutingModule],
