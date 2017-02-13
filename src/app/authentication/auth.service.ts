@@ -20,7 +20,9 @@ export class AuthService {
     responseType: 'token id_token'
   });
 
+
   constructor(private router: Router, private http: Http) {
+   
   }
 
   public handleAuthentication(): void {
