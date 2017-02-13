@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {User} from "../../model/user";
 import {Observable} from "rxjs/Observable";
+import {AuthService} from "../../authentication/auth.service";
 
 @Injectable()
 export class UserHomepageService {
   private BASEURL = 'http://localhost:8080';
   private authHeader;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,private auth: AuthService) {
     this.authHeader = new Headers();
   }
 
@@ -44,7 +45,7 @@ export class UserHomepageService {
     let newUser =
     {
       "userId":0,
-      "username": "",
+      "username": this.auth.userProfile.email,
       "firstname": "",
       "lastname": "",
       "gender": "UNDEFINED",

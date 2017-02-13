@@ -1,9 +1,8 @@
 import {Injectable}      from '@angular/core';
 import {tokenNotExpired} from 'angular2-jwt';
-
 import {Router} from '@angular/router';
 import {Observable} from "rxjs";
-import {Http} from "@angular/http";
+import {Http,Response} from "@angular/http";
 
 // Avoid name not found warnings
 declare let auth0: any;
@@ -20,9 +19,10 @@ export class AuthService {
     responseType: 'token id_token'
   });
 
+  userProfile: Object;
 
   constructor(private router: Router, private http: Http) {
-   
+
   }
 
   public handleAuthentication(): void {
@@ -36,6 +36,7 @@ export class AuthService {
         alert('Error: ' + authResult.error);
       }
     });
+
   }
 
   public login(username: string, password: string): Observable<any> {
@@ -109,12 +110,18 @@ export class AuthService {
   private setUser(authResult): void {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
-  }
 
-  public getUser(): any{
-    return this.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, user) {
-      console.log(err);
-      console.log(user);
+    // Fetch profile information
+    this.auth0.client.userInfo(authResult.accessToken, (error, profile) => {
+      if (error) {
+        // Handle error
+        console.log(error);
+        return;
+      }
+
+      localStorage.setItem('profile', JSON.stringify(profile));
+      this.userProfile = profile;
     });
   }
+
 }
