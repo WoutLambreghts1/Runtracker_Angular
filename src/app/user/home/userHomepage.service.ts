@@ -19,6 +19,7 @@ export class UserHomepageService {
   }
 
   getUser(): Observable<User> {
+    this.auth.getUserInfo();
     let jwt = localStorage.getItem('id_token');
     if (jwt) {
       this.authHeader.append('token', jwt);
@@ -43,6 +44,7 @@ export class UserHomepageService {
     let options = new RequestOptions({headers: this.authHeader});
 
     //Social login ==> extra info
+
     let firstname: string = "";
     let lastname: string = "";
     let gender: string = "UNDEFINED";
@@ -76,7 +78,7 @@ export class UserHomepageService {
       "ranMarathon": false,
       "nrOfCompetitionsWon": 0
     };
-    console.log(this.auth.getUserInfo());
+    //console.log(this.auth.getUserInfo());
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
   }

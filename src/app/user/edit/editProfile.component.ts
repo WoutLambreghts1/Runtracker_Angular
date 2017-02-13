@@ -17,12 +17,14 @@ export class EditProfileComponent{
     this.user = this.editProfileService.getUser().subscribe((user: User) => this.user = user);
   }
   onClickUpdateUser(user:User): void{
-    if(user.username != ""){
+    if(user.username != "" && this.editProfileService.checkUsernameAvailable(user.username)){
       this.errorMsg = "";
       this.user = this.editProfileService.updateUser(user).subscribe((user: User) => this.user = user);
     }else {
       if(user.username == ""){
         this.errorMsg="Username can not be empty. Please enter a valid username."
+      }else{
+        this.errorMsg="Username not available. Please choose another username."
       }
     }
   }

@@ -127,12 +127,15 @@ export class AuthService {
         }
 
         localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
+        if(profile.sub.indexOf("facebook") >= 0 || profile.sub.indexOf("google") >= 0){
+          this.userProfile = new Profileinfo(profile.email,profile.emailVerified,profile.nickname,profile.picture,profile.sub,profile.updatedAt,profile.givenName,profile.familyName,profile.gender);
+        }else{
+          this.userProfile = new Profileinfo(profile.email,profile.emailVerified,profile.nickname,profile.picture,profile.sub,profile.updatedAt,"","","");
+        }
 
       });
-      return this.userProfile;
     }
-    return new Profileinfo();
+    return this.userProfile;
 
   }
 
