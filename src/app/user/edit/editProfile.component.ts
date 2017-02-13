@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "./../../model/user";
 import {EditProfileService} from "./editProfile.service";
+import {AuthService} from "../../authentication/auth.service";
 
 @Component({
   selector: 'editProfile',
@@ -13,17 +14,18 @@ export class EditProfileComponent{
   private user;
   private errorMsg;
   private available: boolean;
+  private pictureURL:string;
 
   ngOnInit(): void{
     this.user = this.editProfileService.getUser().subscribe((user: User) => this.user = user);
     this.onUsernameChange(this.user.username);
+    this.pictureURL = JSON.parse(localStorage.getItem("profile")).picture;
   }
   onUsernameChange(username:string): void{
     this.editProfileService.checkUsernameAvailable(username).subscribe((val:boolean) => this.available = val);
   }
 
   onClickUpdateUser(user:User): void{
-    console.log(this.available);
     if(user.username != "" && this.available){
       this.errorMsg = "";
       this.user = this.editProfileService.updateUser(user).subscribe((user: User) => this.user = user);
@@ -36,6 +38,8 @@ export class EditProfileComponent{
     }
   }
 
-  constructor(private editProfileService: EditProfileService){}
+  constructor(private editProfileService: EditProfileService,private auth:AuthService){
+
+  }
 
 }

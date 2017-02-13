@@ -40,7 +40,6 @@ export class EditProfileService {
 
   }
 
-
   private handleErrorObservable(error: Response | any): Observable<any> {
     let errMsg: string;
     if (error instanceof Response) {
