@@ -20,7 +20,7 @@ describe('userHomepageService', () => {
         },
         MockBackend,
         BaseRequestOptions
-      ]
+      ],
     });
   });
 
@@ -57,8 +57,6 @@ describe('userHomepageService', () => {
             expect(err).toBe('403 -  {"key":"val"}')
           });
       }));
-
-    //test for getUser => createUser nog schrijven!!
   });
 
   describe('createUser()', () => {

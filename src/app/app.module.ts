@@ -12,12 +12,14 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from "./homepage/login.component";
 import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent, LoginComponent, HomePageComponent, PageNotFoundComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,

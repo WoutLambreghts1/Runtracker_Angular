@@ -1,22 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
-import {User} from "./../../model/user";
+import {User} from "../../model/user";
 import {Observable} from "rxjs/Observable";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class UserHomepageService {
   private BASEURL = 'http://localhost:8080';
   private authHeader;
 
-  constructor(private http: Http,private router: Router) {
+  constructor(private http: Http) {
     this.authHeader = new Headers();
   }
 
   storeUserTokens(url: string) {
     localStorage.setItem('access_token', url.split('=')[1].split('&')[0]);
     localStorage.setItem('id_token', url.split('=')[5]);
-    this.router.navigateByUrl("/home");
   }
 
   getUser(): Observable<User> {

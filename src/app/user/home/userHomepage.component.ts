@@ -17,6 +17,7 @@ export class UserHomepageComponent {
   constructor(private auth: AuthService, private router: Router, private userHomepageService: UserHomepageService) {
     if(router.url.split("=").length > 1){
       userHomepageService.storeUserTokens(router.url);
+      this.router.navigateByUrl("/home");
     }
 
   }
