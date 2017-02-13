@@ -46,7 +46,6 @@ export class AuthService {
         return obs.error();
       }
       else if (authResult && authResult.idToken && authResult.accessToken) {
-        console.log(authResult);
         this.setUser(authResult);
         this.router.navigate(['/home']);
         return obs.complete();
@@ -108,5 +107,12 @@ export class AuthService {
   private setUser(authResult): void {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
+  }
+
+  public getUser(): any{
+    return this.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, user) {
+      console.log(err);
+      console.log(user);
+    });
   }
 }
