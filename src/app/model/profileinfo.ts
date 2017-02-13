@@ -8,5 +8,8 @@ export class Profileinfo{
   picture:string;
   sub:string;
   updatedAt:string;
+  givenName:string;
+  familyName:string;
+  gender:string;
   constructor(){};
 }

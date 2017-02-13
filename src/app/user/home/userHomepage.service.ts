@@ -42,13 +42,23 @@ export class UserHomepageService {
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
 
+    //Social login ==> extra info
+    let firstname: string = "";
+    let lastname: string = "";
+    let gender: string = "UNDEFINED";
+    if(this.auth.getUserInfo().sub.indexOf("facebook") >= 0 || this.auth.getUserInfo().sub.indexOf("google") >= 0){
+        firstname = this.auth.getUserInfo().givenName;
+        lastname = this.auth.getUserInfo().familyName;
+        gender = this.auth.getUserInfo().gender.toUpperCase();
+    }
+
     let newUser =
     {
       "userId":0,
-      "username": this.auth.getUserInfo().email,
-      "firstname": "",
-      "lastname": "",
-      "gender": "UNDEFINED",
+      "username": this.auth.getUserInfo().nickname,
+      "firstname": firstname,
+      "lastname": lastname,
+      "gender": gender,
       "city": "",
       "birthday": null,
       "friends": [],
