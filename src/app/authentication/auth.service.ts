@@ -7,8 +7,6 @@ import {Http} from "@angular/http";
 
 // Avoid name not found warnings
 declare let auth0: any;
-declare var Auth0Lock: any;
-
 
 @Injectable()
 export class AuthService {
@@ -22,33 +20,9 @@ export class AuthService {
     responseType: 'token id_token'
   });
 
-  // Configure Auth0
-  lock = new Auth0Lock('FIml7bePvyWfc2y9UzaRUPjYDenDQSNE', 'runtrackminds.eu.auth0.com', {});
-
-  //Store profile object in auth class
-  userProfile: Object;
 
   constructor(private router: Router, private http: Http) {
-    // Set userProfile attribute of already saved profile
-    this.userProfile = JSON.parse(localStorage.getItem('profile'));
-
-    // Add callback for the Lock `authenticated` event
-    this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-
-      // Fetch profile information
-      this.lock.getProfile(authResult.idToken, (error, profile) => {
-        if (error) {
-          // Handle error
-          alert(error);
-          return;
-        }
-
-        console.log(profile);
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
-      });
-    });
+   
   }
 
   public handleAuthentication(): void {
@@ -130,8 +104,6 @@ export class AuthService {
     // Remove token from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-    this.userProfile = undefined;
     this.router.navigate(['']);
   }
 
