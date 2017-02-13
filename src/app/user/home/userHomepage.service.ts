@@ -46,7 +46,7 @@ export class UserHomepageService {
     let newUser =
     {
       "userId":0,
-      "username": "New user",
+      "username": "",
       "firstname": "",
       "lastname": "",
       "gender": "UNDEFINED",

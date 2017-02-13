@@ -23,5 +23,6 @@ export class UserHomepageComponent {
 
   ngOnInit(): void {
     this.user = this.userHomepageService.getUser().subscribe((user: User) => this.user = user, err => console.error(err));
+    console.log(this.auth.userProfile);
   }
 }
