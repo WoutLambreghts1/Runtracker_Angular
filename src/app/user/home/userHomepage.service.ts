@@ -45,7 +45,7 @@ export class UserHomepageService {
     let newUser =
     {
       "userId":0,
-      "username": this.auth.userProfile.email,
+      "username": this.auth.getUserInfo().email,
       "firstname": "",
       "lastname": "",
       "gender": "UNDEFINED",
@@ -66,7 +66,7 @@ export class UserHomepageService {
       "ranMarathon": false,
       "nrOfCompetitionsWon": 0
     };
-
+    console.log(this.auth.getUserInfo());
     return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
   }

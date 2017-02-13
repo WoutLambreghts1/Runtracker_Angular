@@ -2,7 +2,8 @@ import {Injectable}      from '@angular/core';
 import {tokenNotExpired} from 'angular2-jwt';
 import {Router} from '@angular/router';
 import {Observable} from "rxjs";
-import {Http,Response} from "@angular/http";
+import {Http} from "@angular/http";
+import {Profileinfo} from "../model/profileinfo";
 
 // Avoid name not found warnings
 declare let auth0: any;
@@ -19,7 +20,7 @@ export class AuthService {
     responseType: 'token id_token'
   });
 
-  userProfile: Object;
+  userProfile: Profileinfo;
 
   constructor(private router: Router, private http: Http) {
 
@@ -111,17 +112,27 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
 
-    // Fetch profile information
-    this.auth0.client.userInfo(authResult.accessToken, (error, profile) => {
-      if (error) {
-        // Handle error
-        console.log(error);
-        return;
-      }
 
-      localStorage.setItem('profile', JSON.stringify(profile));
-      this.userProfile = profile;
-    });
+  }
+
+  public getUserInfo(): Profileinfo{
+    if(localStorage.getItem('access_token')){
+      // Fetch profile information
+      this.auth0.client.userInfo(localStorage.getItem('access_token'), (error, profile) => {
+        if (error) {
+          // Handle error
+          console.log(error);
+          return;
+        }
+
+        localStorage.setItem('profile', JSON.stringify(profile));
+        this.userProfile = profile;
+      });
+      return this.userProfile;
+    }
+    
+    return new Profileinfo();
+
   }
 
 }

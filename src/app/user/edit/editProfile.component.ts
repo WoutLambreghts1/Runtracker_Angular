@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "./../../model/user";
 import {EditProfileService} from "./editProfile.service";
-import {timeout} from "rxjs/operator/timeout";
 
 @Component({
   selector: 'editProfile',
