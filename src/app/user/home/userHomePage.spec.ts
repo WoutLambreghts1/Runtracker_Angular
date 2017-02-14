@@ -1,7 +1,7 @@
 import {TestBed, inject} from "@angular/core/testing";
 import {HttpModule, Http, BaseRequestOptions, Response, ResponseOptions, ResponseType} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {UserHomepageService} from "./userHomepage.service";
+import {UserHomepageService} from "./userhomepage.service.ts";
 
 describe('userHomepageService', () => {
 

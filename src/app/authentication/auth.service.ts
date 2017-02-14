@@ -116,7 +116,6 @@ export class AuthService {
   }
 
   public getUserInfo(): Profileinfo{
-    console.log(localStorage.getItem('access_token'));
     if(localStorage.getItem('access_token').length > 0){
       // Fetch profile information
       this.auth0.client.userInfo(localStorage.getItem('access_token'), (error, profile) => {
