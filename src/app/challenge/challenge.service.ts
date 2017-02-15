@@ -1,8 +1,7 @@
 import {Http,Headers,Response} from '@angular/http';
-import {User} from "./../../model/user";
 import {Observable} from "rxjs/Observable";
 import {Injectable} from '@angular/core';
-import * as myGlobals from "../../globals";
+import * as myGlobals from "./../globals";
 
 @Injectable()
 export class ChallengeService {

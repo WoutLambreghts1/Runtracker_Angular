@@ -6,11 +6,12 @@ import {EditProfileService} from "./edit/edit-profile.service.ts";
 import {UserHomepageComponent} from "./home/userhomepage.component.ts";
 import {EditProfileComponent} from "./edit/edit-profile.component.ts";
 import {BrowserModule} from "@angular/platform-browser";
+import {ChallengeComponent} from "../challenge/challenge.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, UserRoutingModule],
   providers: [EditProfileService],
-  declarations: [UserHomepageComponent, EditProfileComponent],
+  declarations: [UserHomepageComponent, EditProfileComponent,ChallengeComponent],
 })
 
 export class UserModule {
