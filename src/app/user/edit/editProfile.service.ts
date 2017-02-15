@@ -16,7 +16,7 @@ export class EditProfileService {
   }
 
   getUser(): Observable<User>{
-    return this.http.get(myGlobals.BASEURL + '/api/users/getUser', {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
@@ -24,7 +24,7 @@ export class EditProfileService {
   }
 
   updateUser(user : User): Observable<User>{
-    return this.http.put(myGlobals.BASEURL + '/api/users/updateUser',user, {
+    return this.http.put(myGlobals.BACKEND_BASEURL + '/api/users/updateUser',user, {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
@@ -32,7 +32,7 @@ export class EditProfileService {
   }
 
   checkUsernameAvailable(username): Observable<boolean>{
-    return this.http.get(myGlobals.BASEURL + '/api/users/checkUsername/'+username, {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/checkUsername/'+username, {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())

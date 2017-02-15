@@ -24,7 +24,7 @@ export class UserHomepageService {
     if (jwt) {
       this.authHeader.append('token', jwt);
     }
-    return this.http.get(myGlobals.BASEURL + '/api/users/getUser', {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
       headers: this.authHeader
     })
       .map((res: Response) => res.json())
@@ -79,7 +79,7 @@ export class UserHomepageService {
       "nrOfCompetitionsWon": 0
     };
     //console.log(this.auth.getUserInfo());
-    return this.http.post(myGlobals.BASEURL + '/api/users/createUser', newUser, options)
+    return this.http.post(myGlobals.BACKEND_BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
   }
 

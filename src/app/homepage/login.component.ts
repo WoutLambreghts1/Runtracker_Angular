@@ -53,7 +53,7 @@ export class LoginComponent {
           this.messages.succesMessage = 'A verification email will be sent.';
         }, err => {
           console.log('signup error');
-          this.messages.errorMessage = 'An error has occurred while signing up.';
+          this.messages.errorMessage = 'The user already exists.';
           this.messages.succesMessage = '';
         }
       );
