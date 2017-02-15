@@ -1,37 +1,25 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 .container{
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../../../assets/img/profileEdit_bg.jpg');
   background-size: cover;
 }
-.control-label{
-  text-align: left;
+.wrapper{
+  min-height: 960px;
 }
-#pictureselector {
-  margin: 10px;
+form#empForm, form#editForm {
+  padding: 0 35px 15px;
 }
-#upload-picture-selector {
-  display:none;
+label.gender {
+  padding-top: 0 !important;
 }
-.margin-correction {
-  margin-right: 10px;
+table tr th{
+  background: #f8f8f8;
 }
-.form-group label{
-  color: white;
+.search-box {
+  padding-bottom: 0;
 }
-h3{
-  color: whitesmoke;
-}
-h6{
-  color:white;
-}
-#profilepic{
-  border: 0.3rem solid white;
-  height: 15rem;
-  width: 15rem;
-  margin-bottom:2rem;
-}
-.error{
-  font-weight:bold;
-  color: darkorange;
-  margin-bottom: 2rem;
+@media screen and (max-width: 368px){
+  .wrapper{
+    min-width: 340px;
+  }
 }
 
