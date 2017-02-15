@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "./../../model/user";
-import {EditProfileService} from "./editprofile.service.ts";
+import {EditProfileService} from "./edit-profile.service.ts";
 import {AuthService} from "../../authentication/auth.service";
 
 @Component({
-  selector: 'editprofile',
-  templateUrl: 'editprofile.component.html',
-  styleUrls: ['editprofile.component.css'],
+  selector: 'edit-profile',
+  templateUrl: 'edit-profile.component.html',
+  styleUrls: ['edit-profile.component.css'],
   providers: [EditProfileService]
 })
 
