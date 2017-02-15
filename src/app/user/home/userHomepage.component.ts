@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {UserHomepageService} from "./userhomepage.service.ts";
+import {UserHomepageService} from "./userhomepage.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
 import {AuthService} from "../../authentication/auth.service";

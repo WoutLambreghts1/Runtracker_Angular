@@ -3,10 +3,10 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {User} from "../../model/user";
 import {Observable} from "rxjs/Observable";
 import {AuthService} from "../../authentication/auth.service";
+import * as myGlobals from "../../globals";
 
 @Injectable()
 export class UserHomepageService {
-  private BASEURL = 'http://localhost:8080';
   private authHeader;
 
   constructor(private http: Http,private auth: AuthService) {
@@ -24,7 +24,7 @@ export class UserHomepageService {
     if (jwt) {
       this.authHeader.append('token', jwt);
     }
-    return this.http.get(this.BASEURL + '/api/users/getUser', {
+    return this.http.get(myGlobals.BASEURL + '/api/users/getUser', {
       headers: this.authHeader
     })
       .map((res: Response) => res.json())
@@ -79,7 +79,7 @@ export class UserHomepageService {
       "nrOfCompetitionsWon": 0
     };
     //console.log(this.auth.getUserInfo());
-    return this.http.post(this.BASEURL + '/api/users/createUser', newUser, options)
+    return this.http.post(myGlobals.BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
   }
 

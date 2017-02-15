@@ -2,12 +2,12 @@ import {Http,Headers,Response} from '@angular/http';
 import {User} from "./../../model/user";
 import {Observable} from "rxjs/Observable";
 import {Injectable} from '@angular/core';
+import * as myGlobals from "../../globals";
 
 @Injectable()
 export class EditProfileService {
   private jwt = localStorage.getItem('id_token');
   private authHeader = new Headers();
-  private BASEURL = 'http://localhost:8080';
 
   constructor(private http:Http){
     if(this.jwt) {
@@ -16,7 +16,7 @@ export class EditProfileService {
   }
 
   getUser(): Observable<User>{
-    return this.http.get(this.BASEURL + '/api/users/getUser', {
+    return this.http.get(myGlobals.BASEURL + '/api/users/getUser', {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
@@ -24,7 +24,7 @@ export class EditProfileService {
   }
 
   updateUser(user : User): Observable<User>{
-    return this.http.put(this.BASEURL + '/api/users/updateUser',user, {
+    return this.http.put(myGlobals.BASEURL + '/api/users/updateUser',user, {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
@@ -32,7 +32,7 @@ export class EditProfileService {
   }
 
   checkUsernameAvailable(username): Observable<boolean>{
-    return this.http.get(this.BASEURL + '/api/users/checkUsername/'+username, {
+    return this.http.get(myGlobals.BASEURL + '/api/users/checkUsername/'+username, {
         headers: this.authHeader
       })
       .map((res: Response) => res.json())
