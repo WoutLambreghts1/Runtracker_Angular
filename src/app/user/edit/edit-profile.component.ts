@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "./../../model/user";
-import {EditProfileService} from "./edit-profile.service.ts";
+import {EditProfileService} from "./edit-profile.service";
 import {AuthService} from "../../authentication/auth.service";
 
 @Component({

@@ -1,0 +1,51 @@
+<div class="container wrapper">
+  <h1 class="text-center">Challenges</h1>
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <div class="alert alert-default navbar-brand search-box">
+        <button class="btn btn-primary" ng-show="show_form" ng-click="formToggle()">New challenge <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      </div>
+      <div class="alert alert-default input-group search-box">
+        <span class="input-group-btn"></span>
+      </div>
+    </div>
+  </nav>
+  <div class="col-md-6 col-md-offset-3">
+    <div ng-include src="'templates/form.html'"></div>
+    <div ng-include src="'templates/editForm.html'"></div>
+  </div>
+  <div class="clearfix"></div>
+
+  <!-- Table to show employee detalis -->
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <th>Challenge ID</th>
+        <th>Competition type</th>
+        <th>Maximum participants</th>
+        <th>Goal</th>
+        <th>Deadline</th>
+        <th>Winner</th>
+        <th>Created by</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="detail in details| filter:search_query">
+        <td>
+          <span>Challenge ID</span></td>
+        <td>Competition type</td>
+        <td>Maximum participants</td>
+        <td>Goal</td>
+        <td>Deadline</td>
+        <td>Winner</td>
+        <td>Created by</td>
+        <td>
+          <button class="btn btn-warning" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
+        </td>
+        <td>
+          <button class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
