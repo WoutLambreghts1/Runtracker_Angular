@@ -115,8 +115,8 @@ export class AuthService {
 
   }
 
-  public getUserInfo(): Profileinfo{
-    if(localStorage.getItem('access_token').length > 0){
+  public getUserInfo(): Profileinfo {
+    if (localStorage.getItem('access_token').length > 0) {
       // Fetch profile information
       this.auth0.client.userInfo(localStorage.getItem('access_token'), (error, profile) => {
         if (error) {
@@ -126,10 +126,10 @@ export class AuthService {
         }
 
         localStorage.setItem('profile', JSON.stringify(profile));
-        if(profile.sub.indexOf("facebook") >= 0 || profile.sub.indexOf("google") >= 0){
-          this.userProfile = new Profileinfo(profile.email,profile.emailVerified,profile.nickname,profile.picture,profile.sub,profile.updatedAt,profile.givenName,profile.familyName,profile.gender);
-        }else{
-          this.userProfile = new Profileinfo(profile.email,profile.emailVerified,profile.nickname,profile.picture,profile.sub,profile.updatedAt,"","","");
+        if (profile.sub.indexOf("facebook") >= 0 || profile.sub.indexOf("google") >= 0) {
+          this.userProfile = new Profileinfo(profile.email, profile.emailVerified, profile.nickname, profile.picture, profile.sub, profile.updatedAt, profile.givenName, profile.familyName, profile.gender);
+        } else {
+          this.userProfile = new Profileinfo(profile.email, profile.emailVerified, profile.nickname, profile.picture, profile.sub, profile.updatedAt, "", "", "");
         }
 
       });

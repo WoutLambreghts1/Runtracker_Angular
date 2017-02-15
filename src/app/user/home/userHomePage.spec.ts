@@ -2,15 +2,40 @@ import {TestBed, inject} from "@angular/core/testing";
 import {HttpModule, Http, BaseRequestOptions, Response, ResponseOptions, ResponseType} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserHomepageService} from "./userhomepage.service";
+import {AuthService} from "../../authentication/auth.service";
+import {Router} from "@angular/router";
+import {Profileinfo} from "../../model/profileinfo";
+
+class MockAuthService {
+  auth0 = new Object();
+
+  public getUserInfo(): Profileinfo {
+    return {
+      email: 'runtrackminds2017@gmail.com',
+      emailVerified: true,
+      nickname: 'runtrackminds2017',
+      picture: 'picture',
+      sub: 'sub',
+      updatedAt: '11-12-13',
+      givenName: 'runtrack',
+      familyName: 'minds',
+      gender: 'm'
+    }
+  }
+}
 
 describe('userHomepageService', () => {
+  let mockRouter = {
+    navigate: jasmine.createSpy('home')
+  };
 
   beforeEach(() => {
-
     TestBed.configureTestingModule({
       imports: [HttpModule],
       providers: [
         UserHomepageService,
+        {provide: AuthService, useClass: MockAuthService},
+        {provide: Router, useValue: mockRouter},
         {
           provide: Http,
           useFactory: (mockBackend, options) => {
