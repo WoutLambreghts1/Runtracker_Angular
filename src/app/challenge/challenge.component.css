@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url("//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
 .container{
   background-size: cover;
 }
@@ -17,5 +18,8 @@ table tr th{
 .search-box {
   padding-bottom: 0;
 }
-
+label, input { display:block; }
+input.text { margin-bottom:12px; width:95%; padding: .4em; }
+h1 { font-size: 1.2em; margin: .6em 0; }
+.ui-dialog .ui-state-error { padding: .3em; }
 
