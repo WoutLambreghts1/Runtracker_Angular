@@ -5,7 +5,7 @@
 .wrapper{
   min-height: 960px;
 }
-form#empForm, form#editForm {
+form#createForm {
   padding: 0 35px 15px;
 }
 label.gender {
