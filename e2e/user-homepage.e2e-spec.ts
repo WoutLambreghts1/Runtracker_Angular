@@ -87,7 +87,7 @@ describe('user-homepage', () => {
 
         navLogout.click().then(() => {
             browser.driver.sleep(2000);
-            expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/#');
+            expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/');
             browser.executeScript("return window.localStorage.getItem('access_token');") .then(val => storedAccesToken = val)
               .catch(() => storedAccesToken = '')
               .thenFinally(() => {

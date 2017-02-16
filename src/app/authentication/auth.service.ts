@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Observable} from "rxjs";
 import {Http} from "@angular/http";
 import {Profileinfo} from "../model/profileinfo";
+import * as myGlobals from "../globals";
 
 // Avoid name not found warnings
 declare let auth0: any;
@@ -16,7 +17,7 @@ export class AuthService {
     domain: 'runtrackminds.eu.auth0.com',
     clientID: 'FIml7bePvyWfc2y9UzaRUPjYDenDQSNE',
     // specify your desired callback URL
-    callbackURL: 'http://localhost:4200',
+    callbackURL: myGlobals.FRONTEND_BASEURL,
     responseType: 'token id_token'
   });
 
@@ -60,14 +61,14 @@ export class AuthService {
   public loginWithGoogle(): void {
     this.auth0.authorize({
       connection: 'google-oauth2',
-      redirectUri: 'http://localhost:4200/home'
+      redirectUri: myGlobals.FRONTEND_BASEURL + '/home'
     });
   }
 
   public loginWithFacebook(): void {
     this.auth0.authorize({
       connection: 'facebook',
-      redirectUri: 'http://localhost:4200/home'
+      redirectUri: myGlobals.FRONTEND_BASEURL + '/home'
     });
   }
 

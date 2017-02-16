@@ -1,6 +1,6 @@
 import {LoginComponent} from "./login.component";
 import {ComponentFixture, async, TestBed} from "@angular/core/testing";
-import {AuthService} from "../authentication/auth.service";
+import {AuthService} from "../../authentication/auth.service";
 import {By} from "@angular/platform-browser";
 describe('LoginComponent', () => {
 
