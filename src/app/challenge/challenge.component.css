@@ -6,9 +6,6 @@
 .wrapper{
   min-height: 960px;
 }
-form#createForm {
-  padding: 0 35px 15px;
-}
 label.gender {
   padding-top: 0 !important;
 }

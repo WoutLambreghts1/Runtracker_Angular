@@ -1,19 +1,38 @@
-<div class="container wrapper">
+<div class="container">
   <h1 class="text-center">My challenges</h1>
   <hr>
-  <div class="row col-md-6 .compete">
-      <div class="col-md-10">
-        <select class="form-control" id="competeSelect">
-          <option>Competition 1</option>
-          <option>Competition 2</option>
-          <option>Competition 3</option>
-          <option>Competition 4</option>
-        </select>
+
+
+  <nav class="navbar navbar-default">
+    <div class="row col-md-10 col-md-offset-1">
+      <div class="navbar-header col-md-12">
+
+        <div class="col-md-6">
+          <div class="alert alert-default input-group search-box">
+            <button class="btn btn-primary" href="#creatediv" data-toggle="modal" data-target="#competitionModal">New
+              challenge
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="alert alert-default navbar-brand search-box col-md-8">
+            <select class="form-control" id="competeSelect">
+              <option>Competition 1</option>
+              <option>Competition 2</option>
+              <option>Competition 3</option>
+              <option>Competition 4</option>
+            </select>
+          </div>
+          <div class="alert alert-default input-group search-box col-md-2">
+            <button class="btn btn-success">Compete <span class="glyphicon glyphicon-flag"></span></button>
+          </div>
+        </div>
+
       </div>
-    <div class="col-md-2">
-      <button class="btn btn-success">Compete <span class="glyphicon glyphicon-flag"></span></button>
     </div>
-  </div>
+  </nav>
+
 
   <div class="clearfix"></div>
 
@@ -46,54 +65,67 @@
         </td>
       </tr>
     </table>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="competitionModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create new competition</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal alert alert-info" id="createform">
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Competition type:</label>
+              <div class="col-md-6">
+                <select class="form-control" name="competitiontype" [(ngModel)]="newCompetition.competitionType">
+                  <option value="1">Realtime</option>
+                  <option value="2">Not-realtime</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Deadline:</label>
+              <div class="col-md-6">
+                <input class="form-control" type="date" name="deadline" [(ngModel)]="newCompetition.deadline">
+              </div>
+            </div>
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Max participants:</label>
+              <div class="col-md-6">
+                <input class="form-control" type="number" value="2" name="maxParticipants"
+                       [(ngModel)]="newCompetition.maxParticipants">
+              </div>
+            </div>
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Goal:</label>
+              <div class="col-md-6">
+                <select class="form-control" name="goal" [(ngModel)]="newCompetition.goal">
+                  <option value="1">100m</option>
+                  <option value="2">1000m</option>
+                  <option value="3">2000m</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group text-right">
+            </div>
+          </form>
+
+          <!--modal footer-->
+          <div class="modal-footer">
+            <button (click)="onClickAddCompetition(newCompetition)" class="btn btn-warning center">Create challenge
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="clearfix"></div>
-    <div class="row col-md-12 text-center">
-        <button class="btn btn-primary" href="#creatediv" data-toggle="collapse">New challenge <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-    </div>
-
-    <!--Create competition-->
-    <div class="col-md-10 col-md-offset-1 collapse"  id="creatediv">
-      <form class="form-horizontal alert alert-info" id="createform">
-        <h3 class="text-center">Create new competition</h3>
-        <hr>
-
-        <div class="form-group col-md-10 col-md-offset-1">
-          <label class="col-md-6 control-label">Competition type:</label>
-          <div class="col-md-6">
-              <select class="form-control"  name="competitiontype" [(ngModel)]="newCompetition.competitionType">
-                <option value="1">Realtime</option>
-                <option value="2">Not-realtime</option>
-              </select>
-          </div>
-        </div>
-
-        <div class="form-group col-md-10 col-md-offset-1">
-          <label class="col-md-6 control-label">Deadline:</label>
-          <div class="col-md-6">
-            <input class="form-control" type="date"  name="deadline" [(ngModel)]="newCompetition.deadline">
-          </div>
-        </div>
-        <div class="form-group col-md-10 col-md-offset-1">
-          <label class="col-md-6 control-label">Max participants:</label>
-          <div class="col-md-6">
-            <input class="form-control" type="number" value="2" name="maxParticipants" [(ngModel)]="newCompetition.maxParticipants">
-          </div>
-        </div>
-        <div class="form-group col-md-10 col-md-offset-1">
-          <label class="col-md-6 control-label">Goal:</label>
-          <div class="col-md-6">
-              <select class="form-control"  name="goal" [(ngModel)]="newCompetition.goal">
-                <option value="1">100m</option>
-                <option value="2">1000m</option>
-                <option value="3">2000m</option>
-              </select>
-          </div>
-        </div>
-        <div class="form-group text-right">
-          <button (click)="onClickAddCompetition(newCompetition)" class="btn btn-warning center">Create challenge</button>
-        </div>
-      </form>
-    </div>
+  </div>
 </div>
