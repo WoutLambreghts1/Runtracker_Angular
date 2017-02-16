@@ -17,9 +17,5 @@ table tr th{
 .search-box {
   padding-bottom: 0;
 }
-@media screen and (max-width: 368px){
-  .wrapper{
-    min-width: 340px;
-  }
-}
+
 
