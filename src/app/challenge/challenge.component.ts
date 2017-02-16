@@ -13,7 +13,13 @@ import {Competition} from "../model/competition";
 export class ChallengeComponent{
   private newCompetition: Competition;
   constructor(private challengeService: ChallengeService,private auth:AuthService){
+
+  }
+
+  ngOnInit(): void {
     this.newCompetition = new Competition();
+    this.newCompetition.maxParticipants = 2;
+    this.newCompetition.deadline = new Date();
   }
 
   private onClickAddCompetition(competition: Competition): void {

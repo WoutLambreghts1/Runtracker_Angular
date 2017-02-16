@@ -63,7 +63,7 @@
           <label class="col-md-6 control-label">Competition type:</label>
           <div class="col-md-6">
             <div class="ui-select">
-              <select class="form-control"  name="goal" ng-model="newCompetition.competitiontype">
+              <select class="form-control"  name="competitiontype" [(ngModel)]="newCompetition.competitionType">
                 <option value="1">Realtime</option>
                 <option value="2">Not-realtime</option>
               </select>
@@ -74,20 +74,20 @@
         <div class="form-group">
           <label class="col-md-6 control-label">Deadline:</label>
           <div class="col-md-6">
-            <input class="form-control" type="date"  name="deadline" ng-model="newCompetition.deadline">
+            <input class="form-control" type="date"  name="deadline" [(ngModel)]="newCompetition.deadline">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-6 control-label">Max participants:</label>
           <div class="col-md-6">
-            <input class="form-control" type="number" value="2" name="maxParticipants" ng-model="newCompetition.maxparticipants">
+            <input class="form-control" type="number" value="2" name="maxParticipants" [(ngModel)]="newCompetition.maxParticipants">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-6 control-label">Goal:</label>
           <div class="col-md-6">
             <div class="ui-select">
-              <select class="form-control"  name="goal" ng-model="newCompetition.goal">
+              <select class="form-control"  name="goal" [(ngModel)]="newCompetition.goal">
                 <option value="1">100m</option>
                 <option value="2">1000m</option>
                 <option value="3">2000m</option>
@@ -96,7 +96,7 @@
           </div>
         </div>
         <div class="form-group text-right">
-          <button (click)="onClickAddCompetition(newCompetition)"class="btn btn-warning center">Create challenge</button>
+          <button (click)="onClickAddCompetition(newCompetition)" class="btn btn-warning center">Create challenge</button>
         </div>
       </form>
     </div>
