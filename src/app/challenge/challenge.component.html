@@ -1,10 +1,10 @@
-<div class="container wrapper">
+<div class="container wrapper" ng-controller="ChallengeController">
   <h1 class="text-center">My challenges</h1>
   <hr>
   <div class="row col-sm-12">
     <!--left-->
     <div class="form-group col-sm-6">
-        <button class="btn btn-primary" ng-click="formToggle()">New challenge <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        <a class="btn btn-primary" data-rel="popup">New challenge <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
     <!--right-->
     <div class="form-group col-sm-6">
@@ -16,15 +16,59 @@
           <option>Competition 4</option>
         </select>
       </div>
-        <button class="btn btn-success col-sm-6 right" ng-click="">Compete <span class="glyphicon glyphicon-flag"></span></button>
+        <button class="btn btn-success col-sm-6 right">Compete <span class="glyphicon glyphicon-flag"></span></button>
     </div>
   </div>
 
-  <div class="col-sm-6 col-sm-offset-3">
-    <div ng-include src="'create-challenge.component.html'"></div>
+  <!--Create competition popup-->
+  <div class="col-md-6 col-md-offset-3 ui-content">
+    <form class="form-horizontal alert alert-info" id="createForm">
+      <h3 class="text-center">Create new competition</h3>
+
+      <div class="form-group">
+        <label class="col-md-6 control-label">Competition type:</label>
+        <div class="col-md-6">
+          <div class="ui-select">
+            <select class="form-control"  name="goal">
+              <option value="1">Realtime</option>
+              <option value="2">Not-realtime</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-6 control-label">Deadline:</label>
+        <div class="col-md-6">
+          <input class="form-control" type="date"  name="deadline">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-6 control-label">Last name:</label>
+        <div class="col-md-6">
+          <input class="form-control" type="number" name="maxParticipants">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-6 control-label">Gender:</label>
+        <div class="col-md-6">
+          <div class="ui-select">
+            <select class="form-control"  name="goal">
+              <option value="1">100m</option>
+              <option value="2">1000m</option>
+              <option value="3">2000m</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-right">
+        <button class="btn btn-warning center">Create competition</button>
+      </div>
+    </form>
   </div>
 
   <div class="clearfix"></div>
+
   <!-- Competitions table -->
   <div class="table-responsive">
     <table class="table table-hover">
