@@ -1,7 +1,7 @@
 import {TestBed, inject} from "@angular/core/testing";
 import {HttpModule, Http, BaseRequestOptions, Response, ResponseOptions, ResponseType} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {UserHomepageService} from "./userhomepage.service";
+import {UserHomepageService} from "./user-homepage.service";
 import {AuthService} from "../../authentication/auth.service";
 import {Router} from "@angular/router";
 import {Profileinfo} from "../../model/profileinfo";

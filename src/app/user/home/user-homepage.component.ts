@@ -1,13 +1,13 @@
 import {Component} from "@angular/core";
-import {UserHomepageService} from "./userhomepage.service";
+import {UserHomepageService} from "./user-homepage.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
 import {AuthService} from "../../authentication/auth.service";
 
 @Component({
   selector: 'userHomepage',
-  templateUrl: 'userHomepage.component.html',
-  styleUrls: ['userHomepage.component.css'],
+  templateUrl: 'user-homepage.component.html',
+  styleUrls: ['user-homepage.component.css'],
   providers: [UserHomepageService]
 })
 

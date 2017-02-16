@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {UserHomepageComponent} from "./home/userhomepage.component.ts";
-import {EditProfileComponent} from "./edit/edit-profile.component.ts";
+import {UserHomepageComponent} from "./home/user-homepage.component";
+import {EditProfileComponent} from "./edit/edit-profile.component";
 import {ChallengeComponent} from "../challenge/challenge.component";
 
 const routes: Routes = [
