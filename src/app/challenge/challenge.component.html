@@ -1,15 +1,20 @@
 <div class="container wrapper">
   <h1 class="text-center">Challenges</h1>
-  <nav class="navbar navbar-default">
-    <div class="navbar-header">
-      <div class="alert alert-default navbar-brand search-box">
-        <button class="btn btn-primary" ng-click="formToggle()">New challenge <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+
+    <div class="form-group col-md-12">
+      <div class="row">
+        <button class="btn btn-primary col-md-2 left" ng-click="formToggle()">New challenge <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        <div class="col-md-4 right">
+        <select class="form-control" id="competeSelect">
+          <option>Competition 1</option>
+          <option>Competition 2</option>
+          <option>Competition 3</option>
+          <option>Competition 4</option>
+        </select>
+        </div>
+        <button class="btn btn-success col-md-2 right" ng-click="">Compete <span class="glyphicon glyphicon-plus"></span></button>
       </div>
-      <div class="alert alert-default input-group search-box">
-        <span class="input-group-btn"></span>
-      </div>
-    </div>
-  </nav>
+  </div>
   <div class="col-md-6 col-md-offset-3">
     <div ng-include src="'create-challenge.component.html'"></div>
   </div>
@@ -26,10 +31,10 @@
         <th>Deadline</th>
         <th>Winner</th>
         <th>Created by</th>
-        <th>Compete</th>
+        <th>Status</th>
         <th>Delete</th>
       </tr>
-      <tr ng-repeat="detail in details| filter:search_query">
+      <tr ng-repeat="competition in competitions">
         <td>
           <span>Challenge ID</span></td>
         <td>Competition type</td>
@@ -38,9 +43,7 @@
         <td>Deadline</td>
         <td>Winner</td>
         <td>Created by</td>
-        <td>
-          <button class="btn btn-success" title="Edit"><span class="glyphicon glyphicon-plus"></span></button>
-        </td>
+        <td>Open</td>
         <td>
           <button class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
         </td>
