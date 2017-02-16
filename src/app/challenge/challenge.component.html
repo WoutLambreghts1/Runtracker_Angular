@@ -24,7 +24,7 @@
               <option>Competition 4</option>
             </select>
           </div>
-          <div class="alert alert-default input-group search-box col-md-2">
+          <div class="alert alert-default input-group search-box">
             <button class="btn btn-success">Compete <span class="glyphicon glyphicon-flag"></span></button>
           </div>
         </div>
@@ -83,8 +83,8 @@
               <label class="col-md-6 control-label">Competition type:</label>
               <div class="col-md-6">
                 <select class="form-control" name="competitiontype" [(ngModel)]="newCompetition.competitionType">
-                  <option value="1">Realtime</option>
-                  <option value="2">Not-realtime</option>
+                  <option value="REALTIME">Live</option>
+                  <option value="NOT_REALTIME" selected>Not live</option>
                 </select>
               </div>
             </div>
@@ -107,9 +107,12 @@
               <div class="col-md-6">
                 <select class="form-control" name="goal" [(ngModel)]="newCompetition.goal">
                   <option value="1">100m</option>
-                  <option value="2">1000m</option>
-                  <option value="3">2000m</option>
+                  <option value="2">200m</option>
+                  <option value="3">300m</option>
+                  <option value="4">400m</option>
+                  <option value="5">500m</option>
                 </select>
+
               </div>
             </div>
             <div class="form-group text-right">
@@ -118,9 +121,9 @@
 
           <!--modal footer-->
           <div class="modal-footer">
-            <button (click)="onClickAddCompetition(newCompetition)" class="btn btn-warning center">Create challenge
+            <button (click)="onClickAddCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Create challenge
             </button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
 
