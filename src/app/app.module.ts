@@ -9,7 +9,7 @@ import {AuthService} from "./authentication/auth.service";
 import {AppRoutingModule} from "./app-routing.module";
 
 import {AppComponent} from './app.component';
-import {LoginComponent} from "./homepage/login.component";
+import {LoginComponent} from "./homepage/login/login.component";
 import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
 import {CommonModule} from "@angular/common";

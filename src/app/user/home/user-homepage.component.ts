@@ -14,7 +14,7 @@ import {AuthService} from "../../authentication/auth.service";
 export class UserHomepageComponent {
   private user;
 
-  constructor(private auth: AuthService, private router: Router, private userHomepageService: UserHomepageService) {
+  constructor(private router: Router, private userHomepageService: UserHomepageService) {
     if(router.url.split("=").length > 1){
       userHomepageService.storeUserTokens(router.url);
       this.router.navigateByUrl("/home");

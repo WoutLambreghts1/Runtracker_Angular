@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../authentication/auth.service';
+import {AuthService} from '../../authentication/auth.service';
 import {LoginMessage} from "./loginMessage";
 
 @Component({
