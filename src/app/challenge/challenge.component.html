@@ -1,38 +1,24 @@
 <div class="container">
-  <h1 class="text-center">My challenges</h1>
+  <h1 class="text-center text-info">My challenges</h1>
   <hr>
 
 
-  <nav class="navbar navbar-default">
-    <div class="row col-md-10 col-md-offset-1">
-      <div class="navbar-header col-md-12">
-
-        <div class="col-md-6">
-          <div class="alert alert-default input-group search-box">
-            <button class="btn btn-primary" href="#creatediv" data-toggle="modal" data-target="#competitionModal">New
-              challenge
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-          </div>
+    <div class="container-fluid custom-navigation">
+      <form class="navbar-form">
+        <button class="btn btn-info" href="#creatediv"  data-toggle="modal" data-target="#competitionModal">New
+          Challenge
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        <div class="form-group pull-right">
+          <select class="form-control" id="competeSelect">
+            <option>Challenge 1 -> Type:realtime Goal: 1000m Created by: RuntrackMinds Deadline: 26/02/2017</option>
+            <option>Challenge 2 -> Type:realtime Goal: 100m Created by: RuntrackMinds Deadline: 28/02/2017</option>
+            <option>Challenge 3 -> Type:realtime Goal: 500m Created by: RuntrackMinds Deadline: 30/02/2017</option>
+            <option>Challenge 4 -> Type:realtime Goal: 1000m Created by: RuntrackMinds Deadline: 15/02/2017</option>
+          </select>
+          <button class="btn btn-success">Compete <span class="glyphicon glyphicon-flag"></span></button>
         </div>
-
-        <div class="col-md-6">
-          <div class="alert alert-default navbar-brand search-box col-md-8">
-            <select class="form-control" id="competeSelect">
-              <option>Competition 1</option>
-              <option>Competition 2</option>
-              <option>Competition 3</option>
-              <option>Competition 4</option>
-            </select>
-          </div>
-          <div class="alert alert-default input-group search-box">
-            <button class="btn btn-success">Compete <span class="glyphicon glyphicon-flag"></span></button>
-          </div>
-        </div>
-
-      </div>
+      </form>
     </div>
-  </nav>
-
 
   <div class="clearfix"></div>
 
@@ -61,21 +47,20 @@
         <td>Runtrack minds</td>
         <td>Open</td>
         <td>
-          <button class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+          <span class="text-center"> <button class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></span>
         </td>
       </tr>
     </table>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal create competition -->
   <div class="modal fade" id="competitionModal" role="dialog">
     <div class="modal-dialog">
-
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create new competition</h4>
+          <h4 class="modal-title text-info">Create new competition</h4>
         </div>
         <div class="modal-body">
           <form class="form-horizontal alert alert-info" id="createform">
@@ -129,6 +114,6 @@
 
       </div>
     </div>
-
   </div>
+
 </div>
