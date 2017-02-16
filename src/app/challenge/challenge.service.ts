@@ -22,8 +22,16 @@ export class ChallengeService {
       .catch(this.handleErrorObservable);
   }
 
-  getCompetitions(): Observable<Competition[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions',{
+  getAllAvailableCompetitions(): Observable<Competition[]>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getAvailableCompetitions',{
+        headers: this.authHeader
+      })
+      .map((res: Response) =>  res.json())
+      .catch(this.handleErrorObservable);
+  }
+
+  getAllCompetitionsRun(): Observable<Competition[]>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getRanCompetitions',{
         headers: this.authHeader
       })
       .map((res: Response) =>  res.json())

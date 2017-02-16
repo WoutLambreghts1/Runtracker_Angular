@@ -14,7 +14,8 @@ import {Goal} from "../model/goal";
 export class ChallengeComponent{
   private newCompetition: Competition;
   private goals: Goal[];
-  private competitions: Competition[];
+  private competitionsAvailable: Competition[];
+  private competitionsRun: Competition[];
   constructor(private challengeService: ChallengeService,private auth:AuthService){
   }
 
@@ -33,9 +34,19 @@ export class ChallengeComponent{
       }
     );
 
-    this.challengeService.getCompetitions().subscribe(
+    this.challengeService.getAllAvailableCompetitions().subscribe(
       (competitions: Competition[]) => {
-        this.competitions = competitions;
+        this.competitionsAvailable = competitions;
+        console.log(competitions);
+      },
+      error => {
+        console.log(error as string);
+      }
+    );
+
+    this.challengeService.getAllCompetitionsRun().subscribe(
+      (competitions: Competition[]) => {
+        this.competitionsRun = competitions;
         console.log(competitions);
       },
       error => {
