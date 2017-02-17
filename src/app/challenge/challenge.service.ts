@@ -48,12 +48,24 @@ export class ChallengeService {
       "competitionType": competition.competitionType,
       "deadline": competition.deadline,
       "maxParticipants":competition.maxParticipants,
-      "goal":competition.goal
+      "goal":null
     };
-    console.log("create challenge");
-    console.log(newCompetition);
    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', newCompetition, options)
       .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
+  }
+
+  deleteCompetition(competitionId) :void{
+    console.log(competitionId);
+    this.http.delete(myGlobals.BACKEND_BASEURL + ' /api/competitions/delete/' + competitionId, {
+      headers: this.authHeader
+    }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
+
+  }
+
+  addCompetitionToUser(competitionId): void {
+    this.http.post(myGlobals.BACKEND_BASEURL + ' /api/competitions/running/' + competitionId, {
+        headers: this.authHeader
+      }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
 
 

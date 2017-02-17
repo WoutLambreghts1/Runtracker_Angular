@@ -39,7 +39,7 @@
              <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
              <td>{{competition.finished}}</td>
              <td>
-               <span class="text-center"> <button class="btn btn-danger" title="Delete"><span
+               <span class="text-center"> <button (click)="onClickDeleteCompetition(competition)" class="btn btn-danger" title="Delete"><span
                  class="glyphicon glyphicon-trash"></span></button></span>
              </td>
 
@@ -95,7 +95,7 @@
 
           <!--modal footer-->
           <div class="modal-footer">
-            <button (click)="onClickAddCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Create
+            <button (click)="onClickCreateCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Create
               challenge
             </button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -121,9 +121,9 @@
 
             <div class="form-group col-md-10 col-md-offset-1">
               <h4 class="text-center">Compete at an existing challenge: </h4>
-              <select class="form-control col-md-8 col-md-offset-2" ng-model="competitionToCompete" size="10">
-                <option *ngFor="let competition of competitionsAvailable" ng-value="competition">
-                  Type: {{competition.competitionType}} Created by: / Deadline: {{competition.deadline}}
+              <select class="form-control col-md-8 col-md-offset-2" [(ngModel)]="competitionIdToCompete" size="10" name="selectCompetition">
+                <option *ngFor="let competition of competitionsAvailable" ng-value="competition.competitionId">
+                  Challenge {{competition.competitionId}}
                 </option>
               </select>
             </div>
@@ -132,7 +132,7 @@
           </form>
           <!--modal footer-->
           <div class="modal-footer">
-            <button (click)="onClickAddCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Compete
+            <button (click)="onClickAddCompetition(competitionIdToCompete)" data-dismiss="modal" class="btn btn-primary">Compete
             </button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
