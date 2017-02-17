@@ -11,5 +11,5 @@ export class Competition{
  userWon:User;
  trackings:Tracking[];
  usersRun:User[];
- isFinished:boolean;
+  finished:boolean;
 }

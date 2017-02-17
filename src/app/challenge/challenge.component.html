@@ -14,7 +14,7 @@
   <div class="clearfix"></div>
 
   <!-- Competitions table -->
-  <div ng-if="competitionsRun.length>0" class="table-responsive">
+  <div class="table-responsive">
     <table class="table table-hover">
       <tr>
         <th>Challenge ID</th>
@@ -27,22 +27,23 @@
         <th>Finished</th>
         <th>Delete</th>
       </tr>
+           <tr *ngFor="let competition of competitionsRun">
 
-      <tr *ngFor="let competition of competitionsRun">
-        <td>
-          <span>{{competition.competitionId}}</span></td>
-        <td>{{competition.competitionType}}</td>
-        <td>{{competition.maxParticipants}}</td>
-        <td>{{competition.goal.name}}</td>
-        <td>{{competition.deadline}}</td>
-        <td>{{competition.userWon.username}}</td>
-        <td>{{competition.userCreated.username}}</td>
-        <td>{{competition.isFinished}}</td>
-        <td>
-          <span class="text-center"> <button class="btn btn-danger" title="Delete"><span
-            class="glyphicon glyphicon-trash"></span></button></span>
-        </td>
-      </tr>
+             <td>
+               <span>{{competition.competitionId}}</span></td>
+             <td>{{competition.competitionType}}</td>
+             <td>{{competition.maxParticipants}}</td>
+             <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
+             <td>{{competition.deadline}}</td>
+             <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
+             <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
+             <td>{{competition.finished}}</td>
+             <td>
+               <span class="text-center"> <button class="btn btn-danger" title="Delete"><span
+                 class="glyphicon glyphicon-trash"></span></button></span>
+             </td>
+
+           </tr>
     </table>
   </div>
 
@@ -83,7 +84,7 @@
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Goal:</label>
               <div class="col-md-6">
-                <select ng-model="newCompetition.goal">
+                <select class="form-control" ng-model="newCompetition.goal">
                   <option *ngFor="let goal of goals" ng-value="goal">{{goal.name}}</option>
                 </select>
               </div>
@@ -120,18 +121,11 @@
 
             <div class="form-group col-md-10 col-md-offset-1">
               <h4 class="text-center">Compete at an existing challenge: </h4>
-                <select class="form-control col-md-8 col-md-offset-2" id="competeSelect" size="10">
-                  <option>Challenge 1</option>
-                  <option>Challenge 2</option>
-                  <option>Challenge 3</option>
-                  <option>Challenge 4</option>
-                  <option>Challenge 5</option>
-                  <option>Challenge 6</option>
-                  <option>Challenge 7</option>
-                  <option>Challenge 8</option>
-                  <option>Challenge 9</option>
-                  <option>Challenge 10</option>
-                </select>
+              <select class="form-control col-md-8 col-md-offset-2" ng-model="competitionToCompete" size="10">
+                <option *ngFor="let competition of competitionsAvailable" ng-value="competition">
+                  Type: {{competition.competitionType}} Created by: / Deadline: {{competition.deadline}}
+                </option>
+              </select>
             </div>
             <div class="form-group text-right">
             </div>

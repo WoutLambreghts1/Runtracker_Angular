@@ -45,16 +45,13 @@ export class ChallengeService {
     let options = new RequestOptions({headers: this.authHeader});
 
     let newCompetition = {
-      "competitionType":"NOT_REALTIME",
-      "deadline":"2017-03-05",
-      "maxParticipants":4,
-      "goal":null,
-      "userCreated":null,
-      "userWon":null,
-      "trackings":[],
-      "usersRun":[]
+      "competitionType": competition.competitionType,
+      "deadline": competition.deadline,
+      "maxParticipants":competition.maxParticipants,
+      "goal":competition.goal
     };
-  console.log("create challenge");
+    console.log("create challenge");
+    console.log(newCompetition);
    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', newCompetition, options)
       .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }

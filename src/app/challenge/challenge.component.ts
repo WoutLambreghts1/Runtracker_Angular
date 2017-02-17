@@ -16,13 +16,17 @@ export class ChallengeComponent{
   private goals: Goal[] = [new Goal(1,"run 100m",100),new Goal(2,"run 200m",200),new Goal(3,"run 300m",300)];
   private competitionsAvailable: Competition[] = [];
   private competitionsRun: Competition[] = [];
+  private competitionToCompete:Competition;
   constructor(private challengeService: ChallengeService,private auth:AuthService){
     this.onClickNewCompetition();
+    this.competitionToCompete = new Competition();
   }
 
 
   ngOnInit(): void {
     //Get goals (to create competition), available competitions (to compete), all competing competitionss
+
+    /*
     this.challengeService.getGoals().subscribe(
       (goals) => {
         this.goals = goals;
@@ -31,9 +35,8 @@ export class ChallengeComponent{
         console.log(error as string);
       }
     );
+*/
 
-
-    /*
      this.challengeService.getAllAvailableCompetitions().subscribe(
      (competitions: Competition[]) => {
      this.competitionsAvailable = competitions;
@@ -43,12 +46,10 @@ export class ChallengeComponent{
      console.log(error as string);
      }
      );
-     */
 
     this.challengeService.getAllCompetitionsRun().subscribe(
       (competitions) => {
         this.competitionsRun = competitions;
-        console.log("all loaded");
       },
       error => {
         console.log(error as string);
@@ -68,7 +69,8 @@ export class ChallengeComponent{
 
   private onClickAddCompetition(competition: Competition): void {
     this.challengeService.createCompetition(competition);
-    console.log(this.newCompetition.goal);
+    console.log(competition.goal);
+    console.log(this.competitionsRun);
   }
 
 
