@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {AuthService} from "../../authentication/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'navigation-header',
@@ -7,5 +8,5 @@ import {AuthService} from "../../authentication/auth.service";
 })
 
 export class HeaderComponent{
-  constructor(private auth: AuthService){}
+  constructor(private router: Router, private auth: AuthService){}
 }
