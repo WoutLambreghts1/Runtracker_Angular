@@ -13,10 +13,11 @@ import {LoginComponent} from "./homepage/login/login.component";
 import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
 import {CommonModule} from "@angular/common";
+import {HeaderComponent} from "./homepage/header/header.component";
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, HomePageComponent, PageNotFoundComponent
+    AppComponent, LoginComponent, HomePageComponent, PageNotFoundComponent, HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +30,7 @@ import {CommonModule} from "@angular/common";
     AUTH_PROVIDERS,
     AuthService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

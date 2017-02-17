@@ -9,7 +9,7 @@ import * as myGlobals from "../../globals";
 export class UserHomepageService {
   private authHeader;
 
-  constructor(private http: Http,private auth: AuthService) {
+  constructor(private http: Http, private auth: AuthService) {
     this.authHeader = new Headers();
   }
 
@@ -48,36 +48,14 @@ export class UserHomepageService {
     let firstname: string = "";
     let lastname: string = "";
     let gender: string = "UNDEFINED";
-    if(this.auth.getUserInfo().sub.indexOf("facebook") >= 0 || this.auth.getUserInfo().sub.indexOf("google") >= 0){
-        firstname = this.auth.getUserInfo().givenName;
-        lastname = this.auth.getUserInfo().familyName;
-        gender = this.auth.getUserInfo().gender.toUpperCase();
+    if (this.auth.getUserInfo().sub.indexOf("facebook") >= 0 || this.auth.getUserInfo().sub.indexOf("google") >= 0) {
+      this.auth.getUserInfo().givenName == null ? firstname = null : firstname = this.auth.getUserInfo().givenName;
+      this.auth.getUserInfo().familyName == null ? lastname = null : lastname = this.auth.getUserInfo().familyName;
+      this.auth.getUserInfo().gender == null ? gender = null : gender = this.auth.getUserInfo().gender.toUpperCase();
     }
 
-    let newUser =
-    {
-      "userId":0,
-      "username": this.auth.getUserInfo().nickname,
-      "firstname": firstname,
-      "lastname": lastname,
-      "gender": gender,
-      "city": "",
-      "birthday": null,
-      "friends": [],
-      "competitionsCreated": [],
-      "trackings": [],
-      "competitionsWon": [],
-      "competitionsRun": [],
-      "maxSpeed": 0,
-      "avgSpeed": 0,
-      "maxDistance": 0,
-      "avgDistance": 0,
-      "totalDistance": 0,
-      "ranTenKm": false,
-      "ranTwentyKm": false,
-      "ranMarathon": false,
-      "nrOfCompetitionsWon": 0
-    };
+    let newUser = new User(this.auth.getUserInfo().nickname, firstname, lastname, gender);
+
     //console.log(this.auth.getUserInfo());
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
