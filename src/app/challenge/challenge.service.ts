@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 import * as myGlobals from "./../globals";
 import {Goal} from "../model/goal";
 import {Competition} from "../model/competition";
+import {User} from "../model/user";
 
 @Injectable()
 export class ChallengeService {
@@ -46,11 +47,12 @@ export class ChallengeService {
 
     let newCompetition = {
       "competitionType": competition.competitionType,
-      "deadline": competition.deadline,
+      "deadline": competition.deadline.toLocaleDateString('zh-Hans-CN'),
       "maxParticipants":competition.maxParticipants,
-      "goal":null
+      //"goal":null
     };
-   this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', newCompetition, options)
+    
+   this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition',newCompetition, options)
       .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
 
@@ -66,6 +68,14 @@ export class ChallengeService {
     this.http.post(myGlobals.BACKEND_BASEURL + ' /api/competitions/running/' + competitionId, {
         headers: this.authHeader
       }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(err => this.handleErrorObservable(err))
   }
 
 

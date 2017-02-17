@@ -28,10 +28,9 @@
         <th>Delete</th>
       </tr>
            <tr *ngFor="let competition of competitionsRun">
-
              <td>
                <span>{{competition.competitionId}}</span></td>
-             <td>{{competition.competitionType}}</td>
+             <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
              <td>{{competition.maxParticipants}}</td>
              <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
              <td>{{competition.deadline}}</td>
@@ -39,10 +38,9 @@
              <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
              <td>{{competition.finished}}</td>
              <td>
-               <span class="text-center"> <button (click)="onClickDeleteCompetition(competition)" class="btn btn-danger" title="Delete"><span
-                 class="glyphicon glyphicon-trash"></span></button></span>
+               <button *ngIf="competition.userCreated && competition.userCreated.username==user.username" (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete"><span
+                 class="glyphicon glyphicon-trash"></span></button>
              </td>
-
            </tr>
     </table>
   </div>
@@ -122,7 +120,7 @@
             <div class="form-group col-md-10 col-md-offset-1">
               <h4 class="text-center">Compete at an existing challenge: </h4>
               <select class="form-control col-md-8 col-md-offset-2" [(ngModel)]="competitionIdToCompete" size="10" name="selectCompetition">
-                <option *ngFor="let competition of competitionsAvailable" ng-value="competition.competitionId">
+                <option *ngFor="let competition of competitionsAvailable" [ngValue]="competition.competitionId">
                   Challenge {{competition.competitionId}}
                 </option>
               </select>

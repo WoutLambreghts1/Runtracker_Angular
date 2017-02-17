@@ -3,6 +3,7 @@ import {ChallengeService} from "./challenge.service";
 import {AuthService} from "./../authentication/auth.service";
 import {Competition} from "../model/competition";
 import {Goal} from "../model/goal";
+import {User} from "../model/user";
 
 @Component({
   selector: 'challenge',
@@ -17,12 +18,15 @@ export class ChallengeComponent{
   private competitionsAvailable: Competition[] = [];
   private competitionsRun: Competition[] = [];
   private competitionIdToCompete = 0;
+  private username:string;
+  private user:User = new User("","","","");
   constructor(private challengeService: ChallengeService,private auth:AuthService){
     this.onClickNewCompetition();
   }
 
 
   ngOnInit(): void {
+    this.challengeService.getUser().subscribe((user: User) => this.user = user, err => console.error(err))
     //Get goals (to create competition), available competitions (to compete), all competing competitionss
     /*
     this.challengeService.getGoals().subscribe(
@@ -74,8 +78,8 @@ export class ChallengeComponent{
   }
 
   //Delete competition
-  private onClickDeleteCompetition(competition: Competition): void {
-    this.challengeService.deleteCompetition(competition.competitionId);
+  private onClickDeleteCompetition(competitionId): void {
+    this.challengeService.deleteCompetition(competitionId);
   }
 
 
