@@ -19,6 +19,7 @@ export class UserHomepageService {
   }
 
   getUser(): Observable<User> {
+    //Add access token to localstorage = necessary
     this.auth.getUserInfo();
     let jwt = localStorage.getItem('id_token');
     if (jwt) {

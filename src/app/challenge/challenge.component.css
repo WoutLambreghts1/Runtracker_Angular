@@ -1,12 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url("//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
 .container{
+  background: #f8f8f8;
   background-size: cover;
 }
 .wrapper{
   min-height: 960px;
-}
-form#createForm {
-  padding: 0 35px 15px;
 }
 label.gender {
   padding-top: 0 !important;
@@ -14,8 +12,12 @@ label.gender {
 table tr th{
   background: #f8f8f8;
 }
-.search-box {
-  padding-bottom: 0;
+hr{
+  padding-bottom: 5rem;
+}
+.custom-navigation{
+  padding-bottom: 5rem;
+  background: #f8f8f8;
 }
 
 
