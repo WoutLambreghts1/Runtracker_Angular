@@ -24,20 +24,20 @@
         <th>Deadline</th>
         <th>Winner</th>
         <th>Created by</th>
-        <th>Status</th>
+        <th>Finished</th>
         <th>Delete</th>
       </tr>
 
-      <tr ng-repeat="c in competitionsRun">
+      <tr *ngFor="let competition of competitionsRun">
         <td>
-          <span>1</span></td>
-        <td>abc</td>
-        <td>4</td>
-        <td>1000m</td>
-        <td>18/02/2017</td>
-        <td>/</td>
-        <td>Runtrack minds</td>
-        <td>Open</td>
+          <span>{{competition.competitionId}}</span></td>
+        <td>{{competition.competitionType}}</td>
+        <td>{{competition.maxParticipants}}</td>
+        <td>{{competition.goal.name}}</td>
+        <td>{{competition.deadline}}</td>
+        <td>{{competition.userWon.username}}</td>
+        <td>{{competition.userCreated.username}}</td>
+        <td>{{competition.isFinished}}</td>
         <td>
           <span class="text-center"> <button class="btn btn-danger" title="Delete"><span
             class="glyphicon glyphicon-trash"></span></button></span>
@@ -82,15 +82,11 @@
             </div>
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Goal:</label>
-
-              <div ng-if="dataLoaded" class="col-md-6">
-                <select class="form-control" name="goal" [(ngModel)]="newCompetition.goal">
-                  <option ng-repeat="goal in goals" value="{{goal}}">
-                    <!--{{goal.name}}-->a
-                  </option>
+              <div class="col-md-6">
+                <select ng-model="newCompetition.goal">
+                  <option *ngFor="let goal of goals" ng-value="goal">{{goal.name}}</option>
                 </select>
               </div>
-
             </div>
             <div class="form-group text-right">
             </div>

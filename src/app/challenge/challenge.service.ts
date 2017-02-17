@@ -54,7 +54,7 @@ export class ChallengeService {
       "trackings":[],
       "usersRun":[]
     };
-
+  console.log("create challenge");
    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', newCompetition, options)
       .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
