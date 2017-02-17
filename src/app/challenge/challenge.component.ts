@@ -20,11 +20,8 @@ export class ChallengeComponent{
   }
 
   ngOnInit(): void {
-    this.newCompetition = new Competition();
-    this.newCompetition.maxParticipants = 2;
-    this.newCompetition.deadline = new Date();
-    this.newCompetition.competitionType="NOT_REALTIME";
-
+  
+    //Get goals (to create competition), available competitions (to compete), all competing competitions
     this.challengeService.getGoals().subscribe(
       (goals: Goal[]) => {
         this.goals = goals;
@@ -55,9 +52,20 @@ export class ChallengeComponent{
     );
   }
 
+  //Create new competition
+  private onClickNewCompetition(): void{
+    this.newCompetition = new Competition();
+    this.newCompetition.maxParticipants = 2;
+    this.newCompetition.deadline = new Date();
+    this.newCompetition.competitionType="NOT_REALTIME";
+  }
+  
+  
   private onClickAddCompetition(competition: Competition): void {
     alert("add comp");
     this.challengeService.createCompetition(competition);
   }
+  
+  
 
 }

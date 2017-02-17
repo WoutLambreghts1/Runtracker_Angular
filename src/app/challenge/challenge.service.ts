@@ -16,6 +16,7 @@ export class ChallengeService {
     }
   }
 
+  //Get goals (to create competition), available competitions (to compete), all competing competitions 
   getGoals(): Observable<Goal[]>{
     return this.http.get(myGlobals.BACKEND_BASEURL + '/api/goals')
       .map((res: Response) =>  res.json())
@@ -38,6 +39,7 @@ export class ChallengeService {
       .catch(this.handleErrorObservable);
   }
 
+  //Create new competition
   createCompetition(competition: Competition): Observable<any>{
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
