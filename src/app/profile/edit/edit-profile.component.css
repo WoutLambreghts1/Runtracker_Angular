@@ -1,36 +1,46 @@
-.container{
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../../../assets/img/profileEdit_bg.jpg');
-  background-size: cover;
+.container {
+  background: white;
+  border: 1px solid #d0d0d0;
+  padding: 1rem 3rem;
 }
-.control-label{
+
+.control-label {
   text-align: left;
 }
+
 #pictureselector {
   margin: 10px;
 }
+
 #upload-picture-selector {
-  display:none;
+  display: none;
 }
+
 .margin-correction {
   margin-right: 10px;
 }
-.form-group label{
-  color: white;
+
+.form-group label {
+  color: #404040;
 }
-h3{
-  color: whitesmoke;
+
+h3 {
+  color: #989898;
 }
-h6{
-  color:white;
+
+h6 {
+  color: #404040;
 }
-#profilepic{
+
+#profilepic {
   border: 0.3rem solid white;
   height: 15rem;
   width: 15rem;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
 }
-.error{
-  font-weight:bold;
+
+.error {
+  font-weight: bold;
   color: darkorange;
   margin-bottom: 2rem;
 }

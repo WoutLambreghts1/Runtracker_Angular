@@ -12,11 +12,11 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a routerLink="../home" id="home">Home<span class="sr-only">(current)</span></a></li>
-        <li><a id="profile" routerLink="../profile">Profile</a></li>
-        <li><a id="friends" routerLink="../friends">Friends</a></li>
-        <li><a id="history" routerLink="../history">History</a></li>
-        <li><a id="challenge" routerLink="../challenge">Challenge</a></li>
+        <li><a id="home" routerLink="home" routerLinkActive="active">Home</a></li>
+        <li><a id="profile" routerLink="profile" routerLinkActive="active">Profile</a></li>
+        <li><a id="friends" routerLink="friends" routerLinkActive="active">Friends</a></li>
+        <li><a id="history" routerLink="history" routerLinkActive="active">History</a></li>
+        <li><a id="challenge" routerLink="challenge" routerLinkActive="active">Challenge</a></li>
         <li><a id="logout" (click)="auth.logout()">Log out</a></li>
       </ul>
     </div>

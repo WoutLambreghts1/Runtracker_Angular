@@ -53,6 +53,7 @@ describe('user-homepage', () => {
       browser.driver.sleep(2000);
       expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/profile');
     });
+
   });
 
   it('Friends should navigate to /friends', () => {

@@ -13,6 +13,7 @@ export class UserHomepageService {
     this.authHeader = new Headers();
   }
 
+  // Get the access_token and id_token out of the url
   storeUserTokens(url: string) {
     localStorage.setItem('access_token', url.split('=')[1].split('&')[0]);
     localStorage.setItem('id_token', url.split('=')[5]);

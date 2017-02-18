@@ -15,6 +15,7 @@ export class AppComponent {
     this.auth.handleAuthentication();
   }
 
+  // show header if it isn't the starting page
   showHeader(): boolean {
     return this.router.url != '/';
   }

@@ -58,11 +58,11 @@
             </div>
           </div>
         </div>
-        <div class="error">{{errorMsg}}</div>
+        <div id="errorMessage" class="error">{{errorMsg}}</div>
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
-          <div class="col-md-4 text-center">
-            <input type="button" class="btn btn-primary" value="Save Changes"
+          <div class="col-md-4 text-right">
+            <input id="saveChanges" type="button" class="btn btn-primary" value="Save Changes"
                    (click)="onClickUpdateUser(user)">
           </div>
         </div>
@@ -70,6 +70,4 @@
     </div>
   </div>
 </div>
-<hr>
-
 
