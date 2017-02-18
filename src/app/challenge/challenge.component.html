@@ -30,20 +30,18 @@
             <th>Maximum participants</th>
             <th>Goal</th>
             <th>Deadline</th>
-            <th>Winner</th>
-            <th>Created by</th>
             <th>Status</th>
           </tr>
           <tr *ngFor="let competition of competitionsRun">
             <td>
               <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
-            <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-            <td *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</td>
-            <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-            <td *ngIf="competition.deadline">{{competition.deadline}}</td>
-            <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
-            <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
-            <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
+            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
+            <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
+            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
+            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
+            <td><span *ngIf="competition.userWon">{{competition.userWon.username}}</span></td>
+            <td><span *ngIf="competition.userCreated">{{competition.userCreated.username}}</span></td>
+            <td><span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
           </tr>
         </table>
       </div>
@@ -58,25 +56,20 @@
             <th>Maximum participants</th>
             <th>Goal</th>
             <th>Deadline</th>
-            <th>Winner</th>
-            <th>Created by</th>
             <th>Status</th>
             <th>Delete</th>
           </tr>
           <tr *ngFor="let competition of competitionsCreated">
             <td>
               <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
-            <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-            <td *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</td>
-            <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-            <td *ngIf="competition.deadline">{{competition.deadline}}</td>
-            <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
-            <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
-            <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
+            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
+            <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
+            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
+            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
+            <td><span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
             <td>
-              <span class="text-center">
               <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete"><span
-                class="glyphicon glyphicon-trash"></span></button></span>
+                class="glyphicon glyphicon-trash"></span></button>
             </td>
           </tr>
         </table>
@@ -92,21 +85,17 @@
             <th>Maximum participants</th>
             <th>Goal</th>
             <th>Deadline</th>
-            <th>Winner</th>
-            <th>Created by</th>
             <th>Status</th>
             <th>Compete</th>
           </tr>
           <tr *ngFor="let competition of competitionsAvailable">
             <td>
               <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
-            <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-            <td *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</td>
-            <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-            <td *ngIf="competition.deadline">{{competition.deadline}}</td>
-            <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
-            <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
-            <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
+            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
+            <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
+            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
+            <td> <span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
+            <td> <span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
             <td>
               <button (click)="onClickAddCompetition(competition.competitionId)" data-dismiss="modal" class="btn btn-success">Compete
               <span class="glyphicon glyphicon-flag"></span></button>
