@@ -68,6 +68,7 @@ export class ChallengeService {
   }
 
   addCompetitionToUser(competitionId): void {
+    console.log(competitionId);
     this.http.post(myGlobals.BACKEND_BASEURL + ' /api/competitions/running/' + competitionId, {
         headers: this.authHeader
       }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
