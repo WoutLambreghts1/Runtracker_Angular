@@ -68,6 +68,7 @@ export class ChallengeComponent {
     this.newCompetition.maxParticipants = 2;
     this.newCompetition.deadline = new Date();
     this.newCompetition.competitionType = "NOT_REALTIME";
+    this.newCompetition.goal = this.goals[0];
   }
 
   //Add competition to user
