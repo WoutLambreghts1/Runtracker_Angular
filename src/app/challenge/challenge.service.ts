@@ -4,7 +4,6 @@ import {Injectable} from '@angular/core';
 import * as myGlobals from "./../globals";
 import {Goal} from "../model/goal";
 import {Competition} from "../model/competition";
-import {User} from "../model/user";
 
 @Injectable()
 export class ChallengeService {
@@ -52,16 +51,12 @@ export class ChallengeService {
   createCompetition(competition: Competition): void{
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
+    console.log(JSON.stringify(competition));
+    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition',JSON.stringify(competition), options)
+      .map((res: Response) => res.json())
+      .catch(err => this.handleErrorObservable(err));
 
-    let newCompetition = {
-      "competitionType": competition.competitionType,
-      "deadline": competition.deadline.toLocaleDateString('zh-Hans-CN'),
-      "maxParticipants":competition.maxParticipants,
-      //"goal":null
-    };
 
-   this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition',newCompetition, options)
-      .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
 
   deleteCompetition(competitionId) :void{
