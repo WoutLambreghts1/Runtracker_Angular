@@ -3,7 +3,7 @@
   <hr>
   <div class="container-fluid custom-navigation">
     <form class="navbar-form">
-      <button class="btn btn-info" data-toggle="modal" data-target="#competitionModal" (click)="onClickNewCompetition()">New
+      <button id="btn-new-challenge" class="btn btn-info" data-toggle="modal" data-target="#competitionModal" (click)="onClickNewCompetition()">New
         Challenge
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </form>
@@ -116,11 +116,11 @@
           <h4 class="modal-title text-info">Create new challenge</h4>
         </div>
         <div class="modal-body">
-          <form class="form-horizontal" id="createform">
+          <form class="form-horizontal" id="create-form">
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Type:</label>
               <div class="col-md-6">
-                <select class="form-control" name="competitiontype" [(ngModel)]="newCompetition.competitionType">
+                <select class="form-control" name="competitionType" [(ngModel)]="newCompetition.competitionType">
                   <option value="NOT_REALTIME" selected>Challenge</option>
                   <option value="REALTIME">Live challenge</option>
                 </select>

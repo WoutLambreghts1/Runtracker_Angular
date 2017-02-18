@@ -56,21 +56,21 @@ describe('user-homepage', () => {
   });
 
   it('Friends should navigate to /friends', () => {
-    navProfile.click().then(() => {
+    navFriends.click().then(() => {
       browser.driver.sleep(2000);
       expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/friends');
     });
   });
 
   it('History should navigate to /history', () => {
-    navProfile.click().then(() => {
+    navHistory.click().then(() => {
       browser.driver.sleep(2000);
       expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/history');
     });
   });
 
   it('Challenge should navigate to /challenge', () => {
-    navProfile.click().then(() => {
+    navChallenge.click().then(() => {
       browser.driver.sleep(2000);
       expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/challenge');
     });
