@@ -14,7 +14,7 @@ import {User} from "../model/user";
 
 export class ChallengeComponent{
   private newCompetition: Competition;
-  private goals: Goal[] = []// [new Goal(1,"run 100m",100),new Goal(2,"run 200m",200),new Goal(3,"run 300m",300)];
+  private goals: Goal[] = [new Goal(1,"run 100m",100),new Goal(2,"run 200m",200),new Goal(3,"run 300m",300)];
   private competitionsAvailable: Competition[] = [];
   private competitionsRun: Competition[] = [];
   private competitionsCreated: Competition[] = [];

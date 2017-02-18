@@ -156,8 +156,8 @@
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Goal:</label>
               <div class="col-md-6">
-                <select class="form-control" ng-model="newCompetition.goal">
-                  <option *ngFor="let goal of goals" ng-value="goal">{{goal.name}}</option>
+                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
+                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
                 </select>
               </div>
             </div>
