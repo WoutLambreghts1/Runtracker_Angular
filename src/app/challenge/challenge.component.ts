@@ -11,24 +11,20 @@ import {Goal} from "../model/goal";
   providers: [ChallengeService]
 })
 
-export class ChallengeComponent{
-  private newCompetition: Competition;
-  private goals: Goal[];
-  private competitionsAvailable: Competition[];
-  private competitionsRun: Competition[];
-  private dataLoaded: boolean = false;
-  constructor(private challengeService: ChallengeService,private auth:AuthService){
-    this.dataLoaded = false;
-    this.goals = [];
-    this.competitionsAvailable = [];
-    this.competitionsRun = [];
+export class ChallengeComponent {
+  private newCompetition:Competition;
+  private goals:Goal[] = [];
+  private competitionsAvailable:Competition[] = [];
+  private competitionsRun:Competition[] = [];
+  private competitionsCreated:Competition[] = [];
+
+  constructor(private challengeService:ChallengeService, private auth:AuthService) {
     this.onClickNewCompetition();
-    this.loadData();
   }
 
-  private loadData(): void{
 
-    //Get goals (to create competition), available competitions (to compete), all competing competitions
+  ngOnInit():void {
+    //Get goals (to create competition), available competitions (to compete), all competing competitions & all created competitions
     this.challengeService.getGoals().subscribe(
       (goals) => {
         this.goals = goals;
@@ -38,23 +34,27 @@ export class ChallengeComponent{
       }
     );
 
-    /*
-     this.challengeService.getAllAvailableCompetitions().subscribe(
-     (competitions: Competition[]) => {
-     this.competitionsAvailable = competitions;
-     console.log(competitions);
-     },
-     error => {
-     console.log(error as string);
-     }
-     );
-     */
+    this.challengeService.getAllAvailableCompetitions().subscribe(
+      (competitions:Competition[]) => {
+        this.competitionsAvailable = competitions;
+      },
+      error => {
+        console.log(error as string);
+      }
+    );
 
     this.challengeService.getAllCompetitionsRun().subscribe(
       (competitions) => {
         this.competitionsRun = competitions;
-        this.dataLoaded = true;
-        console.log("all loaded");
+      },
+      error => {
+        console.log(error as string);
+      }
+    );
+
+    this.challengeService.getAllCompetitionsCreated().subscribe(
+      (competitions) => {
+        this.competitionsCreated = competitions;
       },
       error => {
         console.log(error as string);
@@ -62,26 +62,29 @@ export class ChallengeComponent{
     );
   }
 
-  ngOnInit(): void {
-
-
-  }
-
-  //Create new competition
-  private onClickNewCompetition(): void{
+  //Create new competition object
+  private onClickNewCompetition():void {
     this.newCompetition = new Competition();
     this.newCompetition.maxParticipants = 2;
     this.newCompetition.deadline = new Date();
-    this.newCompetition.competitionType="NOT_REALTIME";
-    console.log(this.goals);
-    console.log(this.dataLoaded);
+    this.newCompetition.competitionType = "NOT_REALTIME";
+    this.newCompetition.goal = this.goals[0];
   }
 
+  //Add competition to user
+  private onClickAddCompetition(competitionId):void {
+    this.challengeService.addCompetitionToUser(competitionId);
+  }
 
-  private onClickAddCompetition(competition: Competition): void {
+  //Create competition
+  private onClickCreateCompetition(competition:Competition):void {
     this.challengeService.createCompetition(competition);
   }
 
+  //Delete competition
+  private onClickDeleteCompetition(competitionId):void {
+    this.challengeService.deleteCompetition(competitionId);
+  }
 
 
 }

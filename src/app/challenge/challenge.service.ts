@@ -18,7 +18,9 @@ export class ChallengeService {
 
   //Get goals (to create competition), available competitions (to compete), all competing competitions
   getGoals(): Observable<Goal[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/goals')
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getAllGoals',{
+      headers: this.authHeader
+    })
       .map((res: Response) =>  res.json())
       .catch(this.handleErrorObservable);
   }
@@ -39,24 +41,39 @@ export class ChallengeService {
       .catch(this.handleErrorObservable);
   }
 
+  getAllCompetitionsCreated(): Observable<Competition[]>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getCreatedCompetitions',{
+        headers: this.authHeader
+      })
+      .map((res: Response) =>  res.json())
+      .catch(this.handleErrorObservable);
+  }
+
   //Create new competition
   createCompetition(competition: Competition): void{
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
+    console.log(JSON.stringify(competition));
+    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition',JSON.stringify(competition), options)
+      .map((res: Response) => res.json())
+      .catch(err => this.handleErrorObservable(err));
 
-    let newCompetition = {
-      "competitionType":"NOT_REALTIME",
-      "deadline":"2017-03-05",
-      "maxParticipants":4,
-      "goal":null,
-      "userCreated":null,
-      "userWon":null,
-      "trackings":[],
-      "usersRun":[]
-    };
 
-   this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', newCompetition, options)
-      .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
+  }
+
+  deleteCompetition(competitionId) :void{
+    console.log(competitionId);
+    this.http.delete(myGlobals.BACKEND_BASEURL + ' /api/competitions/delete/' + competitionId, {
+      headers: this.authHeader
+    }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
+
+  }
+
+  addCompetitionToUser(competitionId): void {
+    console.log(competitionId);
+    this.http.post(myGlobals.BACKEND_BASEURL + ' /api/competitions/running/' + competitionId, {
+        headers: this.authHeader
+      }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
 
 

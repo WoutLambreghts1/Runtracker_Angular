@@ -57,8 +57,7 @@ export class UserHomepageService {
     }
 
     let newUser = new User(this.auth.getUserInfo().nickname, firstname, lastname, gender);
-
-    //console.log(this.auth.getUserInfo());
+    
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/users/createUser', newUser, options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
   }

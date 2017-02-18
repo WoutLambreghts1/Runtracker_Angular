@@ -3,48 +3,108 @@
   <hr>
   <div class="container-fluid custom-navigation">
     <form class="navbar-form">
-      <button class="btn btn-info" data-toggle="modal" data-target="#competitionModal" (click)="onClickNewCompetition()">New
+      <button id="btn-new-challenge" class="btn btn-info" data-toggle="modal" data-target="#competitionModal" (click)="onClickNewCompetition()">New
         Challenge
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-      <button class="btn btn-success pull-right" data-toggle="modal" data-target="#addcompetitionModal">Compete <span
-        class="glyphicon glyphicon-flag"></span></button>
     </form>
   </div>
 
   <div class="clearfix"></div>
 
-  <!-- Competitions table -->
-  <div ng-if="competitionsRun.length>0" class="table-responsive">
-    <table class="table table-hover">
-      <tr>
-        <th>Challenge ID</th>
-        <th>Competition type</th>
-        <th>Maximum participants</th>
-        <th>Goal</th>
-        <th>Deadline</th>
-        <th>Winner</th>
-        <th>Created by</th>
-        <th>Status</th>
-        <th>Delete</th>
-      </tr>
+  <!-- Tabs competing & created -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#running">Running challenges</a></li>
+    <li><a data-toggle="tab" href="#created">Created challenges</a></li>
+    <li><a data-toggle="tab" href="#available">Available challenges</a></li>
+  </ul>
 
-      <tr ng-repeat="c in competitionsRun">
-        <td>
-          <span>1</span></td>
-        <td>abc</td>
-        <td>4</td>
-        <td>1000m</td>
-        <td>18/02/2017</td>
-        <td>/</td>
-        <td>Runtrack minds</td>
-        <td>Open</td>
-        <td>
-          <span class="text-center"> <button class="btn btn-danger" title="Delete"><span
-            class="glyphicon glyphicon-trash"></span></button></span>
-        </td>
-      </tr>
-    </table>
+  <div class="tab-content">
+
+    <!--Tab with running challenges -->
+    <div id="running" class="tab-pane fade">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Challenge ID</th>
+            <th>Competition type</th>
+            <th>Maximum participants</th>
+            <th>Goal</th>
+            <th>Deadline</th>
+            <th>Status</th>
+          </tr>
+          <tr *ngFor="let competition of competitionsRun">
+            <td>
+              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
+            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
+            <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
+            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
+            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
+            <td><span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!--Tab with created challenges -->
+    <div id="created" class="tab-pane fade">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Challenge ID</th>
+            <th>Competition type</th>
+            <th>Maximum participants</th>
+            <th>Goal</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Delete</th>
+          </tr>
+          <tr *ngFor="let competition of competitionsCreated">
+            <td>
+              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
+            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
+            <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
+            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
+            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
+            <td><span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
+            <td>
+              <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger col-md-offset-1" title="Delete"><span
+                class="glyphicon glyphicon-trash"></span></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!--Tab with available challenges -->
+    <div id="available" class="tab-pane fade">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Challenge ID</th>
+            <th>Competition type</th>
+            <th>Maximum participants</th>
+            <th>Goal</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Compete</th>
+          </tr>
+          <tr *ngFor="let competition of competitionsAvailable">
+            <td>
+              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
+            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
+            <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
+            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
+            <td> <span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
+            <td> <span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
+            <td>
+              <button (click)="onClickAddCompetition(competition.competitionId)" data-dismiss="modal" class="btn btn-success text col-md-offset-1">
+              <span class="glyphicon glyphicon-flag"></span></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
   </div>
+
 
   <!-- Modal create competition -->
   <div class="modal fade" id="competitionModal" role="dialog">
@@ -53,14 +113,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-info">Create new competition</h4>
+          <h4 class="modal-title text-info">Create new challenge</h4>
         </div>
         <div class="modal-body">
-          <form class="form-horizontal alert alert-info" id="createform">
+          <form class="form-horizontal" id="create-form">
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Type:</label>
               <div class="col-md-6">
-                <select class="form-control" name="competitiontype" [(ngModel)]="newCompetition.competitionType">
+                <select class="form-control" name="competitionType" [(ngModel)]="newCompetition.competitionType">
                   <option value="NOT_REALTIME" selected>Challenge</option>
                   <option value="REALTIME">Live challenge</option>
                 </select>
@@ -70,7 +130,7 @@
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Deadline:</label>
               <div class="col-md-6">
-                <input class="form-control" type="date" name="deadline" [(ngModel)]="newCompetition.deadline">
+                <input class="form-control" type="date" name="deadline" [ngModel]="newCompetition.deadline | date:'yyyy-MM-dd'">
               </div>
             </div>
             <div class="form-group col-md-10 col-md-offset-1">
@@ -82,15 +142,11 @@
             </div>
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Goal:</label>
-
-              <div ng-if="dataLoaded" class="col-md-6">
-                <select class="form-control" name="goal" [(ngModel)]="newCompetition.goal">
-                  <option ng-repeat="goal in goals" value="{{goal}}">
-                    <!--{{goal.name}}-->a
-                  </option>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
+                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
                 </select>
               </div>
-
             </div>
             <div class="form-group text-right">
             </div>
@@ -98,7 +154,7 @@
 
           <!--modal footer-->
           <div class="modal-footer">
-            <button (click)="onClickAddCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Create
+            <button (click)="onClickCreateCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Create
               challenge
             </button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -108,48 +164,4 @@
       </div>
     </div>
   </div>
-
-
-  <!-- Modal add competition -->
-  <div class="modal fade" id="addcompetitionModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-info">Compete</h4>
-        </div>
-        <div class="modal-body">
-          <form class="form-horizontal alert alert-info" id="addform">
-
-            <div class="form-group col-md-10 col-md-offset-1">
-              <h4 class="text-center">Compete at an existing challenge: </h4>
-                <select class="form-control col-md-8 col-md-offset-2" id="competeSelect" size="10">
-                  <option>Challenge 1</option>
-                  <option>Challenge 2</option>
-                  <option>Challenge 3</option>
-                  <option>Challenge 4</option>
-                  <option>Challenge 5</option>
-                  <option>Challenge 6</option>
-                  <option>Challenge 7</option>
-                  <option>Challenge 8</option>
-                  <option>Challenge 9</option>
-                  <option>Challenge 10</option>
-                </select>
-            </div>
-            <div class="form-group text-right">
-            </div>
-          </form>
-          <!--modal footer-->
-          <div class="modal-footer">
-            <button (click)="onClickAddCompetition(newCompetition)" data-dismiss="modal" class="btn btn-primary">Compete
-            </button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
 </div>
