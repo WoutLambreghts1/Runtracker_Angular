@@ -36,11 +36,11 @@
           </tr>
           <tr *ngFor="let competition of competitionsRun">
             <td>
-              <span>{{competition.competitionId}}</span></td>
+              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
             <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-            <td>{{competition.maxParticipants}}</td>
+            <td *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</td>
             <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-            <td>{{competition.deadline}}</td>
+            <td *ngIf="competition.deadline">{{competition.deadline}}</td>
             <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
             <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
             <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
@@ -65,11 +65,11 @@
           </tr>
           <tr *ngFor="let competition of competitionsCreated">
             <td>
-              <span>{{competition.competitionId}}</span></td>
+              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
             <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-            <td>{{competition.maxParticipants}}</td>
+            <td *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</td>
             <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-            <td>{{competition.deadline}}</td>
+            <td *ngIf="competition.deadline">{{competition.deadline}}</td>
             <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
             <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
             <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
@@ -99,11 +99,11 @@
           </tr>
           <tr *ngFor="let competition of competitionsAvailable">
             <td>
-              <span>{{competition.competitionId}}</span></td>
+              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
             <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-            <td>{{competition.maxParticipants}}</td>
+            <td *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</td>
             <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-            <td>{{competition.deadline}}</td>
+            <td *ngIf="competition.deadline">{{competition.deadline}}</td>
             <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
             <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
             <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
@@ -129,7 +129,7 @@
           <h4 class="modal-title text-info">Create new competition</h4>
         </div>
         <div class="modal-body">
-          <form class="form-horizontal alert alert-info" id="createform">
+          <form class="form-horizontal" id="createform">
             <div class="form-group col-md-10 col-md-offset-1">
               <label class="col-md-6 control-label">Type:</label>
               <div class="col-md-6">
