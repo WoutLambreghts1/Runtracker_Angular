@@ -39,8 +39,6 @@
             <td><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
             <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
             <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
-            <td><span *ngIf="competition.userWon">{{competition.userWon.username}}</span></td>
-            <td><span *ngIf="competition.userCreated">{{competition.userCreated.username}}</span></td>
             <td><span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
           </tr>
         </table>
@@ -68,7 +66,7 @@
             <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
             <td><span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
             <td>
-              <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete"><span
+              <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger col-md-offset-1" title="Delete"><span
                 class="glyphicon glyphicon-trash"></span></button>
             </td>
           </tr>
@@ -97,7 +95,7 @@
             <td> <span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
             <td> <span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
             <td>
-              <button (click)="onClickAddCompetition(competition.competitionId)" data-dismiss="modal" class="btn btn-success">Compete
+              <button (click)="onClickAddCompetition(competition.competitionId)" data-dismiss="modal" class="btn btn-success text col-md-offset-1">
               <span class="glyphicon glyphicon-flag"></span></button>
             </td>
           </tr>
