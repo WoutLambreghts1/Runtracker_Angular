@@ -40,6 +40,14 @@ export class ChallengeService {
       .catch(this.handleErrorObservable);
   }
 
+  getAllCompetitionsCreated(): Observable<Competition[]>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getCreatedCompetitions',{
+        headers: this.authHeader
+      })
+      .map((res: Response) =>  res.json())
+      .catch(this.handleErrorObservable);
+  }
+
   //Create new competition
   createCompetition(competition: Competition): void{
     this.authHeader.append('Content-Type', 'application/json');
@@ -51,7 +59,7 @@ export class ChallengeService {
       "maxParticipants":competition.maxParticipants,
       //"goal":null
     };
-    
+
    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition',newCompetition, options)
       .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
@@ -68,14 +76,6 @@ export class ChallengeService {
     this.http.post(myGlobals.BACKEND_BASEURL + ' /api/competitions/running/' + competitionId, {
         headers: this.authHeader
       }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
-  }
-
-  getUser(): Observable<User> {
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
-        headers: this.authHeader
-      })
-      .map((res: Response) => res.json())
-      .catch(err => this.handleErrorObservable(err))
   }
 
 

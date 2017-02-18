@@ -13,37 +13,78 @@
 
   <div class="clearfix"></div>
 
-  <!-- Competitions table -->
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <tr>
-        <th>Challenge ID</th>
-        <th>Competition type</th>
-        <th>Maximum participants</th>
-        <th>Goal</th>
-        <th>Deadline</th>
-        <th>Winner</th>
-        <th>Created by</th>
-        <th>Finished</th>
-        <th>Delete</th>
-      </tr>
-           <tr *ngFor="let competition of competitionsRun">
-             <td>
-               <span>{{competition.competitionId}}</span></td>
-             <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
-             <td>{{competition.maxParticipants}}</td>
-             <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
-             <td>{{competition.deadline}}</td>
-             <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
-             <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
-             <td>{{competition.finished}}</td>
-             <td>
-               <button *ngIf="competition.userCreated && competition.userCreated.username==user.username" (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete"><span
-                 class="glyphicon glyphicon-trash"></span></button>
-             </td>
-           </tr>
-    </table>
+  <!-- Tabs competing & created -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#running">Running challenges</a></li>
+    <li><a data-toggle="tab" href="#created">Created challenges</a></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <!--Tab with running challenges -->
+    <div id="running" class="tab-pane fade">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Challenge ID</th>
+            <th>Competition type</th>
+            <th>Maximum participants</th>
+            <th>Goal</th>
+            <th>Deadline</th>
+            <th>Winner</th>
+            <th>Created by</th>
+            <th>Status</th>
+          </tr>
+          <tr *ngFor="let competition of competitionsRun">
+            <td>
+              <span>{{competition.competitionId}}</span></td>
+            <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
+            <td>{{competition.maxParticipants}}</td>
+            <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
+            <td>{{competition.deadline}}</td>
+            <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
+            <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
+            <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!--Tab with created challenges -->
+    <div id="created" class="tab-pane fade">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th>Challenge ID</th>
+            <th>Competition type</th>
+            <th>Maximum participants</th>
+            <th>Goal</th>
+            <th>Deadline</th>
+            <th>Winner</th>
+            <th>Created by</th>
+            <th>Status</th>
+            <th>Delete</th>
+          </tr>
+          <tr *ngFor="let competition of competitionsCreated">
+            <td>
+              <span>{{competition.competitionId}}</span></td>
+            <td *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</td><td *ngIf="competition.competitionType=='REALTIME'">Live Challenge</td>
+            <td>{{competition.maxParticipants}}</td>
+            <td *ngIf="competition.goal">{{competition.goal.name}}</td> <td *ngIf="!competition.goal">/</td>
+            <td>{{competition.deadline}}</td>
+            <td *ngIf="competition.userWon">{{competition.userWon.username}}</td> <td *ngIf="!competition.userWon">/</td>
+            <td *ngIf="competition.userCreated">{{competition.userCreated.username}}</td><td *ngIf="!competition.userCreated">/</td>
+            <td *ngIf="competition.finished==true">Closed</td><td *ngIf="competition.finished==false">Open</td>
+            <td>
+              <span class="text-center">
+              <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete"><span
+                class="glyphicon glyphicon-trash"></span></button></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
+
 
   <!-- Modal create competition -->
   <div class="modal fade" id="competitionModal" role="dialog">
