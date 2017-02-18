@@ -61,17 +61,15 @@ export class ChallengeService {
 
   }
 
-  deleteCompetition(competitionId) :void{
-    console.log(competitionId);
-    this.http.delete(myGlobals.BACKEND_BASEURL + ' /api/competitions/delete/' + competitionId, {
+  deleteCompetition(competitionId) : Observable<void>{
+     return this.http.delete(myGlobals.BACKEND_BASEURL + '/api/competitions/delete/' + competitionId, {
       headers: this.authHeader
     }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
-
   }
 
   addCompetitionToUser(competitionId): void {
     console.log(competitionId);
-    this.http.post(myGlobals.BACKEND_BASEURL + ' /api/competitions/running/' + competitionId, {
+    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/running/' + competitionId, {
         headers: this.authHeader
       }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
