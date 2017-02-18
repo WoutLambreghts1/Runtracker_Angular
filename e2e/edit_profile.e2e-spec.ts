@@ -27,6 +27,7 @@ describe('edit-profile', () => {
   let city = element(by.name('city'));
   let birthday = element(by.name('birthday'));
   let gender = element(by.name('gender'));
+  let submit = element(by.id('saveChanges'));
 
   it('all data is showed', () => {
     expect(username.isPresent()).toBeTruthy();
@@ -51,7 +52,6 @@ describe('edit-profile', () => {
     city.clear().then(() => city.sendKeys('testcity'));
     gender.sendKeys('MALE');
 
-    let submit = element(by.id('saveChanges'));
 
     submit.click().then(() => {
       browser.driver.sleep(1000);
@@ -75,6 +75,29 @@ describe('edit-profile', () => {
         expect(city.getAttribute('value')).toBe('Antwerp');
         expect(gender.getAttribute('value')).toBe('UNDEFINED');
       })
+    });
+  });
+
+  let errorMessage = element(by.id('errorMessage'));
+  it('empty username error',() => {
+    username.clear().then(() => username.sendKeys(''));
+    expect(username.getAttribute('value')).toBe('');
+
+    submit.click().then(() => {
+      browser.driver.sleep(1000);
+      expect(errorMessage.isPresent()).toBeTruthy();
+      expect(errorMessage.getText()).toEqual('Username can not be empty. Please enter a valid username.');
+    });
+    });
+
+  it('username already taken error',() => {
+    username.clear().then(() => username.sendKeys('Jelle'));
+    expect(username.getAttribute('value')).toBe('Jelle');
+
+    submit.click().then(() => {
+      browser.driver.sleep(1000);
+      expect(errorMessage.isPresent()).toBeTruthy();
+      expect(errorMessage.getText()).toEqual('Username not available. Please choose another username.');
     });
   });
 });
