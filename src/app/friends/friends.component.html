@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="header">
+    <h1 class="text-muted prj-name">
+      <span class="fa fa-users fa-2x principal-title"></span>
+      Friends
+    </h1>
+    <hr>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#my-friends">My friends</a></li>
+    <li><a data-toggle="tab" href="#find-friends">Find friends</a></li>
+    <li><a data-toggle="tab" href="#friend-requests">Friend requests</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="my-friends" class="tab-pane fade in active">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <!--Find friends-->
+    <div id="find-friends" class="tab-pane fade w3-margin">
+      <h3>Search friends <i class="material-icons">search</i></h3>
+
+      <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for usernames.." id="my-input-search"
+             onkeyup="searchfunction()">
+
+      <ul class="w3-ul" id="user-list">
+       <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let user of users">
+         <span class="w3-xlarge username-span">{{user.username}}</span><hr>
+         <span *ngIf="user.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!user.firstname"><strong>Firstname: </strong> N/A</span><br>
+         <span *ngIf="user.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!user.lastname"><strong>Lastname: </strong> N/A</span><br>
+         <span *ngIf="user.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!user.birthday"><strong>Birthday: </strong> N/A</span>
+         <button class="w3-btn-floating w3-green"><span class="glyphicon glyphicon-plus"></span></button>
+       </li>
+      </ul>
+    </div>
+
+    <div id="friend-requests" class="tab-pane fade">
+      <h3>My friend requests</h3>
+    </div>
+  </div>
+</div>
+
