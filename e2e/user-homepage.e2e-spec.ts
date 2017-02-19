@@ -1,4 +1,4 @@
-import {browser, element, by} from "protractor";
+import {browser, by, element} from "protractor";
 import * as myGlobals from "../src/app/globals";
 
 describe('user-homepage', () => {
@@ -16,86 +16,31 @@ describe('user-homepage', () => {
     });
   });
 
-  let navHome = element(by.id('home'));
-  let navProfile = element(by.id('profile'));
-  let navFriends = element(by.id('friends'));
-  let navHistory = element(by.id('history'));
-  let navChallenge = element(by.id('challenge'));
-  let navLogout = element(by.id('logout'));
-
-  it('Should have a correct url', () => {
-    expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/home');
+  it('Has greeting message', () => {
+    let greeting = element(by.id('greeting'));
+    expect(greeting.isPresent()).toBeTruthy();
+    expect(greeting.getText()).toContain('runtrackminds2017');
   });
 
-  it('Should have all elements in the header', () => {
-    let navLogo = element(by.css('.navbar-brand'));
+  it('Contains core information', () => {
+    let ranTenKm = element(by.id('ranTenKm'));
+    let ranTwentyKm = element(by.id('ranTwentyKm'));
+    let ranMarathon = element(by.id('ranMarathon'));
+    let avgSpeed = element(by.id('avgSpeed'));
+    let maxSpeed = element(by.id('maxSpeed'));
+    let avgDistance = element(by.id('avgDistance'));
+    let maxDistance = element(by.id('maxDistance'));
+    let totalDistance = element(by.id('totalDistance'));
+    let nrOfCompetitionsWon = element(by.id('nrOfCompetitionsWon'));
 
-    expect(navLogo.isPresent()).toBeTruthy();
-    expect(navLogo.getText()).toBe('JAT');
-
-    expect(navHome.isPresent()).toBeTruthy();
-    expect(navProfile.isPresent()).toBeTruthy();
-    expect(navFriends.isPresent()).toBeTruthy();
-    expect(navHistory.isPresent()).toBeTruthy();
-    expect(navChallenge.isPresent()).toBeTruthy();
-    expect(navLogout.isPresent()).toBeTruthy();
-  });
-
-  it('Home should navigate to /home', () => {
-    navHome.click().then(() => {
-      browser.driver.sleep(2000);
-      expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/home');
-    });
-  });
-
-  it('Profile should navigate to /profile', () => {
-    navProfile.click().then(() => {
-      browser.driver.sleep(2000);
-      expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/profile');
-    });
-
-  });
-
-  it('Friends should navigate to /friends', () => {
-    navFriends.click().then(() => {
-      browser.driver.sleep(2000);
-      expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/friends');
-    });
-  });
-
-  it('History should navigate to /history', () => {
-    navHistory.click().then(() => {
-      browser.driver.sleep(2000);
-      expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/history');
-    });
-  });
-
-  it('Challenge should navigate to /challenge', () => {
-    navChallenge.click().then(() => {
-      browser.driver.sleep(2000);
-      expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/challenge');
-    });
-  });
-
-  it('Should be logged out if you click logout', () => {
-    let storedAccesToken = '';
-    browser.executeScript("return window.localStorage.getItem('access_token');")
-      .then(val => storedAccesToken = val)
-      .catch(() => storedAccesToken = '')
-      .thenFinally(() => {
-        browser.driver.sleep(2000);
-        expect(storedAccesToken.length).toBeGreaterThan(0);
-
-        navLogout.click().then(() => {
-            browser.driver.sleep(2000);
-            expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/');
-            browser.executeScript("return window.localStorage.getItem('access_token');") .then(val => storedAccesToken = val)
-              .catch(() => storedAccesToken = '')
-              .thenFinally(() => {
-                expect(storedAccesToken).toEqual(null);
-              });
-          }
-        );
-      });
+    expect(ranTenKm.isPresent()).toBeTruthy();
+    expect(ranTwentyKm.isPresent()).toBeTruthy();
+    expect(ranMarathon.isPresent()).toBeTruthy();
+    expect(avgSpeed.isPresent()).toBeTruthy();
+    expect(maxSpeed.isPresent()).toBeTruthy();
+    expect(avgDistance.isPresent()).toBeTruthy();
+    expect(maxDistance.isPresent()).toBeTruthy();
+    expect(totalDistance.isPresent()).toBeTruthy();
+    expect(nrOfCompetitionsWon.isPresent()).toBeTruthy();
   });
 });

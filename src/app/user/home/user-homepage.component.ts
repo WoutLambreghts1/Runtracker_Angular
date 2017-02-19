@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {UserHomepageService} from "./user-homepage.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
+import {CoreInfo} from "../../model/coreinfo";
 
 @Component({
   selector: 'userHomepage',
@@ -12,9 +13,10 @@ import {Router} from "@angular/router";
 
 export class UserHomepageComponent {
   private user;
+  private coreInfo;
 
   constructor(private router: Router, private userHomepageService: UserHomepageService) {
-    if(router.url.split("=").length > 1){
+    if (router.url.split("=").length > 1) {
       userHomepageService.storeUserTokens(router.url);
       this.router.navigateByUrl("/home");
     }
@@ -22,6 +24,9 @@ export class UserHomepageComponent {
   }
 
   ngOnInit(): void {
-    this.user = this.userHomepageService.getUser().subscribe((user: User) => this.user = user, err => console.error(err));
+    this.user = this.userHomepageService.getUser().subscribe((user: User) => {
+      this.user = user;
+      this.coreInfo = new CoreInfo(this.user);
+    }, err => console.error(err));
   }
 }

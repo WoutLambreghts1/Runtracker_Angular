@@ -6,11 +6,12 @@ import {UserHomepageRoutingModule} from "./user-homepage-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {UserHomepageService} from "./home/user-homepage.service";
 import {HeaderComponent} from "../homepage/header/header.component";
+import {CoreInfoComponent} from "./core-info/core-info.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, UserHomepageRoutingModule],
   providers: [UserHomepageService],
-  declarations: [UserHomepageComponent],
+  declarations: [UserHomepageComponent, CoreInfoComponent],
 })
 
 export class UserHomepageModule {
