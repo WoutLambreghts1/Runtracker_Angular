@@ -10,6 +10,7 @@ import {User} from "../model/user";
 
 export class FriendsComponent {
   private users: User[] = [];
+  private friends: User[] = []
 
 
   constructor(private friendService:FriendsService) {

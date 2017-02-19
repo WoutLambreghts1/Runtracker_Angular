@@ -9,30 +9,55 @@
 
   <ul class="nav nav-tabs">
     <li><a data-toggle="tab" href="#my-friends">My friends</a></li>
-    <li><a data-toggle="tab" href="#find-friends">Find friends</a></li>
+    <li><a data-toggle="tab" href="#find-friends">Search friends</a></li>
     <li><a data-toggle="tab" href="#friend-requests">Friend requests</a></li>
   </ul>
 
+  <!--My friends-->
   <div class="tab-content">
-    <div id="my-friends" class="tab-pane fade in active">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div id="my-friends" class="tab-pane fade in active w3-margin">
+      <h3>My friends <span class="glyphicon glyphicon-heart"></span></h3>
+
+      <input class="w3-input w3-border w3-padding w3-margin-bottom" type="text" placeholder="e.g. runtrackminds2017" id="my-input-friends"
+             onkeyup="searchfunctionFriends()">
+
+      <ul class="w3-ul" id="friends-list">
+        <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let friend of friends">
+          <div class="w3-row w3-center">
+            <span class="w3-xlarge username-span w3-center">{{friend.username}}</span><hr>
+            <div class="w3-col m6 user-summary">
+              <span *ngIf="friend.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!friend.firstname"><strong>Firstname: </strong> N/A</span><br>
+              <span *ngIf="friend.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!friend.lastname"><strong>Lastname: </strong> N/A</span><br>
+              <span *ngIf="friend.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!friend.birthday"><strong>Birthday: </strong> N/A</span>
+            </div>
+            <div class="w3-col m6">
+              <button class="w3-btn-floating w3-red"><span class="glyphicon glyphicon-minus"></span></button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
 
-    <!--Find friends-->
+    <!--Find new friends-->
     <div id="find-friends" class="tab-pane fade w3-margin">
-      <h3>Search friends <i class="material-icons">search</i></h3>
+      <h3>Search friend <i class="material-icons">search</i></h3>
 
-      <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for usernames.." id="my-input-search"
+      <input class="w3-input w3-border w3-padding" type="text" placeholder="e.g. runtrackminds2017" id="my-input-search"
              onkeyup="searchfunction()">
 
       <ul class="w3-ul" id="user-list">
        <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let user of users">
-         <span class="w3-xlarge username-span">{{user.username}}</span><hr>
-         <span *ngIf="user.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!user.firstname"><strong>Firstname: </strong> N/A</span><br>
-         <span *ngIf="user.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!user.lastname"><strong>Lastname: </strong> N/A</span><br>
-         <span *ngIf="user.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!user.birthday"><strong>Birthday: </strong> N/A</span>
-         <button class="w3-btn-floating w3-green"><span class="glyphicon glyphicon-plus"></span></button>
+         <div class="w3-row w3-center">
+           <span class="w3-xlarge username-span w3-center">{{user.username}}</span><hr>
+           <div class="w3-col m6 user-summary">
+             <span *ngIf="user.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!user.firstname"><strong>Firstname: </strong> N/A</span><br>
+             <span *ngIf="user.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!user.lastname"><strong>Lastname: </strong> N/A</span><br>
+             <span *ngIf="user.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!user.birthday"><strong>Birthday: </strong> N/A</span>
+           </div>
+           <div class="w3-col m6">
+             <button class="w3-btn-floating w3-green"><span class="glyphicon glyphicon-plus"></span></button>
+           </div>
+         </div>
        </li>
       </ul>
     </div>
