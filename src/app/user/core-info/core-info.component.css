@@ -1,6 +1,7 @@
 :host {
   background: white;
   padding: 2rem 10rem;
+  border: 1px solid #d0d0d0;
 }
 
 .records {
@@ -32,3 +33,12 @@ span {
   color: #9e9e9e;
 }
 
+@media screen and (max-width: 750px){
+  :host {
+    padding: 2rem;
+  }
+
+  .records {
+    padding: 2rem;
+  }
+}
