@@ -95,7 +95,7 @@
             <td> <span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
             <td> <span *ngIf="competition.finished==true">Closed</span><span *ngIf="competition.finished==false">Open</span></td>
             <td>
-              <button (click)="onClickAddCompetition(competition.competitionId)" data-dismiss="modal" class="btn btn-success text col-md-offset-1">
+              <button (click)="onClickAddCompetition(competition.competitionId)" class="btn btn-success text col-md-offset-1">
               <span class="glyphicon glyphicon-flag"></span></button>
             </td>
           </tr>

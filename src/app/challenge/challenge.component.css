@@ -1,6 +1,6 @@
 @import url("//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
 .container{
-  background: #f8f8f8;
+  background: white;
   background-size: cover;
 }
 .wrapper{
@@ -10,14 +10,14 @@ label.gender {
   padding-top: 0 !important;
 }
 table tr th{
-  background: #f8f8f8;
+  background: white;
 }
 hr{
   padding-bottom: 5rem;
 }
 .custom-navigation{
   padding-bottom: 5rem;
-  background: #f8f8f8;
+  background: white;
 }
 
 

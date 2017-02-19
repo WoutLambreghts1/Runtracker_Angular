@@ -1,0 +1,19 @@
+.container{
+  background: white;
+  background-size: cover;
+}
+.prj-name {
+  color:#5bc0de;
+}
+hr{
+  padding-bottom: 5rem;
+}
+.w3-card-4 hr{
+  padding-bottom: 1rem;
+}
+#add-friend{
+  margin-right: 1rem;
+}
+.user-summary{
+  text-align: left;
+}
