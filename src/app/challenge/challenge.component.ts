@@ -38,7 +38,6 @@ export class ChallengeComponent {
     this.challengeService.getAllAvailableCompetitions().subscribe(
       (competitions:Competition[]) => {
         this.competitionsAvailable = competitions;
-        console.log(competitions);
       },
       error => {
         console.log(error as string);
@@ -69,6 +68,7 @@ export class ChallengeComponent {
     this.newCompetition = new Competition();
     this.newCompetition.maxParticipants = 2;
     this.newCompetition.deadline = new Date();
+    this.newCompetition.deadline.setDate(this.newCompetition.deadline.getDate() + 1)
     this.newCompetition.competitionType = "NOT_REALTIME";
     this.newCompetition.goal = this.goals[0];
   }
