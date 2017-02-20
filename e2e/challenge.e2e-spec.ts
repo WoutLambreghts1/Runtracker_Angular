@@ -87,10 +87,10 @@ describe('challenge', () => {
   it("Should delete a challenge",() => {
     let tabCreatedChallenges = element(by.id('tab-created'));
     tabCreatedChallenges.click().then(() => {
-      browser.driver.sleep(4000);
+      browser.driver.sleep(2000);
       let deleteBtns = element.all(by.css('.btn-danger'));
-      deleteBtns.get(5).click();
-      browser.driver.sleep(5000);
+      deleteBtns.first().click();
+      browser.driver.sleep(4000);
     });
   })
 
