@@ -80,12 +80,12 @@ export class ChallengeComponent {
 
   //Create competition
   private onClickCreateCompetition(competition:Competition):void {
-    this.challengeService.createCompetition(competition);
+    this.challengeService.createCompetition(competition).subscribe(val => console.log(val), err => console.log(err));
   }
 
   //Delete competition
   private onClickDeleteCompetition(competitionId):void {
-    this.challengeService.deleteCompetition(competitionId);
+    this.challengeService.deleteCompetition(competitionId).subscribe(val => console.log(val), err => console.log(err));
   }
 
 

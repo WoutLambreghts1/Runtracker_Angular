@@ -10,59 +10,62 @@ export class ChallengeService {
   private jwt = localStorage.getItem('id_token');
   private authHeader = new Headers();
 
-  constructor(private http:Http){
-    if(this.jwt) {
+  constructor(private http: Http) {
+    if (this.jwt) {
       this.authHeader.append('token', this.jwt);
     }
   }
 
   //Get goals (to create competition), available competitions (to compete), all competing competitions
-  getGoals(): Observable<Goal[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/goals/getGoals',{
+  getGoals(): Observable<Goal[]> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/goals/getGoals', {
       headers: this.authHeader
     })
-      .map((res: Response) =>  res.json())
+      .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
   }
 
-  getAllAvailableCompetitions(): Observable<Competition[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getAvailableCompetitions',{
-        headers: this.authHeader
-      })
-      .map((res: Response) =>  res.json())
+  getAllAvailableCompetitions(): Observable<Competition[]> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getAvailableCompetitions', {
+      headers: this.authHeader
+    })
+      .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
   }
 
-  getAllCompetitionsRun(): Observable<Competition[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getRanCompetitions',{
-        headers: this.authHeader
-      })
-      .map((res: Response) =>  res.json())
+  getAllCompetitionsRun(): Observable<Competition[]> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getRanCompetitions', {
+      headers: this.authHeader
+    })
+      .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
   }
 
-  getAllCompetitionsCreated(): Observable<Competition[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getCreatedCompetitions',{
-        headers: this.authHeader
-      })
-      .map((res: Response) =>  res.json())
+  getAllCompetitionsCreated(): Observable<Competition[]> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getCreatedCompetitions', {
+      headers: this.authHeader
+    })
+      .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
   }
 
   //Create new competition
-  createCompetition(competition: Competition): void{
+  createCompetition(competition: Competition): Observable<any> {
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
     console.log(JSON.stringify(competition));
-    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition',JSON.stringify(competition), options)
-      .map((res: Response) => res.json())
+    return this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', JSON.stringify(competition), options)
+      .map((res: Response) => {
+          res.json();
+        }
+      )
       .catch(err => this.handleErrorObservable(err));
 
 
   }
 
-  deleteCompetition(competitionId) : Observable<void>{
-     return this.http.delete(myGlobals.BACKEND_BASEURL + '/api/competitions/delete/' + competitionId, {
+  deleteCompetition(competitionId): Observable<void> {
+    return this.http.delete(myGlobals.BACKEND_BASEURL + '/api/competitions/delete/' + competitionId, {
       headers: this.authHeader
     }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
@@ -70,8 +73,8 @@ export class ChallengeService {
   addCompetitionToUser(competitionId): void {
     console.log(competitionId);
     this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/running/' + competitionId, {
-        headers: this.authHeader
-      }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
+      headers: this.authHeader
+    }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
 
 
