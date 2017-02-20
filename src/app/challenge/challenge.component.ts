@@ -38,7 +38,7 @@ export class ChallengeComponent {
     this.challengeService.getAllAvailableCompetitions().subscribe(
       (competitions:Competition[]) => {
         this.competitionsAvailable = competitions;
-
+        console.log(competitions);
       },
       error => {
         console.log(error as string);
@@ -75,7 +75,7 @@ export class ChallengeComponent {
 
   //Add competition to user
   private onClickAddCompetition(competitionId):void {
-    this.challengeService.addCompetitionToUser(competitionId);
+    this.challengeService.addCompetitionToUser(competitionId).subscribe(val => console.log(val), err => console.log(err));
   }
 
   //Create competition

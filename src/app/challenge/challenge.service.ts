@@ -53,15 +53,12 @@ export class ChallengeService {
   createCompetition(competition: Competition): Observable<any> {
     this.authHeader.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: this.authHeader});
-    console.log(JSON.stringify(competition));
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', JSON.stringify(competition), options)
       .map((res: Response) => {
           res.json();
         }
       )
       .catch(err => this.handleErrorObservable(err));
-
-
   }
 
   deleteCompetition(competitionId): Observable<void> {
@@ -70,9 +67,10 @@ export class ChallengeService {
     }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
 
-  addCompetitionToUser(competitionId): void {
-    console.log(competitionId);
-    this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/running/' + competitionId, {
+  addCompetitionToUser(competitionId): Observable<void> {
+    console.log(myGlobals.BACKEND_BASEURL + '/api/competitions/running/' + competitionId);
+    console.log(this.authHeader);
+    return this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/running/' + competitionId, {
       headers: this.authHeader
     }).map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
