@@ -10,7 +10,8 @@ import {User} from "../model/user";
 
 export class FriendsComponent {
   private users: User[] = [];
-  private friends: User[] = []
+  private friends: User[] = [];
+  private user: User;
 
 
   constructor(private friendService:FriendsService) {
@@ -20,7 +21,6 @@ export class FriendsComponent {
     this.friendService.getUsers().subscribe(
       (users) => {
         this.users = users;
-        console.log(users);
       },
       error => {
         console.log(error as string);

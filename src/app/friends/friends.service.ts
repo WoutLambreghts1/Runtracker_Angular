@@ -16,10 +16,18 @@ export class FriendsService {
   }
 
   getUsers(): Observable<User[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/allUsers',{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUsers',{
         headers: this.authHeader
       })
       .map((res: Response) =>  res.json())
+      .catch(this.handleErrorObservable);
+  }
+
+  getUser(): Observable<User>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
   }
 

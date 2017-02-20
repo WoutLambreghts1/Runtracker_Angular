@@ -28,6 +28,7 @@ export class ChallengeComponent {
     this.challengeService.getGoals().subscribe(
       (goals) => {
         this.goals = goals;
+        console.log(goals);
       },
       error => {
         console.log(error as string);
@@ -37,6 +38,7 @@ export class ChallengeComponent {
     this.challengeService.getAllAvailableCompetitions().subscribe(
       (competitions:Competition[]) => {
         this.competitionsAvailable = competitions;
+
       },
       error => {
         console.log(error as string);
