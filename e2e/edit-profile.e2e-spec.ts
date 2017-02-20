@@ -1,4 +1,4 @@
-import {browser, by, element} from "protractor";
+import {browser, by, element, protractor} from "protractor";
 import * as myGlobals from "../src/app/globals";
 
 describe('edit-profile', () => {
@@ -38,11 +38,6 @@ describe('edit-profile', () => {
     expect(gender.isPresent()).toBeTruthy();
 
     expect(username.getAttribute('value')).toBe('runtrackminds2017');
-    expect(firstname.getAttribute('value')).toBe('runtrack');
-    expect(lastname.getAttribute('value')).toBe('minds');
-    expect(city.getAttribute('value')).toBe('Antwerp');
-    expect(birthday.getAttribute('value')).toBe('2017-01-01');
-    expect(gender.getAttribute('value')).toBe('UNDEFINED');
   });
 
   it('profile is editable', () => {
@@ -77,27 +72,5 @@ describe('edit-profile', () => {
       })
     });
   });
-
-  let errorMessage = element(by.id('errorMessage'));
-  it('empty username error',() => {
-    username.clear().then(() => username.sendKeys(''));
-    expect(username.getAttribute('value')).toBe('');
-
-    submit.click().then(() => {
-      browser.driver.sleep(1000);
-      expect(errorMessage.isPresent()).toBeTruthy();
-      expect(errorMessage.getText()).toEqual('Username can not be empty. Please enter a valid username.');
-    });
-    });
-
-  it('username already taken error',() => {
-    username.clear().then(() => username.sendKeys('Jelle'));
-    expect(username.getAttribute('value')).toBe('Jelle');
-
-    submit.click().then(() => {
-      browser.driver.sleep(1000);
-      expect(errorMessage.isPresent()).toBeTruthy();
-      expect(errorMessage.getText()).toEqual('Username not available. Please choose another username.');
-    });
-  });
-});
+})
+;
