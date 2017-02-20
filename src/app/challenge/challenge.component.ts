@@ -19,11 +19,11 @@ export class ChallengeComponent {
   private competitionsCreated:Competition[] = [];
 
   constructor(private challengeService:ChallengeService, private auth:AuthService) {
-    this.onClickNewCompetition();
   }
 
 
   ngOnInit():void {
+    this.onClickNewCompetition();
     //Get goals (to create competition), available competitions (to compete), all competing competitions & all created competitions
     this.challengeService.getGoals().subscribe(
       (goals) => {
@@ -47,6 +47,7 @@ export class ChallengeComponent {
     this.challengeService.getAllCompetitionsRun().subscribe(
       (competitions) => {
         this.competitionsRun = competitions;
+        console.log(competitions);
       },
       error => {
         console.log(error as string);
@@ -76,16 +77,19 @@ export class ChallengeComponent {
   //Add competition to user
   private onClickAddCompetition(competitionId):void {
     this.challengeService.addCompetitionToUser(competitionId).subscribe(val => console.log(val), err => console.log(err));
+    setTimeout(() => this.ngOnInit(), 2000);
   }
 
   //Create competition
   private onClickCreateCompetition(competition:Competition):void {
-    this.challengeService.createCompetition(competition).subscribe(val => console.log(val), err => console.log(err));
+    this.challengeService.createCompetition(competition).subscribe(val => this.ngOnInit(), err => console.log(err));
+    setTimeout(() => this.ngOnInit(), 2000);
   }
 
   //Delete competition
   private onClickDeleteCompetition(competitionId):void {
     this.challengeService.deleteCompetition(competitionId).subscribe(val => console.log(val), err => console.log(err));
+    setTimeout(() => this.ngOnInit(), 2000);
   }
 
 

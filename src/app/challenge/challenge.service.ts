@@ -9,10 +9,13 @@ import {Competition} from "../model/competition";
 export class ChallengeService {
   private jwt = localStorage.getItem('id_token');
   private authHeader = new Headers();
+  private authHeaderTwo = new Headers();
 
   constructor(private http: Http) {
     if (this.jwt) {
       this.authHeader.append('token', this.jwt);
+      this.authHeaderTwo.append('token', this.jwt);
+      this.authHeaderTwo.append('Content-Type', 'application/json');
     }
   }
 
@@ -51,8 +54,7 @@ export class ChallengeService {
 
   //Create new competition
   createCompetition(competition: Competition): Observable<any> {
-    this.authHeader.append('Content-Type', 'application/json');
-    let options = new RequestOptions({headers: this.authHeader});
+    let options = new RequestOptions({headers: this.authHeaderTwo});
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', JSON.stringify(competition), options)
       .map((res: Response) => {
           res.json();
@@ -68,8 +70,7 @@ export class ChallengeService {
   }
 
   addCompetitionToUser(competitionId): Observable<void> {
-    this.authHeader.append('Content-Type', 'application/json');
-    let options = new RequestOptions({headers: this.authHeader});
+    let options = new RequestOptions({headers: this.authHeaderTwo});
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/running/' + competitionId, "",options)
       .map((res: Response) => res.json()).catch(err => this.handleErrorObservable(err));
   }
