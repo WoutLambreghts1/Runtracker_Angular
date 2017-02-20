@@ -3,8 +3,24 @@ import * as myGlobals from "../src/app/globals";
 
 describe('challenge', () => {
   beforeEach(() => {
-    browser.get(myGlobals.FRONTEND_BASEURL + "/challenge");
+    browser.get(myGlobals.FRONTEND_BASEURL);
+    let inputMail = element(by.id('username'));
+    let inputPass = element(by.id('password'));
+    let btnLogin = element(by.id('login'));
+    let navChallenge = element(by.id('challenge'));
+
+    inputMail.sendKeys("runtrackminds2017@gmail.com");
+    inputPass.sendKeys("Team102017");
+
+    btnLogin.click().then(() => {
+      browser.driver.sleep(2000);
+    });
+    navChallenge.click().then(() => {
+      browser.driver.sleep(2000);
+    });
+
   });
+
   //Tabs
   let tabRunning = element(by.id('running'));
   let tabCreated = element(by.id('created'));
@@ -52,46 +68,31 @@ describe('challenge', () => {
 
      });
 
-  })
+  });
 
-  /*
+
   it("Should create a new challenge",() => {
+    browser.driver.sleep(3000);
     btnNewChallenge.click().then(() => {
       browser.driver.sleep(2000);
-      let modalHeader = element(by.css('.modal-title'));
-      let inputCompetitionType = element(by.name('competitionType'));
-      let inputDeadline = element(by.name('deadline'));
-      let inputGoal = element(by.name('goal'));
-      let inputMaxParticipants = element(by.name('maxParticipants'));
 
-
+      let btnSubmit = element(by.id('create-challenge'));
+      btnSubmit.click();
+      browser.driver.sleep(5000);
     });
 
-  })
+  });
+
 
   it("Should delete a challenge",() => {
-    btnNewChallenge.click().then(() => {
-      browser.driver.sleep(2000);
-      let modalHeader = element(by.css('.modal-title'));
-      let inputCompetitionType = element(by.name('competitionType'));
-      let inputDeadline = element(by.name('deadline'));
-      let inputGoal = element(by.name('goal'));
-      let inputMaxParticipants = element(by.name('maxParticipants'));
-
-
+    let tabCreatedChallenges = element(by.id('tab-created'));
+    tabCreatedChallenges.click().then(() => {
+      browser.driver.sleep(4000);
+      let deleteBtns = element.all(by.css('.btn-danger'));
+      deleteBtns.get(5).click();
+      browser.driver.sleep(5000);
     });
   })
 
-  it("Should compete at a challenge",() => {
-    btnNewChallenge.click().then(() => {
-      browser.driver.sleep(2000);
-      let modalHeader = element(by.css('.modal-title'));
-      let inputCompetitionType = element(by.name('competitionType'));
-      let inputDeadline = element(by.name('deadline'));
-      let inputGoal = element(by.name('goal'));
-      let inputMaxParticipants = element(by.name('maxParticipants'));
-    });
-  })
 
-  */
 });
