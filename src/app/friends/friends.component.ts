@@ -9,16 +9,16 @@ import {User} from "../model/user";
 })
 
 export class FriendsComponent {
-  private users: User[] = [];
+  private potentialFriends: User[] = [];
   private friends: User[] = [];
 
   constructor(private FriendsService:FriendsService) {
   }
 
   ngOnInit():void {
-    this.FriendsService.getUsers().subscribe(
+    this.FriendsService.getPotentialFriends().subscribe(
       (users) => {
-        this.users = users;
+        this.potentialFriends = users;
       },
       error => {
         console.log(error as string);

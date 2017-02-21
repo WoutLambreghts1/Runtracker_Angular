@@ -43,16 +43,16 @@
              onkeyup="searchfunction()">
 
       <ul class="w3-ul" id="user-list">
-       <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let user of users">
+       <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let potentialFriend of potentialFriends">
          <div class="w3-row w3-center">
-           <span class="w3-xlarge username-span w3-center">{{user.username}}</span><hr>
+           <span class="w3-xlarge username-span w3-center">{{potentialFriend.username}}</span><hr>
            <div class="w3-col m6 user-summary">
-             <span *ngIf="user.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!user.firstname"><strong>Firstname: </strong> N/A</span><br>
-             <span *ngIf="user.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!user.lastname"><strong>Lastname: </strong> N/A</span><br>
-             <span *ngIf="user.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!user.birthday"><strong>Birthday: </strong> N/A</span>
+             <span *ngIf="potentialFriend.firstname"><strong>Firstname: </strong>{{potentialFriend.firstname}}</span><span *ngIf="!potentialFriend.firstname"><strong>Firstname: </strong> N/A</span><br>
+             <span *ngIf="potentialFriend.lastname"><strong>Lastname: </strong>{{potentialFriend.lastname}}</span><span *ngIf="!potentialFriend.lastname"><strong>Lastname: </strong> N/A</span><br>
+             <span *ngIf="potentialFriend.birthday"><strong>Birthday: </strong>{{potentialFriend.birthday}}</span><span *ngIf="!potentialFriend.birthday"><strong>Birthday: </strong> N/A</span>
            </div>
            <div class="w3-col m6">
-             <button (click)="onClickAddFriend(user.username)" class="btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+             <button (click)="onClickAddFriend(potentialFriend.username)" class="btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
            </div>
          </div>
        </li>

@@ -18,8 +18,8 @@ export class FriendsService {
     }
   }
 
-  getUsers(): Observable<User[]>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUsers',{
+  getPotentialFriends(): Observable<User[]>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getAllPotentialFriends',{
         headers: this.authHeader
       })
       .map((res: Response) =>  res.json())
@@ -33,15 +33,7 @@ export class FriendsService {
       .map((res: Response) =>  res.json())
       .catch(this.handleErrorObservable);
   }
-
-  getUser(): Observable<User>{
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
-        headers: this.authHeader
-      })
-      .map((res: Response) => res.json())
-      .catch(this.handleErrorObservable);
-  }
-
+  
   addFriend(username): Observable<any> {
     let options = new RequestOptions({headers: this.authHeaderTwo});
     console.log(this.authHeader);
