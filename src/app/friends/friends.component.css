@@ -3,6 +3,7 @@
 .container{
   background: white;
   background-size: cover;
+  height:80vh;
 }
 .friends-icon {
   color:#5bc0de;
@@ -19,3 +20,7 @@ hr{
 .user-summary{
   text-align: left;
 }
+.no-data{
+  margin-top: 3rem;
+}
+
