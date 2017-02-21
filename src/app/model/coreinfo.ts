@@ -5,6 +5,7 @@ export class CoreInfo{
   maxDistance: number;
   maxSpeed: number;
   nrOfCompetitionsWon: number;
+  nrOfCompetitionsDone: number;
   ranMarathon: boolean;
   ranTenKm: boolean;
   ranTwentyKm: boolean;
@@ -15,10 +16,11 @@ export class CoreInfo{
     this.avgSpeed = user.avgSpeed;
     this.maxDistance = user.maxDistance;
     this.maxSpeed = user.maxSpeed;
-    this.nrOfCompetitionsWon = user.nrOfCompetitionsWon;
+    this.nrOfCompetitionsWon = user.competitionsWon.length;
+    this.nrOfCompetitionsDone = user.competitionsRun.length;
     this.totalDistance = user.totalDistance;
-    this.ranMarathon = user.ranMarathon;
-    this.ranTenKm = user.ranTenKm;
-    this.ranTwentyKm = user.ranTwentyKm;
+    this.ranMarathon = user.maxDistance >= 42194.988;
+    this.ranTenKm = user.maxDistance >= 10000;
+    this.ranTwentyKm = user.maxDistance >= 10000;
   }
 }
