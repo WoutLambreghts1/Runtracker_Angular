@@ -13,32 +13,40 @@
   </div>
 </div>
 <div class="coreInfo col-xs-12">
-  <div class="col-xs-12">
-    <div id="nrOfCompetitionsWon" class="col-xs-4 text-center">
+  <div class="competitions col-xs-4">
+    <div id="nrOfCompetitionsWon" class="text-center">
       <h2>{{coreInfo?.nrOfCompetitionsWon}}</h2>
       <span>Nr of competitions won</span>
     </div>
-    <div id="avgSpeed" class="col-xs-4 text-center">
-      <h2>{{coreInfo?.avgSpeed}} <span class="quantity-lg">km/h</span></h2>
-      <span>Average speed</span>
-    </div>
-    <div id="totalDistance" class="col-xs-4 text-center">
-      <h2>{{coreInfo?.totalDistance}} <span class="quantity-lg">km</span></h2>
-      <span>Total distance</span>
+    <div id="nrOfCompetitionsDone" class="text-center">
+      <h2>{{coreInfo?.nrOfCompetitionsDone}}</h2>
+      <span>Nr of competitions done</span>
     </div>
   </div>
-  <div class="col-xs-12">
-    <div id="maxSpeed" class="col-xs-4 text-center">
-      <h3>{{coreInfo?.maxSpeed}} <span class="quantity-sm">km/h</span></h3>
-      <span>Maximum speed</span>
+
+  <div class="distance col-xs-4">
+    <div id="totalDistance" class="text-center">
+      <h3>{{coreInfo?.totalDistance}} <span class="quantity-sm">km</span></h3>
+      <span>Total distance</span>
     </div>
-    <div id="avgDistance" class="col-xs-4 text-center">
+    <div id="avgDistance" class="text-center">
       <h3>{{coreInfo?.avgDistance}} <span class="quantity-sm">km</span></h3>
       <span>Average distance</span>
     </div>
-    <div id="maxDistance" class="col-xs-4 text-center">
+    <div id="maxDistance" class="text-center">
       <h3>{{coreInfo?.maxDistance}} <span class="quantity-sm">km</span></h3>
       <span>Maximum distance</span>
+    </div>
+  </div>
+
+  <div class="speed col-xs-4">
+    <div id="avgSpeed" class="text-center">
+      <h2>{{coreInfo?.avgSpeed}} <span class="quantity-lg">km/h</span></h2>
+      <span>Average speed</span>
+    </div>
+    <div id="maxSpeed" class="text-center">
+      <h2>{{coreInfo?.maxSpeed}} <span class="quantity-lg">km/h</span></h2>
+      <span>Maximum speed</span>
     </div>
   </div>
 </div>

@@ -17,8 +17,13 @@
 
 .coreInfo {
   border-top: 1px solid #d6d6d6;
+  display: flex;
+  align-items: stretch;
 }
 
+.speed, .competitions{
+  margin: auto;
+}
 .quantity-lg {
   font-size: 2rem;
   color: black;
