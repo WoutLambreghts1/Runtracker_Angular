@@ -66,10 +66,11 @@
       <ul class="w3-ul" id="requests-list">
         <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let user of requests">
           <div class="w3-container w3-center">
-            <h3>Friend Request</h3>
-            <h5>{{user.username}}</h5>
-
-            <div class="w3-section">
+            <h3>{{user.username}} wants to be your friend!</h3><hr>
+            <span *ngIf="user.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!user.firstname"><strong>Firstname: </strong> N/A</span><br>
+            <span *ngIf="user.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!user.lastname"><strong>Lastname: </strong> N/A</span><br>
+            <span *ngIf="user.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!user.birthday"><strong>Birthday: </strong> N/A</span>
+              <div class="w3-section">
               <button class="w3-btn w3-green" (click)="onClickAcceptFriend(user.username)" >Accept</button>
               <button class="w3-btn w3-red" (click)="onClickRemoveFriend(user.username)">Decline</button>
             </div>
