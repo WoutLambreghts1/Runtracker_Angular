@@ -11,14 +11,12 @@ import {User} from "../model/user";
 export class FriendsComponent {
   private users: User[] = [];
   private friends: User[] = [];
-  private user: User;
 
-
-  constructor(private friendService:FriendsService) {
+  constructor(private FriendsService:FriendsService) {
   }
 
   ngOnInit():void {
-    this.friendService.getUsers().subscribe(
+    this.FriendsService.getUsers().subscribe(
       (users) => {
         this.users = users;
       },
@@ -26,6 +24,24 @@ export class FriendsComponent {
         console.log(error as string);
       }
     );
+    this.FriendsService.getFriends().subscribe(
+      (friends) => {
+        this.friends = friends;
+      },
+      error => {
+        console.log(error as string);
+      }
+    );
+  }
+
+  onClickAddFriend(username):void{
+    this.FriendsService.addFriend(username).subscribe(val => console.log(val), err => console.log(err));
+    setTimeout(() => this.ngOnInit(), 2000);
+  }
+
+  onClickRemoveFriend(username):void{
+    this.FriendsService.deleteFriend(username).subscribe(val => console.log(val), err => console.log(err));
+    setTimeout(() => this.ngOnInit(), 2000);
   }
 
 

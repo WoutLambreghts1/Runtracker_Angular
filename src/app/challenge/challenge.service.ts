@@ -52,7 +52,6 @@ export class ChallengeService {
       .catch(this.handleErrorObservable);
   }
 
-  //Create new competition
   createCompetition(competition: Competition): Observable<any> {
     let options = new RequestOptions({headers: this.authHeaderTwo});
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/competitions/createCompetition', JSON.stringify(competition), options)

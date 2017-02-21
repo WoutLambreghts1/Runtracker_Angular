@@ -1,9 +1,6 @@
 <div class="container">
   <div class="header">
-    <h1 class="text-muted prj-name">
-      <span class="fa fa-users fa-2x principal-title"></span>
-      Friends
-    </h1>
+    <h1>Friends</h1>
     <hr>
   </div>
 
@@ -16,7 +13,7 @@
   <!--My friends-->
   <div class="tab-content">
     <div id="my-friends" class="tab-pane fade in active w3-margin">
-      <h3>My friends <span class="glyphicon glyphicon-heart"></span></h3>
+      <h3>My friends <span class="fa fa-users friends-icon"></span></h3>
 
       <input class="w3-input w3-border w3-padding w3-margin-bottom" type="text" placeholder="e.g. runtrackminds2017" id="my-input-friends"
              onkeyup="searchfunctionFriends()">
@@ -26,12 +23,12 @@
           <div class="w3-row w3-center">
             <span class="w3-xlarge username-span w3-center">{{friend.username}}</span><hr>
             <div class="w3-col m6 user-summary">
-              <span *ngIf="friend.firstname"><strong>Firstname: </strong>{{user.firstname}}</span><span *ngIf="!friend.firstname"><strong>Firstname: </strong> N/A</span><br>
-              <span *ngIf="friend.lastname"><strong>Lastname: </strong>{{user.lastname}}</span><span *ngIf="!friend.lastname"><strong>Lastname: </strong> N/A</span><br>
-              <span *ngIf="friend.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!friend.birthday"><strong>Birthday: </strong> N/A</span>
+              <span *ngIf="friend.firstname"><strong>Firstname: </strong>{{friend.firstname}}</span><span *ngIf="!friend.firstname"><strong>Firstname: </strong> N/A</span><br>
+              <span *ngIf="friend.lastname"><strong>Lastname: </strong>{{friend.lastname}}</span><span *ngIf="!friend.lastname"><strong>Lastname: </strong> N/A</span><br>
+              <span *ngIf="friend.birthday"><strong>Birthday: </strong>{{friend.birthday}}</span><span *ngIf="!friend.birthday"><strong>Birthday: </strong> N/A</span>
             </div>
             <div class="w3-col m6">
-              <button class="w3-btn-floating w3-red"><span class="glyphicon glyphicon-minus"></span></button>
+              <button (click)="onClickRemoveFriend(friend.username)" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i></button>
             </div>
           </div>
         </li>
@@ -55,7 +52,7 @@
              <span *ngIf="user.birthday"><strong>Birthday: </strong>{{user.birthday}}</span><span *ngIf="!user.birthday"><strong>Birthday: </strong> N/A</span>
            </div>
            <div class="w3-col m6">
-             <button class="w3-btn-floating w3-green"><span class="glyphicon glyphicon-plus"></span></button>
+             <button (click)="onClickAddFriend(user.username)" class="btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
            </div>
          </div>
        </li>

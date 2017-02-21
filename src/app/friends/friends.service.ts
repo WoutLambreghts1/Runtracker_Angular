@@ -8,15 +8,26 @@ import {User} from "../model/user";
 export class FriendsService {
   private jwt = localStorage.getItem('id_token');
   private authHeader = new Headers();
+  private authHeaderTwo = new Headers();
 
   constructor(private http:Http){
     if(this.jwt) {
       this.authHeader.append('token', this.jwt);
+      this.authHeaderTwo.append('token', this.jwt);
+      this.authHeaderTwo.append('Content-Type', 'application/json');
     }
   }
 
   getUsers(): Observable<User[]>{
     return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUsers',{
+        headers: this.authHeader
+      })
+      .map((res: Response) =>  res.json())
+      .catch(this.handleErrorObservable);
+  }
+
+  getFriends(): Observable<User[]>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getAllFriends',{
         headers: this.authHeader
       })
       .map((res: Response) =>  res.json())
@@ -29,6 +40,29 @@ export class FriendsService {
       })
       .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
+  }
+
+  addFriend(username): Observable<any> {
+    let options = new RequestOptions({headers: this.authHeaderTwo});
+    console.log(this.authHeader);
+    return this.http.put(myGlobals.BACKEND_BASEURL + '/api/users/addFriend/' + username, "",options)
+      .map((res: Response) => {
+          res.json();
+        console.log(res);
+        }
+      )
+      .catch(err => this.handleErrorObservable(err));
+  }
+
+  deleteFriend(username): Observable<any> {
+    return this.http.delete(myGlobals.BACKEND_BASEURL + '/api/users/removeFriend/' + username, {
+        headers: this.authHeader
+      })
+      .map((res: Response) => {
+          res.json();
+        }
+      )
+      .catch(err => this.handleErrorObservable(err));
   }
 
   private handleErrorObservable(error: Response | any): Observable<any> {
