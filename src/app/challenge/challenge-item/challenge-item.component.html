@@ -1,0 +1,12 @@
+<span *ngIf="competition.goal" class="goal">{{competition.goal.name}}</span>
+<span *ngIf="competition.competitionType=='NOT_REALTIME'" class="competitionType">Challenge</span>
+<span *ngIf="competition.competitionType=='REALTIME'" class="competitionType">Live Challenge</span>
+
+<span class="creator">Created by {{competition.userCreated.username}}</span>
+
+<div class="challenge-summary">
+  <span id="closed" *ngIf="competition.finished==true">Closed</span>
+  <span id="open" *ngIf="competition.finished==false">Open</span>
+  <span class="deadline" *ngIf="competition.deadline">Ends on {{competition.deadline}}</span>
+  <span class="participants" *ngIf="competition.usersRun && competition.maxParticipants"><strong>Participants:</strong> {{competition?.usersRun.length}} / {{competition.maxParticipants}}</span>
+</div>
