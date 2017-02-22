@@ -1,0 +1,14 @@
+:host{
+  width: 100%;
+}
+
+.username-span{
+  font-weight: 700;
+  color: #0a568c;
+}
+
+.user-summary{
+  padding-top: 0.5rem;
+  color: #777777;
+}
+

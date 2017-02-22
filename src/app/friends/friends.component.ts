@@ -1,6 +1,7 @@
 import {Component,OnInit} from "@angular/core";
 import {FriendsService} from "./friends.service";
 import {User} from "../model/user";
+
 @Component({
   selector: 'friends',
   templateUrl: 'friends.component.html',
