@@ -24,6 +24,7 @@ export class FriendProfilePageComponent implements OnInit {
 
     this.friendProfilePageService.getFriend(username).subscribe((friend: User) => {
       this.friend = friend;
+      this.friend.gender = this.friend.gender.toLowerCase();
       this.coreInfo = new CoreInfo(this.friend);
     }, err => console.error(err));
   }

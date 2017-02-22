@@ -1,59 +1,84 @@
 <main class="container">
-  <h1 id="header" class="col-xs-12 background-container">{{friend.username}}</h1>
+
+  <div class="col-xs-12 background-container">
+    <div class="row">
+        <h1 class="text-center">{{friend.username}}</h1>
+        <hr>
+      <div id="personal-info">
+          <p><strong class="col-xs-6">First name: </strong><span class="col-xs-6" *ngIf="friend.lastname"> {{friend.firstname}}</span>
+            <span class="col-xs-6" *ngIf="!friend.firstname"> N/A</span></p>
+          <p><strong class="col-xs-6">Last name: </strong><span class="col-xs-6" *ngIf="friend.lastname"> {{friend.lastname}}</span>
+            <span class="col-xs-6" *ngIf="!friend.lastname"> N/A</span></p>
+          <p><strong class="col-xs-6">City: </strong><span class="col-xs-6" *ngIf="friend.city">{{friend.city}}</span>
+            <span class="col-xs-6" *ngIf="!friend.city"> N/A</span></p>
+          <p><strong class="col-xs-6">Birthday: </strong><span class="col-xs-6" *ngIf="friend.birthday">{{friend.birthday}}</span>
+            <span class="col-xs-6" *ngIf="!friend.birthday"> N/A</span></p>
+          <p><strong class="col-xs-6">Gender: </strong>
+          <span class="col-xs-6" *ngIf="friend.gender">
+            <span *ngIf="friend.gender=='male'"><i class="fa fa-mars"></i></span>
+            <span *ngIf="friend.gender=='female'"><i class="fa fa-venus"></i></span>
+            <span *ngIf="friend.gender=='undefined'"><i class="fa fa-genderless"></i></span>
+          </span>
+            <span class="col-xs-6" *ngIf="!friend.gender"> N/A</span>
+          </p>
+      </div>
+    </div>
+  </div>
+
   <!--<core-info [coreInfo]="coreInfo" class="col-xs-12 background-container"></core-info>-->
   <!--VERVANGEN DOOR CORE INFO COMPONENT-->
   <div class="col-xs-12 background-container">
-  <div class="records col-xs-12">
-    <div id="ranTenKm" class="col-xs-4 text-center">
-      <div class="trophy" [ngStyle]="setTrophies(coreInfo?.ranTenKm)"></div>
-      <span>10 km</span>
-    </div>
-    <div id="ranTwentyKm" class="col-xs-4 text-center">
-      <div class="trophy" [ngStyle]="setTrophies(coreInfo?.ranTwentyKm)"></div>
-      <span>20 km</span>
-    </div>
-    <div id="ranMarathon" class="col-xs-4 text-center">
-      <div class="trophy" [ngStyle]="setTrophies(coreInfo?.ranMarathon)"></div>
-      <span>Marathon</span>
-    </div>
-  </div>
-  <div class="coreInfo col-xs-12">
-    <div class="competitions col-xs-4">
-      <div id="nrOfCompetitionsWon" class="text-center">
-        <h2>{{coreInfo?.nrOfCompetitionsWon}}</h2>
-        <span>Nr of competitions won</span>
+    <div class="records col-xs-12">
+      <div id="ranTenKm" class="col-xs-4 text-center">
+        <div class="trophy" [ngStyle]="setTrophies(coreInfo?.ranTenKm)"></div>
+        <span>10 km</span>
       </div>
-      <div id="nrOfCompetitionsDone" class="text-center">
-        <h2>{{coreInfo?.nrOfCompetitionsDone}}</h2>
-        <span>Nr of competitions done</span>
+      <div id="ranTwentyKm" class="col-xs-4 text-center">
+        <div class="trophy" [ngStyle]="setTrophies(coreInfo?.ranTwentyKm)"></div>
+        <span>20 km</span>
+      </div>
+      <div id="ranMarathon" class="col-xs-4 text-center">
+        <div class="trophy" [ngStyle]="setTrophies(coreInfo?.ranMarathon)"></div>
+        <span>Marathon</span>
       </div>
     </div>
+    <div class="coreInfo col-xs-12">
+      <div class="competitions col-xs-4">
+        <div id="nrOfCompetitionsWon" class="text-center">
+          <h2>{{coreInfo?.nrOfCompetitionsWon}}</h2>
+          <span>Nr of competitions won</span>
+        </div>
+        <div id="nrOfCompetitionsDone" class="text-center">
+          <h2>{{coreInfo?.nrOfCompetitionsDone}}</h2>
+          <span>Nr of competitions done</span>
+        </div>
+      </div>
 
-    <div class="distance col-xs-4">
-      <div id="totalDistance" class="text-center">
-        <h3>{{coreInfo?.totalDistance}} <span class="quantity-sm">km</span></h3>
-        <span>Total distance</span>
+      <div class="distance col-xs-4">
+        <div id="totalDistance" class="text-center">
+          <h3>{{coreInfo?.totalDistance}} <span class="quantity-sm">km</span></h3>
+          <span>Total distance</span>
+        </div>
+        <div id="avgDistance" class="text-center">
+          <h3>{{coreInfo?.avgDistance}} <span class="quantity-sm">km</span></h3>
+          <span>Average distance</span>
+        </div>
+        <div id="maxDistance" class="text-center">
+          <h3>{{coreInfo?.maxDistance}} <span class="quantity-sm">km</span></h3>
+          <span>Maximum distance</span>
+        </div>
       </div>
-      <div id="avgDistance" class="text-center">
-        <h3>{{coreInfo?.avgDistance}} <span class="quantity-sm">km</span></h3>
-        <span>Average distance</span>
-      </div>
-      <div id="maxDistance" class="text-center">
-        <h3>{{coreInfo?.maxDistance}} <span class="quantity-sm">km</span></h3>
-        <span>Maximum distance</span>
-      </div>
-    </div>
 
-    <div class="speed col-xs-4">
-      <div id="avgSpeed" class="text-center">
-        <h2>{{coreInfo?.avgSpeed}} <span class="quantity-lg">km/h</span></h2>
-        <span>Average speed</span>
-      </div>
-      <div id="maxSpeed" class="text-center">
-        <h2>{{coreInfo?.maxSpeed}} <span class="quantity-lg">km/h</span></h2>
-        <span>Maximum speed</span>
+      <div class="speed col-xs-4">
+        <div id="avgSpeed" class="text-center">
+          <h2>{{coreInfo?.avgSpeed}} <span class="quantity-lg">km/h</span></h2>
+          <span>Average speed</span>
+        </div>
+        <div id="maxSpeed" class="text-center">
+          <h2>{{coreInfo?.maxSpeed}} <span class="quantity-lg">km/h</span></h2>
+          <span>Maximum speed</span>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </main>
