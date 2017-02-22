@@ -5,3 +5,8 @@ html, body, .container-fluid{
   background: #e8e8e8;
   font-family: 'Raleway', sans-serif;
 }
+
+.background-container{
+  background: white;
+  border: 1px solid #d0d0d0;
+}

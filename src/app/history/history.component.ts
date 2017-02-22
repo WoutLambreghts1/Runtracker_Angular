@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {HistoryService} from "./history.service";
 import {Tracking} from "../model/tracking";
+
 @Component({
   selector: 'history',
   templateUrl: 'history.component.html',
@@ -14,8 +15,9 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.historyService.getAllTrackings().subscribe(data => this.trackings = data, err => {
-
-    });
+      this.historyService.getAllTrackings()
+        .subscribe(data => this.trackings = data
+          , err => {
+          });
   }
 }
