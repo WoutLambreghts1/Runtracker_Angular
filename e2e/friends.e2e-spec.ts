@@ -53,19 +53,19 @@ describe('friends', () => {
 
   });
 
-
+/*
   it("Should delete a friend",() => {
     let tabMyFriends= element(by.id('tab-my-friends'));
     tabMyFriends.click().then(() => {
       browser.driver.sleep(3000);
       let removeBtns = element.all(by.css('.btn-danger'));
       removeBtns.count().then(function (size) {
-        if(size > 0){
+        if(size > 1){
           removeBtns.get(0).click();
         }
       });
       browser.driver.sleep(4000);
     });
   })
-
+*/
 });
