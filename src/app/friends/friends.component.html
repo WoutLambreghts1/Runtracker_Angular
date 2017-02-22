@@ -5,9 +5,9 @@
   </div>
 
   <ul class="nav nav-tabs">
-    <li><a id="tab-my-friends" data-toggle="tab" href="#my-friends">My friends</a></li>
+    <li><a id="tab-my-friends" data-toggle="tab" href="#my-friends">My friends <span *ngIf="friends.length>0" class="badge">{{friends.length}}</span></a></li>
     <li><a id="tab-find-friends" data-toggle="tab" href="#find-friends">Search friends</a></li>
-    <li><a id="tab-friend-requests" data-toggle="tab" href="#friend-requests">Friend requests</a></li>
+    <li><a id="tab-friend-requests" data-toggle="tab" href="#friend-requests">Friend requests <span *ngIf="requests.length>0" class="badge">{{requests.length}}</span></a></li>
   </ul>
 
   <!--My friends-->
@@ -18,7 +18,13 @@
       <input class="w3-input w3-border w3-padding w3-margin-bottom" type="text" placeholder="e.g. runtrackminds2017" id="my-input-friends"
              onkeyup="searchfunctionFriends()">
 
-      <ul class="w3-ul" id="friends-list">
+
+      <div class="no-data" *ngIf="friends.length==0">
+        <h5 >No friends found. You can do friendship requests by clicking the <strong> "Search friends" </strong>
+          tab or come back later.</h5>
+      </div>
+
+      <ul class="w3-ul" id="friends-list table-responsive">
         <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let friend of friends">
           <div class="w3-row w3-center">
             <span class="w3-xlarge username-span w3-center">{{friend.username}}</span><hr>
@@ -42,6 +48,10 @@
       <input class="w3-input w3-border w3-padding" type="text" placeholder="e.g. runtrackminds2017" id="my-input-search"
              onkeyup="searchfunction()">
 
+      <div class="no-data" *ngIf="potentialFriends.length==0">
+        <h5 >No users found. Please come back later.</h5>
+      </div>
+
       <ul class="w3-ul" id="user-list">
        <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let potentialFriend of potentialFriends">
          <div class="w3-row w3-center">
@@ -60,8 +70,14 @@
     </div>
 
     <!--Friend requests-->
-    <div id="friend-requests" class="tab-pane fade">
+    <div id="friend-requests" class="tab-pane fade w3-margin">
       <h3>My friend requests</h3>
+
+      <div class="no-data" *ngIf="requests.length==0">
+        <h5 >No friendship requests at the moment. You can do friendship requests yourself by clicking the <strong> "Search friends" </strong>
+          tab or come back later.</h5>
+      </div>
+
 
       <ul class="w3-ul" id="requests-list">
         <li class="w3-padding-16 w3-card-4 w3-margin-bottom w3-margin-top" *ngFor="let user of requests">
