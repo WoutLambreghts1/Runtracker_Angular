@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://www.w3schools.com/lib/w3.css");
 .container{
-  background: white;
-  background-size: cover;
-  height:80vh;
+  min-height:80vh;
 }
 .friends-icon {
   color:#5bc0de;
