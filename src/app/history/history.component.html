@@ -1,6 +1,7 @@
 <div class="container background-container">
   <h1>History</h1>
   <div class="history-list">
+    <p *ngIf="trackings == null">No trackings present.</p>
     <history-list-item *ngFor="let t of trackings"
                        [tracking]="t">
     </history-list-item>
