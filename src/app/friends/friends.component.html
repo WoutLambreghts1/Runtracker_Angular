@@ -5,7 +5,7 @@
   </div>
 
   <ul class="nav nav-tabs">
-    <li><a id="tab-my-friends" data-toggle="tab" href="#my-friends">My friends <span *ngIf="friends.length>0" class="badge">{{friends.length}}</span></a></li>
+    <li><a id="tab-my-friends" data-toggle="tab" href="#my-friends">My friends</a></li>
     <li><a id="tab-find-friends" data-toggle="tab" href="#find-friends">Search friends</a></li>
     <li><a id="tab-friend-requests" data-toggle="tab" href="#friend-requests">Friend requests <span *ngIf="requests.length>0" class="badge">{{requests.length}}</span></a></li>
   </ul>
@@ -19,7 +19,7 @@
              onkeyup="searchfunctionFriends()">
 
 
-      <div class="no-data" *ngIf="friends.length==0">
+      <div class="no-data" *ngIf="friends==null || friends.length==0">
         <h5 >No friends found. You can do friendship requests by clicking the <strong> "Search friends" </strong>
           tab or come back later.</h5>
       </div>
@@ -48,7 +48,7 @@
       <input class="w3-input w3-border w3-padding" type="text" placeholder="e.g. runtrackminds2017" id="my-input-search"
              onkeyup="searchfunction()">
 
-      <div class="no-data" *ngIf="potentialFriends.length==0">
+      <div class="no-data" *ngIf="potentialFriends == null || potentialFriends.length==0">
         <h5 >No users found. Please come back later.</h5>
       </div>
 
@@ -73,10 +73,12 @@
     <div id="friend-requests" class="tab-pane fade w3-margin">
       <h3>My friend requests</h3>
 
+
       <div class="no-data" *ngIf="requests.length==0">
         <h5 >No friendship requests at the moment. You can do friendship requests yourself by clicking the <strong> "Search friends" </strong>
           tab or come back later.</h5>
       </div>
+
 
 
       <ul class="w3-ul" id="requests-list">

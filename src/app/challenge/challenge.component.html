@@ -12,9 +12,9 @@
 
   <!-- Tabs competing & created -->
   <ul class="nav nav-tabs">
-    <li class="active"><a id="tab-running" data-toggle="tab" href="#running">Running challenges</a></li>
-    <li><a id="tab-created" data-toggle="tab" href="#created">Created challenges</a></li>
-    <li><a id="tab-available" data-toggle="tab" href="#available">Available challenges</a></li>
+    <li class="active"><a id="tab-running" data-toggle="tab" href="#running">Running challenges <span *ngIf="competitionsRun" class="badge">{{competitionsRun.length}}</span></a></li>
+    <li><a id="tab-created" data-toggle="tab" href="#created">Created challenges <span *ngIf="competitionsCreated" class="badge">{{competitionsCreated.length}}</span></a></li>
+    <li><a id="tab-available" data-toggle="tab" href="#available">Available challenges <span *ngIf="competitionsAvailable" class="badge">{{competitionsAvailable.length}}</span></a></li>
   </ul>
 
   <div class="tab-content">
