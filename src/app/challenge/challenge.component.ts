@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component,OnInit} from "@angular/core";
 import {ChallengeService} from "./challenge.service";
 import {AuthService} from "./../authentication/auth.service";
 import {Competition} from "../model/competition";
@@ -11,7 +11,7 @@ import {Goal} from "../model/goal";
   providers: [ChallengeService]
 })
 
-export class ChallengeComponent {
+export class ChallengeComponent implements OnInit{
   private newCompetition:Competition;
   private goals:Goal[] = [];
   private competitionsAvailable:Competition[] = [];

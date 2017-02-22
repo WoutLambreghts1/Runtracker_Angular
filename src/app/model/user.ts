@@ -15,13 +15,11 @@ export class User {
   maxDistance: number;
   maxSpeed: number;
   nrOfCompetitionsWon: number;
-  ranMarathon: boolean;
-  ranTenKm: boolean;
-  ranTwentyKm: boolean;
   totalDistance: number;
   trackings: Tracking[];
   userId: number;
   username: string;
+  online:boolean;
 
   constructor(username: string, firstname: string, lastname: string, gender: string) {
     this.username = username;

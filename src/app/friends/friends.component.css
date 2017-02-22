@@ -1,26 +1,58 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url("https://www.w3schools.com/lib/w3.css");
-.container{
-  background: white;
-  background-size: cover;
-  height:80vh;
+/*@import url("https://www.w3schools.com/lib/w3.css");*/
+
+.container {
+  min-height: 80vh;
+  padding: 1rem 3rem;
 }
+
+h2{
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #999;
+  margin-top: 1rem;
+}
+
+h3 > span{
+  margin-left: 1rem;
+}
+
 .friends-icon {
-  color:#5bc0de;
+  color: #5bc0de;
 }
-hr{
-  padding-bottom: 5rem;
+
+.badge{
+  background-color: #f53d3d;
+  margin-left: 1rem;
 }
-.w3-card-4 hr{
-  padding-bottom: 1rem;
+
+.form-control{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
-#add-friend{
-  margin-right: 1rem;
-}
-.user-summary{
-  text-align: left;
-}
-.no-data{
+
+.no-data {
   margin-top: 3rem;
+}
+
+.friendList{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.friendListItem {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.friendListItem:last-child {
+  border-bottom: none;
+}
+
+.btn-success{
+  margin-right: 1rem;
 }
 

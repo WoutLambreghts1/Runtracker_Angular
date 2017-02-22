@@ -1,6 +1,7 @@
-import {Component} from "@angular/core";
+import {Component,OnInit} from "@angular/core";
 import {FriendsService} from "./friends.service";
 import {User} from "../model/user";
+
 @Component({
   selector: 'friends',
   templateUrl: 'friends.component.html',
@@ -8,7 +9,7 @@ import {User} from "../model/user";
   providers: [FriendsService]
 })
 
-export class FriendsComponent {
+export class FriendsComponent implements OnInit{
   private potentialFriends: User[] = [];
   private friends: User[] = [];
   private requests: User[] = [];
@@ -29,6 +30,7 @@ export class FriendsComponent {
     this.FriendsService.getFriends().subscribe(
       (friends) => {
         this.friends = friends;
+        console.log(friends);
       },
       error => {
         console.log(error as string);
@@ -54,7 +56,7 @@ export class FriendsComponent {
     this.FriendsService.deleteFriend(username).subscribe(val => console.log(val), err => console.log(err));
     setTimeout(() => this.ngOnInit(), 2000);
   }
-  
+
   onClickAcceptFriend(username):void{
     this.FriendsService.acceptFriend(username).subscribe(val => console.log(val), err => console.log(err));
     setTimeout(() => this.ngOnInit(), 2000);

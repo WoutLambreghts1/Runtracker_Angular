@@ -56,10 +56,18 @@ export class UserHomepageService {
       this.auth.getUserInfo().gender == null ? gender = null : gender = this.auth.getUserInfo().gender.toUpperCase();
     }
 
-    let newUser = new User(this.auth.getUserInfo().nickname, firstname, lastname, gender);
-    
-    return this.http.post(myGlobals.BACKEND_BASEURL + '/api/users/createUser', newUser, options)
+    let newUser = new User(this.auth.getUserInfo().nickname.replace(/\./g, '')+this.auth.getUserInfo().sub[0], firstname, lastname, gender);
+
+    return this.http.post(myGlobals.BACKEND_BASEURL + '/api/users/createUser', JSON.stringify(newUser), options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
+  }
+
+    checkUsernameAvailable(username): Observable<boolean>{
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/checkUsername/'+username, {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
   }
 
   private handleError(error: Response | any): Observable<any> {
