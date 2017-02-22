@@ -30,7 +30,10 @@ export class EditProfileComponent implements OnInit{
           this.available = val;
           if (!val) {
             this.errorMsg = "Username not available. Please choose another username."
-          } else {
+          }else if(this.user.username.indexOf(".") !== -1){
+            this.errorMsg = "It's not allowed to use ' . ' in a username";
+          }
+          else {
             this.errorMsg = "";
           }
         }, err => console.log(err)
@@ -39,12 +42,14 @@ export class EditProfileComponent implements OnInit{
   }
 
   onClickUpdateUser(user: User): void {
-    if (user.username != "" && this.available) {
+    if (user.username != "" && this.available && this.user.username!=null && !(this.user.username.indexOf(".") !== -1)) {
       this.errorMsg = "";
       this.user = this.editProfileService.updateUser(user).subscribe((user: User) => this.user = user);
     } else {
       if (user.username == "") {
         this.errorMsg = "Username can not be empty. Please enter a valid username."
+      }else if(this.user.username.indexOf(".") !== -1){
+        this.errorMsg = "It's not allowed to use ' . ' in a username";
       } else {
         this.errorMsg = "Username not available. Please choose another username."
       }

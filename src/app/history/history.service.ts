@@ -3,8 +3,6 @@ import {Tracking} from "../model/tracking";
 import {Observable} from "rxjs";
 import {Http, Headers, Response} from "@angular/http";
 import * as myGlobals from "./../globals";
-import {User} from "../model/user";
-import {AuthService} from "../authentication/auth.service";
 
 @Injectable()
 export class HistoryService {
