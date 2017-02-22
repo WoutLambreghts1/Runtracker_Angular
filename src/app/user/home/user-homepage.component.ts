@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {UserHomepageService} from "./user-homepage.service";
 import {User} from "../../model/user";
-import {Router} from "@angular/router";
 import {CoreInfo} from "../../model/coreinfo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'userHomepage',
