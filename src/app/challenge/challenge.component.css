@@ -2,6 +2,7 @@
 .container{
   background: white;
   background-size: cover;
+  height:80vh;
 }
 .wrapper{
   min-height: 960px;

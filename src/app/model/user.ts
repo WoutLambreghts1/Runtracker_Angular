@@ -15,9 +15,6 @@ export class User {
   maxDistance: number;
   maxSpeed: number;
   nrOfCompetitionsWon: number;
-  ranMarathon: boolean;
-  ranTenKm: boolean;
-  ranTwentyKm: boolean;
   totalDistance: number;
   trackings: Tracking[];
   userId: number;

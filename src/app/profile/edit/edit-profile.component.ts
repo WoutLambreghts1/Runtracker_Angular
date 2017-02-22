@@ -10,7 +10,7 @@ import {AuthService} from "../../authentication/auth.service";
   providers: [EditProfileService]
 })
 
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit{
   private user;
   private errorMsg;
   private available: boolean;
