@@ -6,11 +6,12 @@ import {FormsModule} from "@angular/forms";
 import {FriendProfilePageComponent} from "./profile/friend-profilepage.component";
 import {FriendsService} from "./friends.service";
 import {FriendProfilePageService} from "./profile/friend-profilepage.service";
+import {FriendCardComponent} from "./friend-card/friend-card.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, FriendsRoutingModule],
   providers: [FriendsService,FriendProfilePageService],
-  declarations: [FriendsComponent,FriendProfilePageComponent],
+  declarations: [FriendsComponent,FriendProfilePageComponent,FriendCardComponent],
 })
 
 export class FriendsModule {
