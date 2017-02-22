@@ -10,6 +10,6 @@ export class HomepageFeedComponent implements OnInit{
   @Input() friends: User[];
 
   ngOnInit(): void {
-    console.log(this.friends);
+    console.log('friends:' + this.friends);
   }
 }
