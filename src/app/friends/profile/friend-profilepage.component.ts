@@ -28,19 +28,4 @@ export class FriendProfilePageComponent implements OnInit {
       this.coreInfo = new CoreInfo(this.friend);
     }, err => console.error(err));
   }
-
-  //WEGDOEN ALS CORE COMPONENT JUIST STAAT!!!
-  setTrophies(hasTrophy: boolean) {
-    if (hasTrophy) {
-      return {
-        'background': 'gold',
-        'border': '2px solid darkgoldenrod',
-      };
-    } else {
-      return {
-        'background': 'lightgray',
-        'border': '2px solid gray',
-      };
-    }
-  }
 }
