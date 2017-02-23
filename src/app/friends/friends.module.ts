@@ -8,11 +8,12 @@ import {FriendsService} from "./friends.service";
 import {FriendProfilePageService} from "./profile/friend-profilepage.service";
 import {FriendCardComponent} from "./friend-card/friend-card.component";
 import {SharedModule} from "../shared/shared.module";
+import {SearchPipe} from "./searchpipe";
 
 @NgModule({
   imports: [CommonModule, FormsModule, FriendsRoutingModule, SharedModule],
   providers: [FriendsService,FriendProfilePageService],
-  declarations: [FriendsComponent,FriendProfilePageComponent,FriendCardComponent],
+  declarations: [FriendsComponent,FriendProfilePageComponent,FriendCardComponent, SearchPipe],
 })
 
 export class FriendsModule {
