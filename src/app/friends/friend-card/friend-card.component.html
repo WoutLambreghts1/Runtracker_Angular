@@ -1,6 +1,8 @@
+<a [routerLink]="['/friends', friend.username]">
 <span class="username-span">{{friend.username}}</span>
 <div class="user-summary">
   <span *ngIf="friend.firstname">{{friend.firstname}}</span>
   <span *ngIf="friend.lastname">{{friend.lastname}}</span>
   <span *ngIf="friend.city">({{friend.city}})</span>
 </div>
+</a>
