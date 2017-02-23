@@ -1,0 +1,36 @@
+:host {
+  width: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.goal, .competitionType {
+  font-weight: 700;
+  color: #0a568c;
+}
+
+.creator {
+  color: #777777;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+#open, #closed {
+  margin-right: 2rem;
+  font-weight: 700;
+}
+
+#open {
+  color: #2c973c;
+}
+
+#closed {
+  color: #ff3c2b;
+}
+
+.participants {
+  float: right;
+  margin-right: 5rem;
+}
+

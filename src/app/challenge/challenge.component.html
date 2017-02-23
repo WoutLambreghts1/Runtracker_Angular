@@ -1,113 +1,66 @@
 <div class="container background-container">
-  <h1>My challenges</h1>
-  <hr>
-  <div class="container-fluid custom-navigation">
-    <form class="navbar-form">
-      <button id="btn-new-challenge" class="btn btn-success" data-toggle="modal" data-target="#competitionModal"
-              (click)="onClickNewCompetition()">New
-        Challenge <span class="glyphicon glyphicon-plus extra-margin" aria-hidden="true"></span></button>
-    </form>
-  </div>
+  <h1>Challenge</h1>
+  <h2>Challenge people and participate in challenges</h2>
 
-  <div class="clearfix"></div>
+  <button id="btn-new-challenge" class="btn btn-success" data-toggle="modal" data-target="#competitionModal"
+          (click)="onClickNewCompetition()">New Challenge <span class="glyphicon glyphicon-plus extra-margin"
+                                                                aria-hidden="true"></span></button>
+
 
   <!-- Tabs competing & created -->
   <ul class="nav nav-tabs">
-    <li class="active"><a id="tab-running" data-toggle="tab" href="#running">Running challenges <span
-      *ngIf="competitionsRun" class="badge">{{competitionsRun.length}}</span></a></li>
-    <li><a id="tab-created" data-toggle="tab" href="#created">Created challenges <span *ngIf="competitionsCreated"
-                                                                                       class="badge">{{competitionsCreated.length}}</span></a>
+    <li class="active">
+      <a id="tab-running" data-toggle="tab" href="#running">Running challenges
+        <span *ngIf="competitionsRun" class="badge">{{competitionsRun.length}}</span>
+      </a>
     </li>
-    <li><a id="tab-available" data-toggle="tab" href="#available">Available challenges <span
-      *ngIf="competitionsAvailable" class="badge">{{competitionsAvailable.length}}</span></a></li>
+    <li>
+      <a id="tab-created" data-toggle="tab" href="#created">Created challenges
+        <span *ngIf="competitionsCreated" class="badge">{{competitionsCreated.length}}</span>
+      </a>
+    </li>
+    <li>
+      <a id="tab-available" data-toggle="tab" href="#available">Available challenges
+        <span *ngIf="competitionsAvailable" class="badge">{{competitionsAvailable.length}}</span>
+      </a>
+    </li>
   </ul>
 
   <div class="tab-content">
 
     <!--Tab with running challenges -->
     <div id="running" class="tab-pane fade">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <tr>
-            <th>Challenge ID</th>
-            <th>Competition type</th>
-            <th>Goal</th>
-            <th>Maximum participants</th>
-            <th>Deadline</th>
-            <th>Status</th>
-          </tr>
-          <tr *ngFor="let competition of competitionsRun">
-            <td>
-              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
-            <td><span *ngIf="competition.competitionType=='NOT_REALTIME'">Challenge</span><span
-              *ngIf="competition.competitionType=='REALTIME'">Live Challenge</span></td>
-            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
-            <td class="text-center"><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
-            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
-            <td><span *ngIf="competition.finished==true">Closed</span><span
-              *ngIf="competition.finished==false">Open</span></td>
-          </tr>
-        </table>
-      </div>
+      <ul class="challengeList table-responsive">
+        <li class="challengeListItem" *ngFor="let competition of competitionsRun">
+          <challenge-item [competition]="competition"></challenge-item>
+        </li>
+      </ul>
     </div>
+
     <!--Tab with created challenges -->
     <div id="created" class="tab-pane fade">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <tr>
-            <th>Challenge ID</th>
-            <th>Goal</th>
-            <th>Maximum participants</th>
-            <th>Deadline</th>
-            <th>Status</th>
-            <th>Delete</th>
-          </tr>
-          <tr *ngFor="let competition of competitionsCreated">
-            <td>
-              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
-            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
-            <td  class="text-center"><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
-            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
-            <td><span *ngIf="competition.finished==true">Closed</span><span
-              *ngIf="competition.finished==false">Open</span></td>
-            <td>
-              <button (click)="onClickDeleteCompetition(competition.competitionId)"
-                      class="btn btn-danger col-md-offset-1" title="Delete"><span
-                class="glyphicon glyphicon-trash"></span></button>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <ul class="challengeList table-responsive">
+        <li class="challengeListItem" *ngFor="let competition of competitionsCreated">
+          <challenge-item [competition]="competition"></challenge-item>
+          <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </li>
+      </ul>
     </div>
+
     <!--Tab with available challenges -->
     <div id="available" class="tab-pane fade">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <tr>
-            <th>Challenge ID</th>
-            <th>Goal</th>
-            <th>Maximum participants</th>
-            <th>Deadline</th>
-            <th>Status</th>
-            <th>Compete</th>
-          </tr>
-          <tr *ngFor="let competition of competitionsAvailable">
-            <td>
-              <span *ngIf="competition.competitionId">{{competition.competitionId}}</span></td>
-            <td><span *ngIf="competition.goal">{{competition.goal.name}}</span></td>
-            <td class="text-center"><span *ngIf="competition.maxParticipants">{{competition.maxParticipants}}</span></td>
-            <td><span *ngIf="competition.deadline">{{competition.deadline}}</span></td>
-            <td><span *ngIf="competition.finished==true">Closed</span><span
-              *ngIf="competition.finished==false">Open</span></td>
-            <td>
-              <button (click)="onClickAddCompetition(competition.competitionId)"
-                      class="btn btn-success text col-md-offset-1">
-                <span class="glyphicon glyphicon-flag"></span></button>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <ul class="challengeList table-responsive">
+        <li class="challengeListItem" *ngFor="let competition of competitionsAvailable">
+          <challenge-item [competition]="competition"></challenge-item>
+          <button (click)="onClickAddCompetition(competition.competitionId)" class="btn btn-success">
+            <span class="glyphicon glyphicon-flag"></span>
+          </button>
+        </li>
+      </ul>
     </div>
+
   </div>
 
 
@@ -123,19 +76,12 @@
         <div class="modal-body">
           <form class="form-horizontal" id="create-form">
             <div class="form-group col-md-10 col-md-offset-1">
-              <label class="col-md-6 control-label">Goal:</label>
+              <label class="col-md-6 control-label">Type:</label>
               <div class="col-md-6">
-                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
-                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
+                <select class="form-control" name="competitionType" [(ngModel)]="newCompetition.competitionType">
+                  <option value="NOT_REALTIME" selected>Challenge</option>
+                  <option value="REALTIME">Live challenge</option>
                 </select>
-              </div>
-            </div>
-
-            <div class="form-group col-md-10 col-md-offset-1">
-              <label class="col-md-6 control-label">Max participants:</label>
-              <div class="col-md-6">
-                <input class="form-control" type="number" value="2" name="maxParticipants"
-                       [(ngModel)]="newCompetition.maxParticipants">
               </div>
             </div>
 
@@ -144,6 +90,21 @@
               <div class="col-md-6">
                 <input class="form-control" type="date" name="deadline"
                        [ngModel]="newCompetition.deadline | date:'yyyy-MM-dd'">
+              </div>
+            </div>
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Max participants:</label>
+              <div class="col-md-6">
+                <input class="form-control" type="number" value="2" name="maxParticipants"
+                       [(ngModel)]="newCompetition.maxParticipants">
+              </div>
+            </div>
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Goal:</label>
+              <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
+                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
+                </select>
               </div>
             </div>
             <div class="form-group text-right">
