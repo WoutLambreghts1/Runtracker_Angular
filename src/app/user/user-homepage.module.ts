@@ -5,14 +5,12 @@ import {UserHomepageComponent} from "./home/user-homepage.component";
 import {UserHomepageRoutingModule} from "./user-homepage-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {UserHomepageService} from "./home/user-homepage.service";
-import {HeaderComponent} from "../homepage/header/header.component";
-import {CoreInfoComponent} from "./core-info/core-info.component";
 import {HomepageFeedComponent} from "./homepage-feed/homepage-feed.component";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, UserHomepageRoutingModule],
+  imports: [CommonModule, FormsModule, UserHomepageRoutingModule, SharedModule],
   providers: [UserHomepageService],
-  declarations: [UserHomepageComponent, CoreInfoComponent, HomepageFeedComponent],
+  declarations: [UserHomepageComponent, HomepageFeedComponent],
 })
 
 export class UserHomepageModule {

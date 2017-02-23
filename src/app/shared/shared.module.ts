@@ -1,12 +1,13 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {HeaderComponent} from "../homepage/header/header.component";
+import {CoreInfoComponent} from "./core-info/core-info.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule],
   providers: [],
-  declarations: [],
+  declarations: [CoreInfoComponent],
+  exports: [CoreInfoComponent]
 })
 
 export class SharedModule {
