@@ -18,8 +18,8 @@ export class FriendProfilePageService {
   }
 
 
-  getFriend(username): Observable<User> {
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getFriend/' + username,{
+  getUser(username): Observable<User> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser/' + username,{
         headers: this.authHeader
       })
       .map((res: Response) =>  res.json())

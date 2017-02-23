@@ -76,12 +76,19 @@
         <div class="modal-body">
           <form class="form-horizontal" id="create-form">
             <div class="form-group col-md-10 col-md-offset-1">
-              <label class="col-md-6 control-label">Type:</label>
+              <label class="col-md-6 control-label">Goal:</label>
               <div class="col-md-6">
-                <select class="form-control" name="competitionType" [(ngModel)]="newCompetition.competitionType">
-                  <option value="NOT_REALTIME" selected>Challenge</option>
-                  <option value="REALTIME">Live challenge</option>
+                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
+                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
                 </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-10 col-md-offset-1">
+              <label class="col-md-6 control-label">Max participants:</label>
+              <div class="col-md-6">
+                <input class="form-control" type="number" value="2" name="maxParticipants"
+                       [(ngModel)]="newCompetition.maxParticipants">
               </div>
             </div>
 
@@ -92,21 +99,7 @@
                        [ngModel]="newCompetition.deadline | date:'yyyy-MM-dd'">
               </div>
             </div>
-            <div class="form-group col-md-10 col-md-offset-1">
-              <label class="col-md-6 control-label">Max participants:</label>
-              <div class="col-md-6">
-                <input class="form-control" type="number" value="2" name="maxParticipants"
-                       [(ngModel)]="newCompetition.maxParticipants">
-              </div>
-            </div>
-            <div class="form-group col-md-10 col-md-offset-1">
-              <label class="col-md-6 control-label">Goal:</label>
-              <div class="col-md-6">
-                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
-                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
-                </select>
-              </div>
-            </div>
+
             <div class="form-group text-right">
             </div>
           </form>
