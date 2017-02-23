@@ -56,7 +56,7 @@ h3 > span{
   border-bottom: none;
 }
 
-.btn-danger{
+.btn-danger, .btn-success{
   margin-left: 1rem;
   margin-right: 1rem;
 }

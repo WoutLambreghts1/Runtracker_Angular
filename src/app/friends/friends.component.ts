@@ -1,4 +1,4 @@
-import {Component,OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FriendsService} from "./friends.service";
 import {User} from "../model/user";
 
@@ -6,18 +6,19 @@ import {User} from "../model/user";
   selector: 'friends',
   templateUrl: 'friends.component.html',
   styleUrls: ['friends.component.css'],
-  providers: [FriendsService]
 })
 
-export class FriendsComponent implements OnInit{
+export class FriendsComponent implements OnInit {
   private potentialFriends: User[] = [];
   private friends: User[] = [];
   private requests: User[] = [];
+  queryString: string = "";
+  queryStringMyFriends: string = "";
 
-  constructor(private FriendsService:FriendsService) {
+  constructor(private FriendsService: FriendsService) {
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.FriendsService.getPotentialFriends().subscribe(
       (users) => {
         this.potentialFriends = users;
@@ -47,20 +48,18 @@ export class FriendsComponent implements OnInit{
     );
   }
 
-  onClickAddFriend(username):void{
+  onClickAddFriend(username): void {
     this.FriendsService.addFriend(username).subscribe(val => console.log(val), err => console.log(err));
     setTimeout(() => this.ngOnInit(), 2000);
   }
 
-  onClickRemoveFriend(username):void{
+  onClickRemoveFriend(username): void {
     this.FriendsService.deleteFriend(username).subscribe(val => console.log(val), err => console.log(err));
     setTimeout(() => this.ngOnInit(), 2000);
   }
 
-  onClickAcceptFriend(username):void{
+  onClickAcceptFriend(username): void {
     this.FriendsService.acceptFriend(username).subscribe(val => console.log(val), err => console.log(err));
     setTimeout(() => this.ngOnInit(), 2000);
   }
-
-
 }
