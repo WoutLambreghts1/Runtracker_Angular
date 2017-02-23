@@ -1,6 +1,6 @@
 import {browser, element, by} from "protractor";
 import * as myGlobals from "../src/app/globals";
-/*
+
 describe('friends-profilepage', () => {
   let username = "runtrackminds2017";
 
@@ -40,4 +40,4 @@ describe('friends-profilepage', () => {
   });
 
 });
-*/
+
