@@ -13,7 +13,7 @@ import {CoreInfo} from "../../model/coreinfo";
 })
 
 export class FriendProfilePageComponent implements OnInit {
-  private friend = new User("","","","");
+  private user = new User("","","","");
   private coreInfo;
 
   constructor(private route: ActivatedRoute,private router: Router,private friendProfilePageService: FriendProfilePageService) {
@@ -22,10 +22,10 @@ export class FriendProfilePageComponent implements OnInit {
   ngOnInit(): void {
     let username = this.route.snapshot.params['username'];
 
-    this.friendProfilePageService.getFriend(username).subscribe((friend: User) => {
-      this.friend = friend;
-      this.friend.gender = this.friend.gender.toLowerCase();
-      this.coreInfo = new CoreInfo(this.friend);
+    this.friendProfilePageService.getUser(username).subscribe((user: User) => {
+      this.user = user;
+      this.user.gender = this.user.gender.toLowerCase();
+      this.coreInfo = new CoreInfo(this.user);
     }, err => console.error(err));
   }
 }
