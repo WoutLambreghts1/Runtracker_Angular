@@ -1,8 +1,8 @@
 import {Http,Headers,Response} from '@angular/http';
 import {Observable} from "rxjs/Observable";
 import {Injectable} from '@angular/core';
-import * as myGlobals from "../globals";
-import {User} from "../model/user";
+import * as myGlobals from "../../globals";
+import {User} from "../../model/user";
 
 @Injectable()
 export class RankingService {
@@ -15,7 +15,7 @@ export class RankingService {
     }
   }
 
-  getFriends(sortoption): Observable<User>{
+  getFriends(sortoption): Observable<User[]>{
     return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getAllFriendsSorted/' + sortoption, {
         headers: this.authHeader
       })
@@ -23,7 +23,7 @@ export class RankingService {
       .catch(this.handleErrorObservable);
   }
 
-  getUsers(sortoption): Observable<User>{
+  getUsers(sortoption): Observable<User[]>{
     return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getAllUsersSorted/' + sortoption, {
         headers: this.authHeader
       })

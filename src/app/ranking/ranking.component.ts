@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {RankingService} from "./ranking.service";
+import {RankingService} from "./ranking-table/ranking-table.service.ts";
 
 
 @Component({
@@ -12,11 +12,8 @@ import {RankingService} from "./ranking.service";
 export class RankingComponent implements OnInit{
 
   ngOnInit(): void {
-  
   }
-  
   constructor() {
-
   }
 
 }
