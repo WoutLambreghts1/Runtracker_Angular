@@ -49,23 +49,20 @@ describe('challenge', () => {
 
   it("Should have correct values",() => {
     let header = element(by.tagName('h1'));
-    expect(header.getText()).toBe('My challenges');
+    expect(header.getText()).toBe('Challenge');
 
 
      btnNewChallenge.click().then(() => {
      browser.driver.sleep(2000);
      let modalHeader = element(by.css('.modal-title'));
-     let inputCompetitionType = element(by.name('competitionType'));
      let inputDeadline = element(by.name('deadline'));
      let inputGoal = element(by.name('goal'));
      let inputMaxParticipants = element(by.name('maxParticipants'));
 
      expect(modalHeader.getText()).toBe('Create new challenge');
-     expect(inputCompetitionType.isPresent()).toBeTruthy();
      expect(inputDeadline.isPresent()).toBeTruthy();
      expect(inputGoal.isPresent()).toBeTruthy();
      expect(inputMaxParticipants.isPresent()).toBeTruthy();
-
      });
 
   });
