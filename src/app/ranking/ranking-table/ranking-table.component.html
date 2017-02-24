@@ -30,8 +30,8 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let user of users">
-    <td></td>
+  <tr *ngFor="let user of users; let i = index">
+    <td>{{i + 1}}</td>
     <td>{{user.username}}</td>
 
     <td class="text-center" *ngIf="orderOption==1">{{user.avgDistance / 1000}} km</td>
