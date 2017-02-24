@@ -31,7 +31,6 @@ export class FriendsComponent implements OnInit {
     this.FriendsService.getFriends().subscribe(
       (friends) => {
         this.friends = friends;
-        console.log(friends);
       },
       error => {
         console.log(error as string);
