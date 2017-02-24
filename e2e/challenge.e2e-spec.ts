@@ -49,7 +49,7 @@ describe('challenge', () => {
 
   it("Should have correct values",() => {
     let header = element(by.tagName('h1'));
-    expect(header.getText()).toBe('My challenges');
+    expect(header.getText()).toBe('Challenge');
 
 
      btnNewChallenge.click().then(() => {
