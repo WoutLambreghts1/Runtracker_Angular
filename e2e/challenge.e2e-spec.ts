@@ -63,6 +63,7 @@ describe('challenge', () => {
      expect(inputDeadline.isPresent()).toBeTruthy();
      expect(inputGoal.isPresent()).toBeTruthy();
      expect(inputMaxParticipants.isPresent()).toBeTruthy();
+
      });
 
   });
