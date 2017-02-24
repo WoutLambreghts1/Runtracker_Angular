@@ -15,6 +15,7 @@ export class User {
   maxDistance: number;
   maxSpeed: number;
   nrOfCompetitionsWon: number;
+  nrOfCompetitionsDone: number;
   totalDistance: number;
   trackings: Tracking[];
   userId: number;
