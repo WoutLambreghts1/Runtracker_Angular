@@ -9,6 +9,7 @@ export const routes: Routes = [
   {path: 'history', loadChildren: 'app/history/history.module#HistoryModule'},
   {path: 'friends', loadChildren: 'app/friends/friends.module#FriendsModule'},
   {path: 'profile', loadChildren: 'app/profile/profile.module#ProfileModule'},
+  {path: 'ranking', loadChildren: 'app/ranking/ranking.module#RankingModule'},
   {path: '', component: HomePageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
