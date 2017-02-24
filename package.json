@@ -6,14 +6,12 @@
   "scripts": {
     "localStart": "ng serve",
     "start": "http-server dist/",
-    "npmInstall": "npm install",
-    "npmUpdate": "npm update",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "preinstall": "npm install -g http-server",
-    "postinstall": "ng build --prod"
+    "postinstall": "ng build --prod --aot"
   },
   "private": true,
   "dependencies": {
