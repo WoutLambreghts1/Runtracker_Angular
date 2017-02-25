@@ -16,7 +16,6 @@ export class RankingComponent implements OnInit{
   private friends: boolean;
   private btnWorld;
   private btnFriends;
-
   constructor(private rankingService:RankingService) {
   }
 
@@ -59,7 +58,7 @@ export class RankingComponent implements OnInit{
       }
     );
   }
-  
+
   static setButtonActive(button):void{
     button.classList.remove('btn-default');
     button.classList.add('btn-primary');

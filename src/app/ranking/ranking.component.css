@@ -1,11 +1,15 @@
 tbody tr:first-child{
-  background-color: #ffd700;
+  background-color: #fae157;
   font-size:3rem;
   font-weight: bold;
 }
 #orderby{
   margin-top: 5rem;
   margin-bottom: 3rem;
+  color: grey;
+}
+i{
+  color: #fae157;
 }
 
 

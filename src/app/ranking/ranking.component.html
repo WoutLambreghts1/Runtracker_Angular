@@ -1,5 +1,5 @@
 <div class="background-container container">
-  <h1>Ranking</h1>
+  <h1>Ranking <i class="fa fa-trophy" aria-hidden="true"></i></h1>
   <hr>
 
   <div class="row col-xs-10 col-xs-offset-1">
@@ -7,7 +7,7 @@
     <button id="button-friends" type="button" class="col-xs-6 btn btn-default" (click)="getFriends(orderOption)">Friends</button>
   </div>
 
-  <div id="orderby" class="row col-xs-6 pull-right">
+  <div id="orderby" class="row col-xs-7 pull-right">
   <div class="form-group">
     <div class="col-xs-4"><label class="control-label"><strong>Order by:</strong></label></div>
     <div class="col-xs-8"><select class="form-control" id="order-option" [(ngModel)]="orderOption" name="order-option" (ngModelChange)="onChangeOrder(orderOption)">
