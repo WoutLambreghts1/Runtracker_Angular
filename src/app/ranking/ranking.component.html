@@ -10,7 +10,8 @@
     </button>
   </div>
 
-  <div id="orderby" class="row col-xs-7 pull-right">
+  <div class="row col-xs-10 col-xs-offset-1">
+  <div id="orderby" class="row col-xs-6 pull-right">
     <div class="form-group">
       <div class="col-xs-4"><label class="control-label"><strong>Order by:</strong></label></div>
       <div class="col-xs-8">
@@ -22,11 +23,12 @@
           <option value="4">Max speed</option>
           <option value="5">Nr. of competitions won</option>
           <option value="6">Nr of competitions done</option>
-          <option value="7">Win ratio</option>
+          <option value="7">Won ratio</option>
           <option value="8">Total distance</option>
         </select>
       </div>
     </div>
+  </div>
   </div>
 
   <table class="table table-striped">
@@ -40,7 +42,7 @@
       <td class="option-text col-xs-5 text-center" *ngIf="orderOption==4">Max speed</td>
       <td class="option-text col-xs-5 text-center" *ngIf="orderOption==5">Nr. of competitions won</td>
       <td class="option-text col-xs-5 text-center" *ngIf="orderOption==6">Nr. of competitions done</td>
-      <td class="option-text col-xs-5 text-center" *ngIf="orderOption==7">Ratio won/done</td>
+      <td class="option-text col-xs-5 text-center" *ngIf="orderOption==7">Won ratio</td>
       <td class="option-text col-xs-5 text-center" *ngIf="orderOption==8">Total distance</td>
     </thead>
 
@@ -54,10 +56,10 @@
       <td class="text-center" *ngIf="orderOption==4">{{user.maxSpeed}} km/h</td>
       <td class="text-center" *ngIf="orderOption==5">{{user.nrOfCompetitionsWon}}</td>
       <td class="text-center" *ngIf="orderOption==6">{{user.nrOfCompetitionsDone}}</td>
-      <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone != 0">{{(user.nrOfCompetitionsWon /
-        user.nrOfCompetitionsDone)*100}} %
+      <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone != 0">{{((user.nrOfCompetitionsWon /
+        user.nrOfCompetitionsDone)*100) | number : '1.0-2' }} %
       </td>
-      <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone == 0">0</td>
+      <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone == 0">0 %</td>
       <td class="text-center" *ngIf="orderOption==8">{{user.totalDistance / 1000}} km</td>
     </tr>
     </tbody>
