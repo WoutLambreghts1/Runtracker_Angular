@@ -1,12 +1,13 @@
 <div class="background-container container">
-  <h1>Ranking <i class="fa fa-trophy" aria-hidden="true"></i></h1>
+  <h1>Ranking <i class="fa fa-trophy gold" aria-hidden="true"></i></h1>
   <hr>
 
   <div class="row col-xs-10 col-xs-offset-1">
-    <button id="button-world" type="button" class="col-xs-6 btn btn-default" (click)="getUsers(orderOption)">World
+    <button id="button-world" type="button" class="col-xs-6 btn btn-default" (click)="getUsers(orderOption)">
+      World <i class="fa fa-globe" aria-hidden="true"></i>
     </button>
     <button id="button-friends" type="button" class="col-xs-6 btn btn-default" (click)="getFriends(orderOption)">
-      Friends
+      Friends <i class="fa fa-users" aria-hidden="true"></i>
     </button>
   </div>
 
@@ -16,7 +17,7 @@
       <div class="col-xs-4"><label class="control-label"><strong>Order by:</strong></label></div>
       <div class="col-xs-8">
         <select class="form-control" id="order-option" [(ngModel)]="orderOption" name="order-option"
-                (ngModelChange)="onChangeOrder(orderOption)">
+                (ngModelChange)="onChangeOrder($event)">
           <option value="1">Average distance</option>
           <option value="2">Average speed</option>
           <option value="3">Max distance</option>
