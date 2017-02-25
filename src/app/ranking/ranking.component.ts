@@ -13,22 +13,28 @@ import {User} from "../model/user";
 export class RankingComponent implements OnInit{
   private users: User[];
   private orderOption = 1;
+  private friends: boolean;
+  private btnWorld;
+  private btnFriends;
 
   constructor(private rankingService:RankingService) {
   }
 
   ngOnInit(): void {
-    this.rankingService.getUsers(this.orderOption).subscribe(
-      (users) => {
-        this.users = users;
-      },
-      error => {
-        console.log(error as string);
-      }
-    );
+    this.btnWorld = document.getElementById('button-world');
+    this.btnFriends = document.getElementById('button-friends');
+    this.btnWorld.click();
   }
 
-  orderFriends(option):void{
+  onChangeOrder(option):void{
+    (this.friends)?this.getFriends(option):this.getUsers(option);
+  }
+
+  getFriends(option):void{
+    RankingComponent.setButtonPassive(this.btnWorld);
+    RankingComponent.setButtonActive(this.btnFriends);
+
+    this.friends = true;
     this.rankingService.getFriends(option).subscribe(
       (users) => {
         this.users = users;
@@ -39,8 +45,11 @@ export class RankingComponent implements OnInit{
     );
   }
 
+  getUsers(option):void{
+    RankingComponent.setButtonPassive(this.btnFriends);
+    RankingComponent.setButtonActive(this.btnWorld);
 
-  orderUsers(option):void{
+    this.friends = false;
     this.rankingService.getUsers(option).subscribe(
       (users) => {
         this.users = users;
@@ -50,4 +59,14 @@ export class RankingComponent implements OnInit{
       }
     );
   }
+  
+  static setButtonActive(button):void{
+    button.classList.remove('btn-default');
+    button.classList.add('btn-primary');
+  };
+
+  static setButtonPassive(button):void{
+    button.classList.remove('btn-primary');
+    button.classList.add('btn-default');
+  };
 }

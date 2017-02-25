@@ -14,7 +14,7 @@ export class RankingService {
       this.authHeader.append('token', this.jwt);
     }
   }
-
+  
   getFriends(sortoption): Observable<User[]>{
     return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getAllFriendsSorted/' + sortoption, {
         headers: this.authHeader

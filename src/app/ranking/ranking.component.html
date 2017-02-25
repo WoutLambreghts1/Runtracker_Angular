@@ -1,10 +1,10 @@
 <div class="background-container container">
   <h1>Ranking</h1>
   <hr>
-  
+
   <div class="row col-xs-10 col-xs-offset-1">
-    <button type="button" class="col-xs-6 btn btn-default" (click)="orderUsers(orderOption)">World</button>
-    <button type="button" class="col-xs-6 btn btn-default" (click)="orderFriends(orderOption)">Friends</button>
+    <button id="button-world" type="button" class="col-xs-6 btn btn-default" (click)="getUsers(orderOption)">World</button>
+    <button id="button-friends" type="button" class="col-xs-6 btn btn-default" (click)="getFriends(orderOption)">Friends</button>
   </div>
 
   <div id="orderby" class="row col-xs-6 pull-right">
@@ -44,7 +44,6 @@
     <tr *ngFor="let user of users; let i = index">
       <td>{{i + 1}}</td>
       <td>{{user.username}}</td>
-
       <td class="text-center" *ngIf="orderOption==1">{{user.avgDistance / 1000}} km</td>
       <td class="text-center" *ngIf="orderOption==2">{{user.avgSpeed}} km/h</td>
       <td class="text-center" *ngIf="orderOption==3">{{user.maxDistance / 1000}} km</td>
@@ -56,6 +55,7 @@
       <td class="text-center" *ngIf="orderOption==8">{{user.totalDistance / 1000}} km</td>
     </tr>
     </tbody>
+
   </table>
 
 </div>
