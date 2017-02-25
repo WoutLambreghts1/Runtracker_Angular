@@ -11,5 +11,8 @@ tbody tr:first-child{
 i{
   color: #fae157;
 }
+.option-text{
+  font-weight: bold;
+}
 
 

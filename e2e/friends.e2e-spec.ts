@@ -53,7 +53,6 @@ describe('friends', () => {
 
   });
 
-/*
   it("Should delete a friend",() => {
     let tabMyFriends= element(by.id('tab-my-friends'));
     tabMyFriends.click().then(() => {
@@ -67,5 +66,4 @@ describe('friends', () => {
       browser.driver.sleep(4000);
     });
   })
-*/
 });

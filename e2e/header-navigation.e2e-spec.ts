@@ -21,6 +21,7 @@ describe('header-navigation', () => {
   let navFriends = element(by.id('friends'));
   let navHistory = element(by.id('history'));
   let navChallenge = element(by.id('challenge'));
+  let navRanking = element(by.id('ranking'));
   let navLogout = element(by.id('logout'));
 
   it('Should have a correct url', () => {
@@ -39,6 +40,7 @@ describe('header-navigation', () => {
     expect(navHistory.isPresent()).toBeTruthy();
     expect(navChallenge.isPresent()).toBeTruthy();
     expect(navLogout.isPresent()).toBeTruthy();
+    expect(navRanking.isPresent()).toBeTruthy();
   });
 
   it('Home should navigate to /home', () => {
@@ -74,6 +76,13 @@ describe('header-navigation', () => {
     navChallenge.click().then(() => {
       browser.driver.sleep(2000);
       expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/challenge');
+    });
+  });
+
+  it('Challenge should navigate to /ranking', () => {
+    navRanking.click().then(() => {
+      browser.driver.sleep(2000);
+      expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/ranking');
     });
   });
 
