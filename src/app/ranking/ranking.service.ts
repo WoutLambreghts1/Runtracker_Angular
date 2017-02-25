@@ -1,8 +1,8 @@
 import {Http,Headers,Response} from '@angular/http';
 import {Observable} from "rxjs/Observable";
 import {Injectable} from '@angular/core';
-import * as myGlobals from "../../globals";
-import {User} from "../../model/user";
+import * as myGlobals from "../globals";
+import {User} from "../model/user";
 
 @Injectable()
 export class RankingService {
