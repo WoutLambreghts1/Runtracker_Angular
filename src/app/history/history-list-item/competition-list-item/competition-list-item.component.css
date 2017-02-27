@@ -1,0 +1,39 @@
+:host {
+  padding: 1.5rem 1rem;
+}
+
+.competition-summary {
+  color: #777777;
+}
+
+.creation > span {
+  float: right;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a568c;
+  margin: 2rem 0 0.5rem 0;
+}
+
+.winner {
+  margin-bottom: 2rem;
+}
+
+.winner > span {
+  font-weight: 600;
+  color: #168b19;
+}
+
+.winning-data {
+  margin: 0;
+}
+
+.winning-data > span {
+  margin-right: 2rem;
+}
+
+a {
+  text-decoration: none;
+}

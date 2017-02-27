@@ -1,0 +1,18 @@
+<div class="avatars">
+
+</div>
+<div class="competition-summary">
+  <p class="creation">{{competition?.trackings[0]?.time?.getDate()}}
+    <span>Created by {{competition?.userCreated?.username}}</span>
+  </p>
+
+  <h1>{{competition?.name}} <span>{{competition?.goal?.name}}</span></h1>
+
+  <p class="winner">Won by <span>{{competition?.userWon?.username}}</span></p>
+  <p class="winning-data">
+    <span>{{competition?.goal?.name}}</span>
+    <span>{{competition?.trackings[0]?.totalDuration}}</span>
+    <span>{{competition?.trackings[0]?.avgSpeed}} km/h</span>
+  </p>
+</div>
+
