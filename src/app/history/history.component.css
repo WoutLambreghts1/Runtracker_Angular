@@ -1,0 +1,11 @@
+.history-list{
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.history-list:hover{
+  background: #f2f2f2;
+}
+
+.history-list:last-child {
+  border-bottom: none;
+}
