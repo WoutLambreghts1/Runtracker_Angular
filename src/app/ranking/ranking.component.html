@@ -12,10 +12,9 @@
   </div>
 
   <div class="row col-xs-10 col-xs-offset-1">
-  <div id="orderby" class="row col-xs-6 pull-right">
+  <div id="orderby" class="row col-xs-8 col-xs-offset-2">
     <div class="form-group">
-      <div class="col-xs-4"><label class="control-label"><strong>Order by:</strong></label></div>
-      <div class="col-xs-8">
+      <div class="col-xs-6 col-xs-offset-3">
         <select class="form-control" id="order-option" [(ngModel)]="orderOption" name="order-option"
                 (ngModelChange)="onChangeOrder($event)">
           <option value="1">Average distance</option>
