@@ -3,6 +3,7 @@ import {ChallengeService} from "./challenge.service";
 import {AuthService} from "./../authentication/auth.service";
 import {Competition} from "../model/competition";
 import {Goal} from "../model/goal";
+import {User} from "../model/user";
 
 @Component({
   selector: 'challenge',
@@ -12,79 +13,42 @@ import {Goal} from "../model/goal";
 })
 
 export class ChallengeComponent implements OnInit{
-  private newCompetition:Competition;
-  private goals:Goal[] = [];
-  private competitionsAvailable:Competition[] = [];
-  private competitionsRun:Competition[] = [];
-  private competitionsCreated:Competition[] = [];
+  private competitionsLive:Competition[] = [];
+  private competitionSelected:Competition = new Competition();
 
   constructor(private challengeService:ChallengeService, private auth:AuthService) {
+    let u1:User = new User("","","","");
+    let u2:User = new User("","","","");
+    this.competitionSelected.usersRun = [u1,u2];
   }
 
+  onClickSetCompetition(c:Competition){
+    this.competitionSelected=c;
+  }
 
   ngOnInit():void {
-    this.onClickNewCompetition();
-    //Get goals (to create competition), available competitions (to compete), all competing competitions & all created competitions
-    this.challengeService.getGoals().subscribe(
-      (goals) => {
-        this.goals = goals;
-      },
-      error => {
-        console.log(error as string);
-      }
-    );
-
-    this.challengeService.getAllAvailableCompetitions().subscribe(
-      (competitions:Competition[]) => {
-        this.competitionsAvailable = competitions;
-      },
-      error => {
-        console.log(error as string);
-      }
-    );
-
-    this.challengeService.getAllCompetitionsRun().subscribe(
+    this.challengeService.getLiveCompetitions().subscribe(
       (competitions) => {
-        this.competitionsRun = competitions;
+        this.competitionsLive = competitions;
       },
       error => {
         console.log(error as string);
       }
     );
-
-    this.challengeService.getAllCompetitionsCreated().subscribe(
-      (competitions) => {
-        this.competitionsCreated = competitions;
-      },
-      error => {
-        console.log(error as string);
-      }
-    );
+    /*
+    let c:Competition=new Competition();
+    let u1:User = new User("woutl","Wout","Lambreghts","MALE");
+    let u2:User = new User("alexvr","Alexander","van Ravestyn","MALE");
+    let g:Goal = new Goal(1,"1000 meters",1000);
+    c.usersRun = [];
+    c.usersRun[0]=u1;
+    c.usersRun[1]=u2;
+    c.goal=g;
+    c.name="Let's run 1000 meters!";
+    this.competitionsLive[0]=c;
+*/
   }
 
-  //Create new competition object
-  private onClickNewCompetition():void {
-    this.newCompetition = new Competition();
-    this.newCompetition.goal = this.goals[0];
-  }
-
-  //Add competition to user
-  private onClickAddCompetition(competitionId):void {
-    this.challengeService.addCompetitionToUser(competitionId).subscribe(val => console.log(val), err => console.log(err));
-    setTimeout(() => this.ngOnInit(), 2000);
-  }
-
-  //Create competition
-  private onClickCreateCompetition(competition:Competition):void {
-    this.challengeService.createCompetition(competition).subscribe(val => this.ngOnInit(), err => console.log(err));
-    setTimeout(() => this.ngOnInit(), 2000);
-  }
-
-  //Delete competition
-  private onClickDeleteCompetition(competitionId):void {
-    this.challengeService.deleteCompetition(competitionId).subscribe(val => console.log(val), err => console.log(err));
-    setTimeout(() => this.ngOnInit(), 2000);
-  }
 
 
 }

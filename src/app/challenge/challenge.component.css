@@ -1,5 +1,3 @@
-/*@import url("//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");*/
-
 .container {
   min-height: 80vh;
   padding: 1rem 3rem;
@@ -10,19 +8,6 @@ h2 {
   margin-bottom: 3rem;
   color: #999;
   margin-top: 1rem;
-}
-
-#btn-new-challenge {
-  margin-bottom: 3rem;
-}
-
-.badge{
-  margin-left: 1rem;
-  background-color: #9e9e9e;
-}
-
-label.gender {
-  padding-top: 0 !important;
 }
 
 .extra-margin {
@@ -49,9 +34,30 @@ label.gender {
 .challengeListItem:last-child {
   border-bottom: none;
 }
-
-.challengeListItem > .btn-success, .challengeListItem > .btn-danger {
-margin-right: 1rem;
+#challenge-screen{
+  background-color: lightgrey;
+  min-height: 60vh;
+  min-width: 70vh;
+}
+.runner-one{
+  float: left;
+  margin-left: 2rem;
+  font-weight: bold;
+  color: black;
+}
+.runner-two{
+  float: right;
+  margin-right: 2rem;
+  font-weight: bold;
+  color: white;
+}
+.modal-content{
+  min-width: 120vh;
+  min-height: 70vh;
+}
+.modal-dialog{
+  margin-left: 40vh;
+  margin-right: 40vh;
 }
 
 

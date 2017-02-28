@@ -1,99 +1,37 @@
 <div class="container background-container">
-  <h1>Challenge</h1>
-  <h2>Challenge people and participate in challenges</h2>
+  <h1>Live challenges</h1>
+  <h2>Watch people challenge each other! <span class="glyphicon glyphicon-flag"></span></h2>
 
-  <button id="btn-new-challenge" class="btn btn-success" data-toggle="modal" data-target="#competitionModal"
-          (click)="onClickNewCompetition()">New Challenge <span class="glyphicon glyphicon-plus extra-margin"
-                                                                aria-hidden="true"></span></button>
-
-
-  <!-- Tabs competing & created -->
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a id="tab-running" data-toggle="tab" href="#running">Running challenges
-        <span *ngIf="competitionsRun" class="badge">{{competitionsRun.length}}</span>
-      </a>
-    </li>
-    <li>
-      <a id="tab-created" data-toggle="tab" href="#created">Created challenges
-        <span *ngIf="competitionsCreated" class="badge">{{competitionsCreated.length}}</span>
-      </a>
-    </li>
-    <li>
-      <a id="tab-available" data-toggle="tab" href="#available">Available challenges
-        <span *ngIf="competitionsAvailable" class="badge">{{competitionsAvailable.length}}</span>
-      </a>
-    </li>
-  </ul>
-
-  <div class="tab-content">
-
-    <!--Tab with running challenges -->
-    <div id="running" class="tab-pane fade">
+   <div id="live-competitions">
       <ul class="challengeList table-responsive">
-        <li class="challengeListItem" *ngFor="let competition of competitionsRun">
+        <li class="challengeListItem" data-toggle="modal" (click)="onClickSetCompetition(competition)"
+            data-target="#competitionModal" *ngFor="let competition of competitionsLive">
           <challenge-item [competition]="competition"></challenge-item>
         </li>
       </ul>
     </div>
 
-    <!--Tab with created challenges -->
-    <div id="created" class="tab-pane fade">
-      <ul class="challengeList table-responsive">
-        <li class="challengeListItem" *ngFor="let competition of competitionsCreated">
-          <challenge-item [competition]="competition"></challenge-item>
-          <button (click)="onClickDeleteCompetition(competition.competitionId)" class="btn btn-danger" title="Delete">
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
-        </li>
-      </ul>
-    </div>
 
-    <!--Tab with available challenges -->
-    <div id="available" class="tab-pane fade">
-      <ul class="challengeList table-responsive">
-        <li class="challengeListItem" *ngFor="let competition of competitionsAvailable">
-          <challenge-item [competition]="competition"></challenge-item>
-          <button (click)="onClickAddCompetition(competition.competitionId)" class="btn btn-success">
-            <span class="glyphicon glyphicon-flag"></span>
-          </button>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-
-  <!-- Modal create competition -->
+  <!-- Modal live challenge -->
   <div class="modal fade" id="competitionModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-info">Create new challenge</h4>
+          <h4 class="modal-title text-info">
+            <i class="fa fa-television" aria-hidden="true"></i> {{competitionSelected.name}}
+          </h4>
         </div>
         <div class="modal-body">
-          <form class="form-horizontal" id="create-form">
-            <div class="form-group col-md-10 col-md-offset-1">
-              <label class="col-md-6 control-label">Goal:</label>
-              <div class="col-md-6">
-                <select class="form-control" [(ngModel)]="newCompetition.goal" name="goal">
-                  <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
-                </select>
-              </div>
-            </div>
 
-            <div class="form-group text-right">
-            </div>
-          </form>
+          <span class="runner-one">{{competitionSelected.usersRun[0].username}}</span><span class="runner-two">{{competitionSelected.usersRun[1].username}}</span>
+          <div id="challenge-screen">
+
+          </div>
 
           <!--modal footer-->
           <div class="modal-footer">
-            <button id="create-challenge" (click)="onClickCreateCompetition(newCompetition)" data-dismiss="modal"
-                    class="btn btn-primary">Create
-              challenge
-            </button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
