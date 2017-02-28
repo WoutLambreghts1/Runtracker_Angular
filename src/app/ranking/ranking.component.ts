@@ -61,11 +61,11 @@ export class RankingComponent implements OnInit{
 
   static setButtonActive(button):void{
     button.classList.remove('btn-default');
-    button.classList.add('btn-primary');
+    button.classList.add('btn-active');
   };
 
   static setButtonPassive(button):void{
-    button.classList.remove('btn-primary');
+    button.classList.remove('btn-active');
     button.classList.add('btn-default');
   };
 }

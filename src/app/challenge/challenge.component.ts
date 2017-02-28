@@ -35,18 +35,6 @@ export class ChallengeComponent implements OnInit{
         console.log(error as string);
       }
     );
-    /*
-    let c:Competition=new Competition();
-    let u1:User = new User("woutl","Wout","Lambreghts","MALE");
-    let u2:User = new User("alexvr","Alexander","van Ravestyn","MALE");
-    let g:Goal = new Goal(1,"1000 meters",1000);
-    c.usersRun = [];
-    c.usersRun[0]=u1;
-    c.usersRun[1]=u2;
-    c.goal=g;
-    c.name="Let's run 1000 meters!";
-    this.competitionsLive[0]=c;
-*/
   }
 
 

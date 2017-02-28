@@ -4,8 +4,8 @@ tbody tr:first-child{
 #orderby{
   margin-top: 5rem;
   margin-bottom: 3rem;
-  color: grey;
-  text-align: center;
+  text-align-last: center;
+  font-weight: bold;
 }
 .gold{
   color: #fae157;
@@ -13,5 +13,25 @@ tbody tr:first-child{
 .option-text{
   font-weight: bold;
 }
-
+th{
+  background-color: #dedede;
+}
+tr{
+  cursor: pointer;
+}
+thead{
+  border-bottom: 0.3rem solid darkgray;
+}
+.btn-active{
+  background-color: #dedede;
+}
+.fa-globe{
+  color: #378013;
+}
+.fa-users{
+  color: cornflowerblue;
+}
+button{
+  border: 0.1rem solid darkgray;
+}
 

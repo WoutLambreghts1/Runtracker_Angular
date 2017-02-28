@@ -12,55 +12,56 @@
   </div>
 
   <div class="row col-xs-10 col-xs-offset-1">
-  <div id="orderby" class="row col-xs-8 col-xs-offset-2">
-    <div class="form-group">
-      <div class="col-xs-6 col-xs-offset-3">
-        <select class="form-control" id="order-option" [(ngModel)]="orderOption" name="order-option"
-                (ngModelChange)="onChangeOrder($event)">
-          <option value="1">Average distance</option>
-          <option value="2">Average speed</option>
-          <option value="3">Max distance</option>
-          <option value="4">Max speed</option>
-          <option value="5">Nr. of competitions won</option>
-          <option value="6">Nr of competitions done</option>
-          <option value="7">Won ratio</option>
-          <option value="8">Total distance</option>
-        </select>
+    <div id="orderby" class="row col-xs-8 col-xs-offset-2">
+      <div class="form-group">
+        <div class="col-xs-6 col-xs-offset-3">
+          <select class="form-control" id="order-option" [(ngModel)]="orderOption" name="order-option"
+                  (ngModelChange)="onChangeOrder($event)">
+            <option value="1">Average distance</option>
+            <option value="2">Average speed</option>
+            <option value="3">Max distance</option>
+            <option value="4">Max speed</option>
+            <option value="5">Nr. of competitions won</option>
+            <option value="6">Nr of competitions done</option>
+            <option value="7">Won ratio</option>
+            <option value="8">Total distance</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
-  </div>
 
-  <table class="table table-striped">
+  <table class="table table-hover">
     <thead>
     <tr>
       <th class="col-xs-4">Rank</th>
       <th class="col-xs-4">Username</th>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==1">Average distance</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==2">Average speed</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==3">Max distance</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==4">Max speed</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==5">Nr. of competitions won</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==6">Nr. of competitions done</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==7">Won ratio</td>
-      <td class="option-text col-xs-4 text-center" *ngIf="orderOption==8">Total distance</td>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==1">Average distance</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==2">Average speed</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==3">Max distance</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==4">Max speed</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==5">Nr. of competitions won</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==6">Nr. of competitions done</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==7">Won ratio</th>
+      <th class="col-xs-4 text-center" *ngIf="orderOption==8">Total distance</th>
+    </tr>
     </thead>
 
     <tbody>
-    <tr *ngFor="let user of users; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{user.username}}</td>
-      <td class="text-center" *ngIf="orderOption==1">{{user.avgDistance / 1000}} km</td>
-      <td class="text-center" *ngIf="orderOption==2">{{user.avgSpeed}} km/h</td>
-      <td class="text-center" *ngIf="orderOption==3">{{user.maxDistance / 1000}} km</td>
-      <td class="text-center" *ngIf="orderOption==4">{{user.maxSpeed}} km/h</td>
-      <td class="text-center" *ngIf="orderOption==5">{{user.nrOfCompetitionsWon}}</td>
-      <td class="text-center" *ngIf="orderOption==6">{{user.nrOfCompetitionsDone}}</td>
-      <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone != 0">{{((user.nrOfCompetitionsWon /
-        user.nrOfCompetitionsDone)*100) | number : '1.0-2' }} %
-      </td>
-      <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone == 0">0 %</td>
-      <td class="text-center" *ngIf="orderOption==8">{{user.totalDistance / 1000}} km</td>
+    <tr [routerLink]="['/friends', user.username]" *ngFor="let user of users; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{user.username}}</td>
+        <td class="text-center" *ngIf="orderOption==1">{{user.avgDistance / 1000}} km</td>
+        <td class="text-center" *ngIf="orderOption==2">{{user.avgSpeed}} km/h</td>
+        <td class="text-center" *ngIf="orderOption==3">{{user.maxDistance / 1000}} km</td>
+        <td class="text-center" *ngIf="orderOption==4">{{user.maxSpeed}} km/h</td>
+        <td class="text-center" *ngIf="orderOption==5">{{user.nrOfCompetitionsWon}}</td>
+        <td class="text-center" *ngIf="orderOption==6">{{user.nrOfCompetitionsDone}}</td>
+        <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone != 0">{{((user.nrOfCompetitionsWon /
+          user.nrOfCompetitionsDone)*100) | number : '1.0-2' }} %
+        </td>
+        <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone == 0">0 %</td>
+        <td class="text-center" *ngIf="orderOption==8">{{user.totalDistance / 1000}} km</td>
     </tr>
     </tbody>
 
