@@ -29,7 +29,7 @@ export class ChallengeService {
     c.usersRun[0]=u1;
     c.usersRun[1]=u2;
     c.goal=g;
-    c.name="Let's run 5000 meters!";
+    c.name="Let's run 1000 meters!";
     competitionsLive[0]=c;
     c=new Competition();
     u1 = new User("jellem","Jelle","Mannaerts","MALE");
