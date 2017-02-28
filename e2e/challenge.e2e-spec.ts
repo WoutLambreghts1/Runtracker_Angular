@@ -21,13 +21,13 @@ describe('challenge', () => {
 
   });
 
-;
   //CompetitionModal
   let competitionModal = element(by.id('competitionModal'));
   let h1 = element(by.tagName('h1'));
   let h2 = element(by.tagName('h2'));
 
   it('Should have a correct url', () => {
+    browser.driver.sleep(2000);
     expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/challenge');
   });
 
