@@ -38,6 +38,7 @@ export class HistoryComponent implements OnInit {
       .subscribe(data => {
           if (data != null) {
             data.forEach(x => {
+              x => x.time = new Date(x.time);
               let temp = new HistoryWrapper();
               temp.type = 'competition';
               temp.makeCompetitionHistory(x);

@@ -3,5 +3,5 @@
 <div class="challenge-summary">
   <span id="live">Live</span>
   <span *ngIf="competition.goal==true">{{competition.goal.name}}</span>
-  <span class="participants" *ngIf="competition.usersRun"><strong>{{competition.usersRun[0].username}} VS {{competition.usersRun[1].username}}</strong></span>
+  <span class="date" *ngIf="competition.time"><strong>Started on</strong> {{competition.time | date: 'yyyy/MM/dd HH:mm'}}</span>
 </div>

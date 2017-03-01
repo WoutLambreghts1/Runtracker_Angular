@@ -13,9 +13,10 @@
   font-weight: 700;
   color: #00ee00;
 }
-.participants {
+.date {
   float: right;
   margin-right: 5rem;
+  color: #777777;
 }
 
 

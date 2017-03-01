@@ -17,41 +17,12 @@ export class ChallengeService {
     }
   }
 
-  //TODO:Get topic from MQTT
   getLiveCompetitions():Observable<Competition[]>{
-    //Testdata
-    let competitionsLive:Competition[] = [];
-    let c:Competition=new Competition();
-    let u1:User = new User("woutl","Wout","Lambreghts","MALE");
-    let u2:User = new User("alexvr","Alexander","van Ravestyn","MALE");
-    let g:Goal = new Goal(1,"1000 meters",1000);
-    c.usersRun = [];
-    c.usersRun[0]=u1;
-    c.usersRun[1]=u2;
-    c.goal=g;
-    c.name="Let's run 1000 meters!";
-    competitionsLive[0]=c;
-    c=new Competition();
-    u1 = new User("jellem","Jelle","Mannaerts","MALE");
-    u2 = new User("alexvr","Alexander","van Ravestyn","MALE");
-    g = new Goal(2,"5000 meters",5000);
-    c.usersRun = [];
-    c.usersRun[0]=u1;
-    c.usersRun[1]=u2;
-    c.goal=g;
-    c.name="Let's run 5000 meters!";
-    competitionsLive[1]=c;
-    c =new Competition();
-    u1 = new User("Jenss","Jens","Schadron","MALE");
-    u2 = new User("Stijne","Stijn","Ergeerts","MALE");
-    g = new Goal(3,"2000 meters",2000);
-    c.usersRun = [];
-    c.usersRun[0]=u1;
-    c.usersRun[1]=u2;
-    c.goal=g;
-    c.name="Let's run 2000 meters!";
-    competitionsLive[2]=c;
-    return Observable.of(competitionsLive);
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getNonFinishedCompetitionsFriends', {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(this.handleErrorObservable);
   }
 
 
