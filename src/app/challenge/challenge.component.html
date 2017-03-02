@@ -15,25 +15,21 @@
   <!-- Modal live challenge -->
   <div class="modal fade" id="competitionModal" role="dialog">
     <div class="modal-dialog">
-      <!-- Modal content-->
       <div class="modal-content">
+
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title text-info">
             <i class="fa fa-television" aria-hidden="true"></i> {{competitionSelected.name}}
           </h4>
         </div>
+        
         <div class="modal-body">
+            <player-information [player]="competitionSelected.usersRun[0]" id="player-one" class="col-xs-3"></player-information>
 
-          <span class="runner-one">{{competitionSelected.usersRun[0].username}}</span><span class="runner-two">{{competitionSelected.usersRun[1].username}}</span>
-          <div id="challenge-screen">
+            <challenge-screen class="col-xs-6"></challenge-screen>
 
-          </div>
-
-          <!--modal footer-->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
+            <player-information [player]="competitionSelected.usersRun[1]" id="player-two" class="col-xs-3"></player-information>
         </div>
 
       </div>

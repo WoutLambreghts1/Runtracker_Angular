@@ -1,0 +1,11 @@
+<h3 class="username">{{player.username}}</h3>
+
+<div class="player-summary">
+  <span id="name"><strong>Name: </strong> {{player.firstname}} {{player.lastname}}</span><br>
+  <span id="wins"><strong>Wins: </strong> {{player.nrOfCompetitionsWon}}</span><br>
+  <span *ngIf="player.nrOfCompetitionsDone != 0" class="win-ratio"><strong>Win ratio: </strong> {{player.nrOfCompetitionsWon / player.nrOfCompetitionsDone | number : '1.0-2' }} %</span>
+  <span *ngIf="player.nrOfCompetitionsDone == 0" class="win-ratio"><strong>Win ratio: </strong> 0 %</span><br>
+
+  <span id="total-distance"><strong>Total distance: </strong> {{player.totalDistance / 1000}} km</span><br>
+  <span id="avg-speed"><strong>Average speed: </strong> {{player.avgSpeed}} km/h</span><br>
+</div>
