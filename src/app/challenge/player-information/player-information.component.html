@@ -1,4 +1,4 @@
-<div (mousemove)="myMap.triggerResize()">
+<div (mousemove)="mapStart.triggerResize()">
 <h3 class="username">{{player.username}}</h3>
 
 <div class="player-summary">
@@ -10,7 +10,7 @@
   <span id="avg-speed"><strong>Average speed: </strong> {{player.avgSpeed}} km/h</span><br>
 </div>
 
-<sebm-google-map #myMap [latitude]="lat+0.6" [longitude]="lng-0.6" [zoom]="7">
-  <sebm-google-map-marker [label]="player.username" [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+<sebm-google-map #mapStart [latitude]="lat+0.6" [longitude]="lng-0.8" [zoom]="7">
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
 </sebm-google-map>
 </div>
