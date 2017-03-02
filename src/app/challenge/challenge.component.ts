@@ -16,10 +16,22 @@ export class ChallengeComponent implements OnInit{
   private competitionsLive:Competition[] = [];
   private competitionSelected:Competition = new Competition();
 
+  private userOneLat:number;
+  private userOneLng:number;
+  private userTwoLat:number;
+  private userTwoLng:number;
+
   constructor(private challengeService:ChallengeService, private auth:AuthService) {
     let u1:User = new User("","","","");
     let u2:User = new User("","","","");
     this.competitionSelected.usersRun = [u1,u2];
+
+
+    //Set start positions for both players
+    this.userOneLat = 50.52;
+    this.userOneLng = 4.22;
+    this.userTwoLat = 51.2192;
+    this.userTwoLng = 4.4029;
   }
 
   onClickSetCompetition(c:Competition){

@@ -1,21 +1,18 @@
 .username{
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 4vh;
   color: #777777;
+  text-align: center;
 }
-/*
-#live{
-  margin-right: 2rem;
-  font-weight: 700;
-  color: #00ee00;
+.sebm-google-map-container {
+  margin-top: 5vh;
+  height: 20vh;
 }
-.date {
-  float: right;
-  margin-right: 5rem;
-  color: #777777;
+.player-summary{
+  height: 20vh;
 }
-*/
+
 
 
 

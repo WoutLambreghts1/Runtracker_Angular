@@ -23,13 +23,13 @@
             <i class="fa fa-television" aria-hidden="true"></i> {{competitionSelected.name}}
           </h4>
         </div>
-        
+
         <div class="modal-body">
-            <player-information [player]="competitionSelected.usersRun[0]" id="player-one" class="col-xs-3"></player-information>
+            <player-information [player]="competitionSelected.usersRun[0]" [lat]="userOneLat" [lng]="userOneLng" id="player-one" class="col-xs-3"></player-information>
 
             <challenge-screen class="col-xs-6"></challenge-screen>
 
-            <player-information [player]="competitionSelected.usersRun[1]" id="player-two" class="col-xs-3"></player-information>
+            <player-information [player]="competitionSelected.usersRun[1]" [lat]="userTwoLat" [lng]="userTwoLng" id="player-two" class="col-xs-3"></player-information>
         </div>
 
       </div>

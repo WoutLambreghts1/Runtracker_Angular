@@ -1,5 +1,9 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ViewChild, ElementRef, OnInit} from "@angular/core";
 import {User} from "../../model/user";
+
+
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import {SebmGoogleMap} from "angular2-google-maps/esm/core/directives/google-map";
 
 @Component({
   selector: 'player-information',
@@ -8,5 +12,9 @@ import {User} from "../../model/user";
 })
 
 export class PlayerInfoComponent{
+
   @Input() player: User;
+  @Input() lat: number;
+  @Input() lng: number;
+  
 }
