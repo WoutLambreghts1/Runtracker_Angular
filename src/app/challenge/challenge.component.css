@@ -39,18 +39,18 @@ h2 {
 
 #player-one{
   float: left;
-  min-height: 50vh;
+  min-height: 60vh;
 }
 #player-two{
   float: right;
-  min-height: 50vh;
+  min-height: 60vh;
 }
 .modal-content{
-  min-width: 120vh;
-  min-height: 65vh;
+  min-width: 160vh;
+  min-height: 70vh;
 }
 .modal-dialog{
-  margin-left: 40vh;
-  margin-right: 40vh;
+  margin-left: 20vh;
+  margin-right: 20vh;
 }
 
