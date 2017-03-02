@@ -1,5 +1,16 @@
 <div class="container background-container">
   <h1>History</h1>
+  <div style="display: block;">
+    <canvas baseChart width="400" height="100"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
   <p *ngIf="historyWrapperElements == null || historyWrapperElements.length == 0">No trackings present.</p>
   <div class="history-list col-xs-12" *ngFor="let h of historyWrapperElements">
     <tracking-list-item class="col-xs-12" *ngIf="h.type == 'tracking'" [tracking]="h.tracking">

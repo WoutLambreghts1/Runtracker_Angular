@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Http, Headers, Response} from "@angular/http";
 import * as myGlobals from "./../globals";
 import {Competition} from "../model/competition";
+import {HistoryWrapper} from "../model/history-wrapper";
 
 @Injectable()
 export class HistoryService {
@@ -33,6 +34,62 @@ export class HistoryService {
     })
       .map((res: Response) => res.json())
       .catch(this.handleErrorObservable);
+  }
+
+  getAllHistoryEvents(): Observable<any> {
+    return new Observable(obs => {
+        let historyWrapperElements: HistoryWrapper[] = [];
+
+        // get all trackings and put them in a wrapper
+        this.getAllTrackings()
+          .subscribe(data => {
+              if (data != null) {
+                data.forEach(x => {
+                  let temp = new HistoryWrapper();
+                  temp.type = 'tracking';
+                  temp.makeTrackingHistory(x);
+                  historyWrapperElements.push(temp);
+                })
+              }
+            }
+            , err => {
+              obs.error();
+            });
+
+        // get all competitions and put them in a wrapper
+        this.getAllCompetitions()
+          .subscribe(data => {
+              if (data != null) {
+                data.forEach(x => {
+                  x.time = new Date(x.time);
+                  let temp = new HistoryWrapper();
+                  temp.type = 'competition';
+                  temp.makeCompetitionHistory(x);
+                  historyWrapperElements.push(temp);
+                })
+              }
+            }
+            , err => {
+              obs.error();
+            });
+
+        // sort the wrapperelements on date
+        historyWrapperElements.sort((a, b) => {
+          if (a.type == 'competition' && b.type == 'competition') {
+            return a.competition.trackings[0].time.getDate() - b.competition.trackings[0].time.getDate();
+          } else if (a.type == 'competition' && b.type == 'tracking') {
+            return a.competition.trackings[0].time.getDate() - b.tracking.time.getDate();
+          } else if (a.type == 'tracking' && b.type == 'competition') {
+            return a.tracking.time.getDate() - b.competition.trackings[0].time.getDate();
+          } else {
+            return a.tracking.time.getDate() - b.tracking.time.getDate();
+          }
+        });
+
+        obs.next(historyWrapperElements);
+        obs.complete();
+      }
+    )
   }
 
   private handleErrorObservable(error: Response | any): Observable<any> {

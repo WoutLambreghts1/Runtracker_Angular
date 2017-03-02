@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {HistoryService} from "./history.service";
 import {HistoryWrapper} from "../model/history-wrapper";
+import {timeInterval} from "rxjs/operator/timeInterval";
 
 @Component({
   selector: 'history',
@@ -12,54 +13,62 @@ export class HistoryComponent implements OnInit {
   // Wrapper element for chronological overview with trackings AND competitions
   private historyWrapperElements: HistoryWrapper[];
 
+  private historyEventTypes: string[];
+  private comparisonCriteria: string[];
+
+  // Chart data
+  private lineChartData: Array<any> = [{data: [0]}];
+  private lineChartLabels: Array<any> = [];
+  private lineChartColors: Array<any> = [
+    {
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  private lineChartLegend: boolean = false;
+  private lineChartType: string = 'line';
+  private lineChartOptions: any = {responsive: true};
+
   constructor(private historyService: HistoryService) {
   }
 
   ngOnInit(): void {
-    this.historyWrapperElements = [];
+    this.historyService.getAllHistoryEvents().subscribe((val: HistoryWrapper[]) => {
+      this.historyWrapperElements = val;
+      this.setChartData();
+    }, err => console.log(err));
+  }
 
-    // get all trackings and put them in a wrapper
-    this.historyService.getAllTrackings()
-      .subscribe(data => {
-          if (data != null) {
-            data.forEach(x => {
-              let temp = new HistoryWrapper();
-              temp.type = 'tracking';
-              temp.makeTrackingHistory(x);
-              this.historyWrapperElements.push(temp);
-            })
-          }
+  setChartData() {
+    setTimeout(() => {
+     this.lineChartData = this.historyWrapperElements.map(x => {
+        if (x.type == 'competition') {
+          return x.competition.trackings[0].avgSpeed; // geeft nog problemen door slechte trackings in de DB
+        } else {
+          return x.tracking.avgSpeed;
         }
-        , err => {
-        });
-
-    // get all competitions and put them in a wrapper
-    this.historyService.getAllCompetitions()
-      .subscribe(data => {
-          if (data != null) {
-            data.forEach(x => {
-              x => x.time = new Date(x.time);
-              let temp = new HistoryWrapper();
-              temp.type = 'competition';
-              temp.makeCompetitionHistory(x);
-              this.historyWrapperElements.push(temp);
-            })
-          }
+      });
+      this.lineChartLabels = this.historyWrapperElements.map(x => {
+        if (x.type == 'competition') {
+          return x.competition.competitionId;
+        } else {
+          return x.tracking.trackingId;
         }
-        , err => {
-        });
+      });
+    }, 4000);
+  }
 
-    // sort the wrapperelements on date
-    this.historyWrapperElements.sort((a, b) => {
-      if (a.type == 'competition' && b.type == 'competition') {
-        return a.competition.trackings[0].time.getDate() - b.competition.trackings[0].time.getDate();
-      } else if (a.type == 'competition' && b.type == 'tracking') {
-        return a.competition.trackings[0].time.getDate() - b.tracking.time.getDate();
-      } else if (a.type == 'tracking' && b.type == 'competition') {
-        return a.tracking.time.getDate() - b.competition.trackings[0].time.getDate();
-      } else {
-        return a.tracking.time.getDate() - b.tracking.time.getDate();
-      }
-    });
+
+// chart events
+  chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  chartHovered(e: any): void {
+    console.log(e);
   }
 }
