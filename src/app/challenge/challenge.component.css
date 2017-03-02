@@ -34,30 +34,23 @@ h2 {
 .challengeListItem:last-child {
   border-bottom: none;
 }
-#challenge-screen{
-  background-color: lightgrey;
-  min-height: 60vh;
-  min-width: 70vh;
-}
-.runner-one{
+
+
+
+#player-one{
   float: left;
-  margin-left: 2rem;
-  font-weight: bold;
-  color: black;
+  min-height: 60vh;
 }
-.runner-two{
+#player-two{
   float: right;
-  margin-right: 2rem;
-  font-weight: bold;
-  color: white;
+  min-height: 60vh;
 }
 .modal-content{
-  min-width: 120vh;
+  min-width: 160vh;
   min-height: 70vh;
 }
 .modal-dialog{
-  margin-left: 40vh;
-  margin-right: 40vh;
+  margin-left: 20vh;
+  margin-right: 20vh;
 }
-
 
