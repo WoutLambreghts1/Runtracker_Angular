@@ -183,3 +183,16 @@
 [0303/181500.405:ERROR:process_reader_win.cc(114)] NtOpenThread: {Toegang geweigerd} Een proces heeft toegang tot een object aangevraagd, maar heeft deze toegangsrechten niet gekregen.  (0xc0000022)
 [0303/181500.406:ERROR:exception_snapshot_win.cc(87)] thread ID 14404 not found in process
 [0303/181500.406:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
+[0303/204153.925:ERROR:process_reader_win.cc(114)] NtOpenThread: {Toegang geweigerd} Een proces heeft toegang tot een object aangevraagd, maar heeft deze toegangsrechten niet gekregen.  (0xc0000022)
+[0303/204153.926:ERROR:exception_snapshot_win.cc(87)] thread ID 14352 not found in process
+[0303/204153.926:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
+[0303/204344.336:ERROR:process_reader_win.cc(142)] SuspendThread: Toegang geweigerd. (0x5)
+[0303/204344.337:ERROR:process_reader_win.cc(114)] NtOpenThread: {Toegang geweigerd} Een proces heeft toegang tot een object aangevraagd, maar heeft deze toegangsrechten niet gekregen.  (0xc0000022)
+[0303/204344.337:ERROR:exception_snapshot_win.cc(87)] thread ID 9580 not found in process
+[0303/204344.337:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
+[0303/204425.713:ERROR:process_reader_win.cc(114)] NtOpenThread: {Toegang geweigerd} Een proces heeft toegang tot een object aangevraagd, maar heeft deze toegangsrechten niet gekregen.  (0xc0000022)
+[0303/204425.714:ERROR:exception_snapshot_win.cc(87)] thread ID 12168 not found in process
+[0303/204425.714:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
+[0303/204558.888:ERROR:process_reader_win.cc(114)] NtOpenThread: {Toegang geweigerd} Een proces heeft toegang tot een object aangevraagd, maar heeft deze toegangsrechten niet gekregen.  (0xc0000022)
+[0303/204558.888:ERROR:exception_snapshot_win.cc(87)] thread ID 10408 not found in process
+[0303/204558.888:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
