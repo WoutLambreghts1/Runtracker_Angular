@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {HistoryService} from "./history.service";
 import {HistoryWrapper} from "../model/history-wrapper";
-import {timeInterval} from "rxjs/operator/timeInterval";
+import {DateFormatter} from "@angular/common/src/facade/intl";
+import {Chartdata} from "../model/chartdata";
 
 @Component({
   selector: 'history',
@@ -10,14 +11,14 @@ import {timeInterval} from "rxjs/operator/timeInterval";
 })
 
 export class HistoryComponent implements OnInit {
+
   // Wrapper element for chronological overview with trackings AND competitions
   private historyWrapperElements: HistoryWrapper[];
 
-  private historyEventTypes: string[];
-  private comparisonCriteria: string[];
-
+  private historyEventTypes: ['competition', 'tracking', 'all'];
+  private comparisonCriteria: ['average speed', 'total distance', 'average distance'];
   // Chart data
-  private lineChartData: Array<any> = [{data: [0]}];
+  private lineChartData: Array<Chartdata> = [{data: [0]}];
   private lineChartLabels: Array<any> = [];
   private lineChartColors: Array<any> = [
     {
@@ -37,29 +38,37 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.historyService.getAllHistoryEvents().subscribe((val: HistoryWrapper[]) => {
+    this.historyService.getAllHistoryEvents().subscribe((val) => {
+      console.log(val);
       this.historyWrapperElements = val;
       this.setChartData();
     }, err => console.log(err));
   }
 
   setChartData() {
-    setTimeout(() => {
-     this.lineChartData = this.historyWrapperElements.map(x => {
+    //set the chart data
+    this.lineChartData[0] = {
+      data: this.historyWrapperElements.map(x => {
         if (x.type == 'competition') {
-          return x.competition.trackings[0].avgSpeed; // geeft nog problemen door slechte trackings in de DB
+          if (x.competition.trackings != null && x.competition.trackings.length > 0) {
+            return x.competition.trackings[0].avgSpeed;
+          }
         } else {
-          return x.tracking.avgSpeed;
+          if (x.tracking != null)
+            return x.tracking.avgSpeed;
         }
-      });
-      this.lineChartLabels = this.historyWrapperElements.map(x => {
-        if (x.type == 'competition') {
-          return x.competition.competitionId;
-        } else {
-          return x.tracking.trackingId;
-        }
-      });
-    }, 4000);
+        return null;
+      }).filter(x => x != null)
+    };
+
+    //set the chart labels
+    this.lineChartLabels = this.historyWrapperElements.map(x => {
+      if (x.type == 'competition') {
+        return x.competition.time.toDateString();
+      } else {
+        return x.tracking.time.toDateString();
+      }
+    });
   }
 
 
