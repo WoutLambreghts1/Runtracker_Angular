@@ -11,8 +11,8 @@
 </div>
 
 <div class="col-xs-8 col-xs-offset-2">
-<sebm-google-map #myMap [latitude]="lat+0.6" [longitude]="lng-1" [zoom]="7">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+<sebm-google-map #myMap [latitude]="startpos.lat+0.6" [longitude]="startpos.lon-1" [zoom]="7">
+  <sebm-google-map-marker [latitude]="startpos.lat" [longitude]="startpos.lon"></sebm-google-map-marker>
 </sebm-google-map>
 </div>
 
