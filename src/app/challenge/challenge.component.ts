@@ -4,7 +4,7 @@ import {AuthService} from "./../authentication/auth.service";
 import {Competition} from "../model/competition";
 import {Goal} from "../model/goal";
 import {User} from "../model/user";
-import {position} from "../model/position";
+import {Position} from "../model/position";
 
 @Component({
   selector: 'challenge',
@@ -17,8 +17,8 @@ export class ChallengeComponent implements OnInit{
   private competitionsLive:Competition[] = [];
   private competitionSelected:Competition = new Competition();
 
-  private startPosOne:position;
-  private startPosTwo:position;
+  private startPosOne:Position;
+  private startPosTwo:Position;
 
   constructor(private challengeService:ChallengeService, private auth:AuthService) {
     let u1:User = new User("","","","");
@@ -27,8 +27,8 @@ export class ChallengeComponent implements OnInit{
 
 
     //Set start positions for both players
-    this.startPosOne = new position(50.52,4.22);
-    this.startPosTwo = new position(51.2192,4.4029);
+    this.startPosOne = new Position(50.52,4.22);
+    this.startPosTwo = new Position(51.2192,4.4029);
   }
 
   onClickSetCompetition(c:Competition){
