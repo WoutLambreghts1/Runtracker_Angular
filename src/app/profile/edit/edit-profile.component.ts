@@ -18,7 +18,6 @@ export class EditProfileComponent implements OnInit{
   ngOnInit(): void {
     this.user = this.editProfileService.getUser().subscribe((user: User) =>{
       this.user = user;
-      if(user.avatar==null)user.avatar='nerd';
     });
     this.onUsernameChange(this.user.username);
   }

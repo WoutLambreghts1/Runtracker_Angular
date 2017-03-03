@@ -29,7 +29,7 @@ export class HistoryService {
   }
 
   getAllCompetitions(): Observable<Competition[]> {
-    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getRanCompetitions', {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/getFinishedCompetitionsUser', {
       headers: this.authHeader
     })
       .map((res: Response) => res.json())

@@ -4,6 +4,7 @@ import {User} from "../../model/user";
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import {SebmGoogleMap} from "angular2-google-maps/esm/core/directives/google-map";
+import {position} from "../../model/position";
 
 @Component({
   selector: 'player-information',
@@ -14,7 +15,5 @@ import {SebmGoogleMap} from "angular2-google-maps/esm/core/directives/google-map
 export class PlayerInfoComponent{
 
   @Input() player: User;
-  @Input() lat: number;
-  @Input() lng: number;
-  
+  @Input() startpos: position;
 }

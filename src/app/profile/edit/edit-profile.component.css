@@ -42,4 +42,17 @@ h6 {
   color: darkorange;
   margin-bottom: 2rem;
 }
+#no-profilepic {
+  border: 0.3rem solid white;
+  height: 15rem;
+  width: 16rem;
+  margin-bottom: 2rem;
+  margin-left: 5rem;
+  background-color: lightgray;
+}
+#text-no-profilepic{
+  margin-top: 6rem;
+  color: whitesmoke;
+}
+
 

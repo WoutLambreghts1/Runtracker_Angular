@@ -4,6 +4,7 @@
   <div class="row">
     <div class="col-md-3">
       <div class="text-center">
+        <div *ngIf="!user.avatar" class="avatar img-circle text-center" alt="avatar" id="no-profilepic"><p id="text-no-profilepic">No profile picture</p></div>
         <img *ngIf="user.avatar" [src]="'../../../assets/avatars/'+user.avatar+'.png'" class="avatar img-circle" alt="avatar" id="profilepic">
           <select class="form-control" id="avatar-picker" [(ngModel)]="user.avatar">
             <option value="black">Black guy</option>

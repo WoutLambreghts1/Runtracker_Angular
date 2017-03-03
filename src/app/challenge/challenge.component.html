@@ -25,11 +25,11 @@
         </div>
 
         <div class="modal-body">
-            <player-information [player]="competitionSelected.usersRun[0]" [lat]="userOneLat" [lng]="userOneLng" id="player-one" class="col-xs-4"></player-information>
+            <player-information [player]="competitionSelected.usersRun[0]" [startpos]="startPosOne" id="player-one" class="col-xs-4"></player-information>
 
             <challenge-screen class="col-xs-4"></challenge-screen>
 
-            <player-information [player]="competitionSelected.usersRun[1]" [lat]="userTwoLat" [lng]="userTwoLng" id="player-two" class="col-xs-4"></player-information>
+            <player-information [player]="competitionSelected.usersRun[1]" [startpos]="startPosTwo" id="player-two" class="col-xs-4"></player-information>
         </div>
 
       </div>

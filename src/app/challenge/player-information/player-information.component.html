@@ -2,17 +2,18 @@
 <h3 class="username">{{player.username}}</h3>
 
 <div class="player-summary">
- <p class="col-xs-12"><strong class="col-xs-6">Name: </strong><span class="col-xs-6">{{player.firstname}} {{player.lastname}}</span></p>
+ <p *ngIf="player.firstname=='' && player.lastname==''" class="col-xs-12"><strong class="col-xs-6">Name: </strong><span class="col-xs-6">/</span></p>
+ <p *ngIf="player.firstname!='' || player.lastname!=''" class="col-xs-12"><strong class="col-xs-6">Name: </strong><span class="col-xs-6">{{player.firstname}} {{player.lastname}}</span></p>
  <p class="col-xs-12"><strong class="col-xs-6">Wins: </strong><span class="col-xs-6">{{player.nrOfCompetitionsWon}}</span></p>
- <p class="col-xs-12" *ngIf="player.nrOfCompetitionsDone != 0"><strong class="col-xs-6">Win ratio: </strong><span class="col-xs-6" >{{player.nrOfCompetitionsWon / player.nrOfCompetitionsDone | number : '1.0-2' }} %</span>
+ <p class="col-xs-12" *ngIf="player.nrOfCompetitionsDone != 0"><strong class="col-xs-6">Win ratio: </strong><span class="col-xs-6" >{{(player.nrOfCompetitionsWon / player.nrOfCompetitionsDone)*100 | number : '1.0-2' }} %</span>
  <p class="col-xs-12" *ngIf="player.nrOfCompetitionsDone == 0"><strong class="col-xs-6">Win ratio: </strong><span class="col-xs-6" > 0 %</span></p>
  <p class="col-xs-12"><strong class="col-xs-6">Total distance: </strong><span class="col-xs-6">{{player.totalDistance / 1000}} km</span></p>
  <p class="col-xs-12"><strong class="col-xs-6">Average speed: </strong><span class="col-xs-6">{{player.avgSpeed}} km/h</span></p>
 </div>
 
 <div class="col-xs-8 col-xs-offset-2">
-<sebm-google-map #myMap [latitude]="lat+0.6" [longitude]="lng-1" [zoom]="7">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+<sebm-google-map #myMap [latitude]="startpos.lat+0.6" [longitude]="startpos.lon-1" [zoom]="7">
+  <sebm-google-map-marker [latitude]="startpos.lat" [longitude]="startpos.lon"></sebm-google-map-marker>
 </sebm-google-map>
 </div>
 
