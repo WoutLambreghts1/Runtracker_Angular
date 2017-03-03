@@ -16,3 +16,15 @@ p{
   margin-left: 10rem;
   margin-right: 10rem;
 }
+#no-profilepic {
+  border: 0.3rem solid white;
+  height: 12rem;
+  width: 12rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  background-color: lightgray;
+}
+#text-no-profilepic{
+  margin-top: 4rem;
+  color: whitesmoke;
+}
