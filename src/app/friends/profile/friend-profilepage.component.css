@@ -9,7 +9,10 @@ p{
   font-size: 1.5rem;
   padding-bottom: 2rem;
 }
-#personal-info{
-  padding-left: 25%;
+#profilepic {
+  border: 0.3rem solid white;
+  height: 12rem;
+  width: 15rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
-

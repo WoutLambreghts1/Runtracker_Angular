@@ -14,12 +14,13 @@ export class EditProfileComponent implements OnInit{
   private user;
   private errorMsg;
   private available: boolean;
-  private pictureURL: string;
 
   ngOnInit(): void {
-    this.user = this.editProfileService.getUser().subscribe((user: User) => this.user = user);
+    this.user = this.editProfileService.getUser().subscribe((user: User) =>{
+      this.user = user;
+      if(user.avatar==null)user.avatar='nerd';
+    });
     this.onUsernameChange(this.user.username);
-    this.pictureURL = JSON.parse(localStorage.getItem("profile")).picture;
   }
 
   onUsernameChange(event): void {

@@ -4,7 +4,21 @@
   <div class="row">
     <div class="col-md-3">
       <div class="text-center">
-          <img [src]="pictureURL" class="avatar img-circle" alt="avatar" id="profilepic">
+        <img *ngIf="user.avatar" [src]="'../../../assets/avatars/'+user.avatar+'.png'" class="avatar img-circle" alt="avatar" id="profilepic">
+          <select class="form-control" id="avatar-picker" [(ngModel)]="user.avatar">
+            <option value="black">Black guy</option>
+            <option value="blond">Blond girl</option>
+            <option value="cat">Cat</option>
+            <option value="cool-guy">Cool guy</option>
+            <option value="dog">Dog</option>
+            <option value="girl">Girl</option>
+            <option value="naruto">Naruto</option>
+            <option value="nerd">Nerd</option>
+            <option value="robot">Robot</option>
+            <option value="skater-girl">Skater girl</option>
+            <option value="strong">Strong guy</option>
+            <option value="war-girl">War girl</option>
+          </select>
       </div>
     </div>
     <div class="col-md-9 personal-info">

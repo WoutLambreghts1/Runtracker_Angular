@@ -21,6 +21,7 @@ export class User {
   userId: number;
   username: string;
   online:boolean;
+  avatar:string;
 
   constructor(username: string, firstname: string, lastname: string, gender: string) {
     this.username = username;

@@ -4,7 +4,8 @@
     <div class="row">
       <h1 class="text-center">{{user.username}}</h1>
       <hr>
-      <div id="personal-info">
+      <img *ngIf="user.avatar" [src]="'../../../assets/avatars/'+user.avatar+'.png'" class="col-xs-3 avatar img-circle" alt="avatar" id="profilepic">
+      <div id="personal-info" class="col-xs-6">
         <p><strong class="col-xs-6">First name: </strong><span class="col-xs-6" *ngIf="user.lastname"> {{user.firstname}}</span>
           <span class="col-xs-6" *ngIf="!user.firstname"> N/A</span></p>
         <p><strong class="col-xs-6">Last name: </strong><span class="col-xs-6" *ngIf="user.lastname"> {{user.lastname}}</span>
