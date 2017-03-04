@@ -9,9 +9,11 @@
   margin-top: 50vh;
   height: 20vh;
 }
-.player-summary{
-  height: 20vh;
-  margin-bottom: 5vh;
+.profilepic {
+  border: 0.3rem solid white;
+  height: 12rem;
+  width: 12rem;
+  margin: auto;
 }
 
 

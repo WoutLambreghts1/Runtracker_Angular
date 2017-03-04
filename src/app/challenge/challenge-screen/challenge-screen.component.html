@@ -1,12 +1,21 @@
 <div id="game-visualisation">
   <ul class="timeline">
     <li class="timeline">
-      <img id="badge-player-one" class="timeline-badge"
-           [src]="'../../../assets/avatars/'+competition.usersRun[0].avatar+'.png'">
+      <div id="badge-player-one" class="timeline-badge">
+        <img [src]="'../../../assets/avatars/'+competition.usersRun[0].avatar+'.png'">
+        <div class="badge-text">
+          <p>{{competition.usersRun[0].username}}</p>
+        </div>
+      </div>
     </li>
+
     <li class="timeline">
-      <img id="badge-player-two" class="timeline-badge"
-           [src]="'../../../assets/avatars/'+competition.usersRun[1].avatar+'.png'">
+      <div id="badge-player-two" class="timeline-badge">
+          <img [src]="'../../../assets/avatars/'+competition.usersRun[1].avatar+'.png'">
+          <div class="badge-text">
+            <p>{{competition.usersRun[1].username}}</p>
+          </div>
+      </div>
     </li>
   </ul>
 </div>

@@ -14,7 +14,7 @@
   position: absolute;
   content: " ";
   width: 3px;
-  left: 75%;
+  left: 50%;
   background: rgb(80,80,80);
   background: -moz-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
@@ -30,14 +30,22 @@
 .timeline > li:after {
   clear: both;
 }
+
 .timeline > li > .timeline-badge {
+  position: absolute;
+  left: 45%;
+}
+
+.timeline > li > .timeline-badge > img {
   width: 4rem;
   height: 4rem;
   position: absolute;
-  left: 75%;
-  margin-left: -2rem;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
+}
+.timeline > li > .timeline-badge > .badge-text {
+  padding-left: 5rem;
+  color: #777777;
 }
