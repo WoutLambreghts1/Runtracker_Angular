@@ -1,21 +1,18 @@
-<div id="game-visualisation">
+<div (click)="onclickUpdate()" id="game-visualisation">
+  <h4><strong>Finish in: </strong><br>
+    <span *ngIf="competition.goal" id="distance-to-go">{{competition.goal.distance}} meters</span></h4>
   <ul class="timeline">
     <li class="timeline">
       <div id="badge-player-one" class="timeline-badge">
         <img [src]="'../../../assets/avatars/'+competition.usersRun[0].avatar+'.png'">
-        <div class="badge-text">
-          <p>{{competition.usersRun[0].username}}</p>
-        </div>
       </div>
     </li>
 
     <li class="timeline">
       <div id="badge-player-two" class="timeline-badge">
           <img [src]="'../../../assets/avatars/'+competition.usersRun[1].avatar+'.png'">
-          <div class="badge-text">
-            <p>{{competition.usersRun[1].username}}</p>
-          </div>
       </div>
     </li>
   </ul>
 </div>
+

@@ -1,14 +1,10 @@
 .container {
-  min-height: 80vh;
+  min-height: 80%;
   padding: 1rem 3rem;
 }
 .modal-content{
-  min-width: 160vh;
-  min-height: 70vh;
-}
-.modal-dialog{
-  margin-left: 25vh;
-  margin-right: 25vh;
+  min-width: 100rem;
+  min-height: 60rem;
 }
 
 h2 {

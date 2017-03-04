@@ -6,8 +6,11 @@
   text-align: center;
 }
 .sebm-google-map-container {
-  margin-top: 50vh;
-  height: 20vh;
+  height: 15rem;
+  width: 20rem;
+}
+.google-map{
+  margin-top: 8rem;
 }
 .profilepic {
   border: 0.3rem solid white;

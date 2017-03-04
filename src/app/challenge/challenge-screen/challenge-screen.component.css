@@ -1,10 +1,16 @@
 #game-visualisation{
   background-color: whitesmoke;
   border: 0.1rem solid #777777;
-  min-height: 55vh;
+  min-height: 50rem;
 }
 
 /*Timeline*/
+h4{
+  margin-left: 2.5rem;
+}
+#distance-to-go{
+  color: green;
+}
 .timeline {
   list-style: none;
 }
@@ -33,12 +39,11 @@
 
 .timeline > li > .timeline-badge {
   position: absolute;
-  left: 45%;
 }
 
 .timeline > li > .timeline-badge > img {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   position: absolute;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
@@ -46,6 +51,12 @@
   border-bottom-left-radius: 50%;
 }
 .timeline > li > .timeline-badge > .badge-text {
-  padding-left: 5rem;
   color: #777777;
 }
+#badge-player-one{
+  left:40%
+}
+#badge-player-two{
+  left:50%
+}
+
