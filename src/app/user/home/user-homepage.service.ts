@@ -57,11 +57,12 @@ export class UserHomepageService {
     }
 
     let newUser = new User(this.auth.getUserInfo().nickname.replace(/\./g, ''), firstname, lastname, gender);
+    newUser.avatar='cool-guy';
 
     return this.http.post(myGlobals.BACKEND_BASEURL + '/api/users/createUser', JSON.stringify(newUser), options)
       .map((res: Response) => res.json()).catch(err => this.handleError(err));
   }
-  
+
   private handleError(error: Response | any): Observable<any> {
     let errMsg: string;
     if (error instanceof Response) {

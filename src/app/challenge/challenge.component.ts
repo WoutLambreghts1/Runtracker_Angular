@@ -38,7 +38,9 @@ export class ChallengeComponent implements OnInit{
   ngOnInit():void {
     this.challengeService.getLiveCompetitions().subscribe(
       (competitions) => {
-        competitions.forEach(c => c.time = new Date(c.time));
+        if(competitions != null){
+          competitions.forEach(c => c.time = new Date(c.time));
+        }
         this.competitionsLive = competitions ;
       },
       error => {
