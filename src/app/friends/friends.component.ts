@@ -48,17 +48,24 @@ export class FriendsComponent implements OnInit {
   }
 
   onClickAddFriend(username): void {
-    this.FriendsService.addFriend(username).subscribe(val => console.log(val), err => console.log(err));
-    setTimeout(() => this.ngOnInit(), 2000);
+    this.FriendsService.addFriend(username).subscribe(val =>{
+      this.ngOnInit();
+      console.log(val);
+    } , err => console.log(err));
   }
 
   onClickRemoveFriend(username): void {
-    this.FriendsService.deleteFriend(username).subscribe(val => console.log(val), err => console.log(err));
-    setTimeout(() => this.ngOnInit(), 2000);
+    this.FriendsService.deleteFriend(username).subscribe(val => {
+        console.log(val);
+        this.ngOnInit();
+    }
+      , err => console.log(err));
   }
 
   onClickAcceptFriend(username): void {
-    this.FriendsService.acceptFriend(username).subscribe(val => console.log(val), err => console.log(err));
-    setTimeout(() => this.ngOnInit(), 2000);
+    this.FriendsService.acceptFriend(username).subscribe(val => {
+      this.ngOnInit();
+      console.log(val);
+    }, err => console.log(err));
   }
 }
