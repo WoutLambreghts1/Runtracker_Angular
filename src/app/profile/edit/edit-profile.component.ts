@@ -10,32 +10,33 @@ import {AuthService} from "../../authentication/auth.service";
   providers: [EditProfileService]
 })
 
-export class EditProfileComponent implements OnInit{
+export class EditProfileComponent implements OnInit {
   private user;
   private errorMsg;
-  private available: boolean;
+  private available:boolean;
 
-  constructor(private editProfileService: EditProfileService, private auth: AuthService) {
+  constructor(private editProfileService:EditProfileService, private auth:AuthService) {
 
   }
 
-  ngOnInit(): void {
-    this.user = this.editProfileService.getUser().subscribe((user: User) =>{
+  ngOnInit():void {
+    this.user = this.editProfileService.getUser().subscribe((user:User) => {
       this.user = user;
+      document.getElementById(user.avatar).classList.add("img-thumbnail");
     });
     this.onUsernameChange(this.user.username);
 
   }
 
-  onUsernameChange(event): void {
+  onUsernameChange(event):void {
     if (this.user.username == "") {
       this.errorMsg = "Username can not be empty. Please enter a valid username."
     } else {
-      this.editProfileService.checkUsernameAvailable(this.user.username).subscribe((val: boolean) => {
+      this.editProfileService.checkUsernameAvailable(this.user.username).subscribe((val:boolean) => {
           this.available = val;
           if (!val) {
             this.errorMsg = "Username not available. Please choose another username."
-          }else if(this.user.username.indexOf(".") !== -1){
+          } else if (this.user.username.indexOf(".") !== -1) {
             this.errorMsg = "It's not allowed to use ' . ' in a username";
           }
           else {
@@ -46,14 +47,14 @@ export class EditProfileComponent implements OnInit{
     }
   }
 
-  onClickUpdateUser(user: User): void {
-    if (user.username != "" && this.available && this.user.username!=null && !(this.user.username.indexOf(".") !== -1)) {
+  onClickUpdateUser(user:User):void {
+    if (user.username != "" && this.available && this.user.username != null && !(this.user.username.indexOf(".") !== -1)) {
       this.errorMsg = "";
-      this.user = this.editProfileService.updateUser(user).subscribe((user: User) => this.user = user);
+      this.user = this.editProfileService.updateUser(user).subscribe((user:User) => this.user = user);
     } else {
       if (user.username == "") {
         this.errorMsg = "Username can not be empty. Please enter a valid username."
-      }else if(this.user.username.indexOf(".") !== -1){
+      } else if (this.user.username.indexOf(".") !== -1) {
         this.errorMsg = "It's not allowed to use ' . ' in a username";
       } else {
         this.errorMsg = "Username not available. Please choose another username."
@@ -61,8 +62,10 @@ export class EditProfileComponent implements OnInit{
     }
   }
 
-  onClickAddAvatar(avatar){
+  onClickAddAvatar(avatar) {
+    document.getElementById(this.user.avatar).classList.remove("img-thumbnail");
     this.user.avatar = avatar;
+    document.getElementById(avatar).classList.add("img-thumbnail");
   }
 
 }
