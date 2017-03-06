@@ -4,68 +4,104 @@
   <div class="row">
     <div class="col-md-3">
       <div class="text-center">
-        <div *ngIf="!user.avatar" class="avatar img-circle text-center" alt="avatar" id="no-profilepic"><p id="text-no-profilepic">No profile picture</p></div>
-        <img *ngIf="user.avatar" [src]="'../../../assets/avatars/'+user.avatar+'.png'" class="avatar img-circle" alt="avatar" id="profilepic">
-          <select class="form-control" id="avatar-picker" [(ngModel)]="user.avatar">
-            <option value="black">Black guy</option>
-            <option value="blond">Blond girl</option>
-            <option value="cat">Cat</option>
-            <option value="cool-guy">Cool guy</option>
-            <option value="dog">Dog</option>
-            <option value="girl">Girl</option>
-            <option value="naruto">Naruto</option>
-            <option value="nerd">Nerd</option>
-            <option value="robot">Robot</option>
-            <option value="skater-girl">Skater girl</option>
-            <option value="strong">Strong guy</option>
-            <option value="war-girl">War girl</option>
-          </select>
+        <div *ngIf="!user.avatar" class="avatar img-circle text-center" alt="avatar" id="no-profilepic"><p
+          id="text-no-profilepic">No profile picture</p></div>
+        <img *ngIf="user.avatar" [src]="'../../../assets/avatars/'+user.avatar+'.png'" class="avatar img-circle"
+             alt="avatar" id="profilepic">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#avatar-picker">Change your
+          avatar
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="avatar-picker" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose your avatar</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row avatar-row">
+                  <img id="black" (click)="onClickAddAvatar('black')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/black.png" alt="black">
+                  <img id="blond" (click)="onClickAddAvatar('blond')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/blond.png" alt="blond">
+                  <img id="cat" (click)="onClickAddAvatar('cat')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/cat.png" alt="cat">
+                  <img id="cool-guy" (click)="onClickAddAvatar('cool-guy')" data-dismiss="modal"
+                       class="col-xs-3 avatar-img" src="../../../assets/avatars/cool-guy.png" alt="cool-guy">
+                </div>
+                <div class="row avatar-row">
+                  <img id="dog" (click)="onClickAddAvatar('dog')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/dog.png" alt="dog">
+                  <img id="girl" (click)="onClickAddAvatar('girl')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/girl.png" alt="girl">
+                  <img id="naruto" (click)="onClickAddAvatar('naruto')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/naruto.png" alt="naruto">
+                  <img id="nerd" (click)="onClickAddAvatar('nerd')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/nerd.png" alt="nerd">
+                </div>
+                <div class="row avatar-row">
+                  <img id="robot" (click)="onClickAddAvatar('robot')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/robot.png" alt="robot">
+                  <img id="skater-girl" (click)="onClickAddAvatar('skater-girl')" data-dismiss="modal"
+                       class="col-xs-3 avatar-img" src="../../../assets/avatars/skater-girl.png" alt="skater-girl">
+                  <img id="strong" (click)="onClickAddAvatar('strong')" data-dismiss="modal" class="col-xs-3 avatar-img"
+                       src="../../../assets/avatars/strong.png" alt="strong">
+                  <img id="war-girl" (click)="onClickAddAvatar('war-girl')" data-dismiss="modal"
+                       class="col-xs-3 avatar-img" src="../../../assets/avatars/war-girl.png" alt="war-girl">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-md-9 personal-info">
       <div class="alert alert-info alert-dismissable">
         <a class="panel-close close" data-dismiss="alert">×</a>
         <i class="fa fa-info"></i>
-         Do not forget to press the <strong>Save Changes </strong> button after editing personal data.
+        Do not forget to press the <strong>Save Changes </strong> button after editing personal data.
       </div>
       <h3>Personal info</h3>
       <form class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-md-3 control-label">Username:</label>
           <div class="col-md-4">
-            <input (change)="onUsernameChange($event)" class="form-control" type="text" [(ngModel)]="user.username"  name="username">
+            <input (change)="onUsernameChange($event)" class="form-control" type="text" [(ngModel)]="user.username"
+                   name="username">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">First name:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" [(ngModel)]="user.firstname"  name="firstname">
+            <input class="form-control" type="text" [(ngModel)]="user.firstname" name="firstname">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Last name:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" [(ngModel)]="user.lastname"  name="lastname">
+            <input class="form-control" type="text" [(ngModel)]="user.lastname" name="lastname">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">City:</label>
           <div class="col-md-4">
-            <input class="form-control" type="text" [(ngModel)]="user.city"  name="city">
+            <input class="form-control" type="text" [(ngModel)]="user.city" name="city">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Birthday:</label>
           <div class="col-md-4">
-            <input type="date" class="form-control" [(ngModel)]="user.birthday"  name="birthday">
+            <input type="date" class="form-control" [(ngModel)]="user.birthday" name="birthday">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Gender:</label>
           <div class="col-md-4">
             <div class="ui-select">
-              <select class="form-control" [(ngModel)]="user.gender"  name="gender">
+              <select class="form-control" [(ngModel)]="user.gender" name="gender">
                 <option value="MALE">Male</option>
                 <option value="FEMALE">Female</option>
                 <option value="UNDEFINED">Undefined</option>

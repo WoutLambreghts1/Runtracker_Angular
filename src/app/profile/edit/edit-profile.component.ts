@@ -15,11 +15,16 @@ export class EditProfileComponent implements OnInit{
   private errorMsg;
   private available: boolean;
 
+  constructor(private editProfileService: EditProfileService, private auth: AuthService) {
+
+  }
+
   ngOnInit(): void {
     this.user = this.editProfileService.getUser().subscribe((user: User) =>{
       this.user = user;
     });
     this.onUsernameChange(this.user.username);
+
   }
 
   onUsernameChange(event): void {
@@ -56,8 +61,8 @@ export class EditProfileComponent implements OnInit{
     }
   }
 
-  constructor(private editProfileService: EditProfileService, private auth: AuthService) {
-
+  onClickAddAvatar(avatar){
+    this.user.avatar = avatar;
   }
 
 }
