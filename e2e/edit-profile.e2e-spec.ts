@@ -28,6 +28,7 @@ describe('edit-profile', () => {
   let birthday = element(by.name('birthday'));
   let gender = element(by.name('gender'));
   let submit = element(by.id('saveChanges'));
+  let modal = element(by.id('avatar-picker'));
 
   it('all data is showed', () => {
     expect(username.isPresent()).toBeTruthy();
@@ -36,7 +37,8 @@ describe('edit-profile', () => {
     expect(city.isPresent()).toBeTruthy();
     expect(birthday.isPresent()).toBeTruthy();
     expect(gender.isPresent()).toBeTruthy();
-
+    expect(modal.isPresent()).toBeTruthy();
+    
     expect(username.getAttribute('value')).toBe('runtrackminds2017');
   });
 
