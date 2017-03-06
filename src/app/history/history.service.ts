@@ -69,16 +69,19 @@ export class HistoryService {
                         historyWrapperElements.push(temp);
                       });
                     }
+                    console.log(historyWrapperElements);
+
                     // sort the wrapperelements on date
                     historyWrapperElements.sort((a, b) => {
                       if (a.type == 'competition' && b.type == 'competition') {
-                        return a.competition.time.getDate() - b.competition.time.getDate();
+                        return new Date(a.competition.time).getDate() - new Date(b.competition.time).getDate();
                       } else if (a.type == 'competition' && b.type == 'tracking') {
-                        return a.competition.time.getDate() - b.tracking.time.getDate();
+                        return new Date(a.competition.time).getDate() - new Date(b.tracking.time).getDate();
                       } else if (a.type == 'tracking' && b.type == 'competition') {
-                        return a.tracking.time.getDate() - b.competition.time.getDate();
+                        return new Date(a.tracking.time).getDate() - new Date(b.competition.time).getDate();
                       } else {
-                        return a.tracking.time.getDate() - b.tracking.time.getDate();
+                        console.log(typeof a.tracking.time + ' --> ' + a.tracking.time);
+                        return new Date(a.tracking.time).getDate() - new Date(b.tracking.time).getDate();
                       }
                     });
 
