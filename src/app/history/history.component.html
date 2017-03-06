@@ -1,5 +1,14 @@
 <div class="container background-container">
   <h1>History</h1>
+
+  <div class="select-options-time">
+    <select [(ngModel)]="activeTimeFrame" (ngModelChange)="onTimeFrameChange($event)">
+      <option *ngFor="let tf of timeFrame">
+        {{tf}}
+      </option>
+    </select>
+  </div>
+
   <div style="display: block;">
     <canvas baseChart width="400" height="100"
             [datasets]="lineChartData"
@@ -11,6 +20,22 @@
             (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
   </div>
+
+  <div class="select-options">
+    <select [(ngModel)]="activeData"
+            (ngModelChange)="onDataChange($event)">
+      <option *ngFor="let d of data">
+        {{d}}
+      </option>
+    </select>
+
+    <select [(ngModel)]="activeHistoryType" (ngModelChange)="onHistoryTypesChange($event)">
+      <option *ngFor="let h of historyTypes">
+        {{h}}
+      </option>
+    </select>
+  </div>
+
   <p *ngIf="historyWrapperElements == null || historyWrapperElements.length == 0">No trackings present.</p>
   <div class="history-list col-xs-12" *ngFor="let h of historyWrapperElements">
     <tracking-list-item class="col-xs-12" *ngIf="h.type == 'tracking'" [tracking]="h.tracking">

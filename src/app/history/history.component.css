@@ -1,8 +1,21 @@
-.history-list{
+.select-options, .select-options-time {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  font-size: medium;
+  margin: 0 1rem;
+  border: none;
+  background: #e6e6e6;
+}
+
+.history-list {
   border-bottom: 1px solid #e8e8e8;
 }
 
-.history-list:hover{
+.history-list:hover {
   background: #f2f2f2;
 }
 
