@@ -26,26 +26,26 @@
 
   <div class="distance col-xs-4">
     <div id="totalDistance" class="text-center">
-      <h3>{{coreInfo?.totalDistance}} <span class="quantity-sm">km</span></h3>
+      <h3>{{coreInfo?.totalDistance | number : '1.0-2' }} <span class="quantity-sm">km</span></h3>
       <span>Total distance</span>
     </div>
     <div id="avgDistance" class="text-center">
-      <h3>{{coreInfo?.avgDistance}} <span class="quantity-sm">km</span></h3>
+      <h3>{{coreInfo?.avgDistance | number : '1.0-2' }} <span class="quantity-sm">km</span></h3>
       <span>Average distance</span>
     </div>
     <div id="maxDistance" class="text-center">
-      <h3>{{coreInfo?.maxDistance}} <span class="quantity-sm">km</span></h3>
+      <h3>{{coreInfo?.maxDistance | number : '1.0-2' }} <span class="quantity-sm">km</span></h3>
       <span>Maximum distance</span>
     </div>
   </div>
 
   <div class="speed col-xs-4">
     <div id="avgSpeed" class="text-center">
-      <h2>{{coreInfo?.avgSpeed}} <span class="quantity-lg">km/h</span></h2>
+      <h2>{{coreInfo?.avgSpeed | number : '1.0-2' }} <span class="quantity-lg">km/h</span></h2>
       <span>Average speed</span>
     </div>
     <div id="maxSpeed" class="text-center">
-      <h2>{{coreInfo?.maxSpeed}} <span class="quantity-lg">km/h</span></h2>
+      <h2>{{coreInfo?.maxSpeed | number : '1.0-2' }} <span class="quantity-lg">km/h</span></h2>
       <span>Maximum speed</span>
     </div>
   </div>
