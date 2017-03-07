@@ -51,17 +51,17 @@
     <tr [routerLink]="['/friends', user.username]" *ngFor="let user of users; let i = index">
         <td>{{i + 1}}</td>
         <td>{{user.username}}</td>
-        <td class="text-center" *ngIf="orderOption==1">{{user.avgDistance / 1000}} km</td>
-        <td class="text-center" *ngIf="orderOption==2">{{user.avgSpeed}} km/h</td>
-        <td class="text-center" *ngIf="orderOption==3">{{user.maxDistance / 1000}} km</td>
-        <td class="text-center" *ngIf="orderOption==4">{{user.maxSpeed}} km/h</td>
+        <td class="text-center" *ngIf="orderOption==1">{{(user.avgDistance / 1000) | number : '1.0-2' }} km</td>
+        <td class="text-center" *ngIf="orderOption==2">{{user.avgSpeed | number : '1.0-2' }} km/h</td>
+        <td class="text-center" *ngIf="orderOption==3">{{(user.maxDistance / 1000) | number : '1.0-2' }} km</td>
+        <td class="text-center" *ngIf="orderOption==4">{{user.maxSpeed | number : '1.0-2' }} km/h</td>
         <td class="text-center" *ngIf="orderOption==5">{{user.nrOfCompetitionsWon}}</td>
         <td class="text-center" *ngIf="orderOption==6">{{user.nrOfCompetitionsDone}}</td>
         <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone != 0">{{((user.nrOfCompetitionsWon /
           user.nrOfCompetitionsDone)*100) | number : '1.0-2' }} %
         </td>
         <td class="text-center" *ngIf="orderOption==7 && user.nrOfCompetitionsDone == 0">0 %</td>
-        <td class="text-center" *ngIf="orderOption==8">{{user.totalDistance / 1000}} km</td>
+        <td class="text-center" *ngIf="orderOption==8">{{(user.totalDistance / 1000) | number : '1.0-2' }} km</td>
     </tr>
     </tbody>
 
