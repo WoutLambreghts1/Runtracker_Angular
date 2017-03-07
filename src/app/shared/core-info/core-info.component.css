@@ -7,12 +7,9 @@
 }
 
 .trophy {
-  width: 40px;
-  height: 40px;
   margin: auto;
   margin-bottom: 2rem;
 }
-
 .coreInfo {
   border-top: 1px solid #d6d6d6;
   display: flex;
