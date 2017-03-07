@@ -15,7 +15,7 @@ export class HistoryComponent implements OnInit {
 
   // select options
   private timeFrame = ['Day', 'Week', 'Month', 'Year'];
-  private activeTimeFrame = 'Week';
+  private activeTimeFrame = 'Month';
   private historyTypes = ['Competition', 'Tracking', 'All'];
   private activeHistoryType = 'All';
   private data = ['Average speed', 'Maximum speed', 'Total distance', 'Total duration'];
