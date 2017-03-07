@@ -1,3 +1,13 @@
 .navbar-nav > li > .active {
   text-decoration: underline;
+  font-weight: bold;
+}
+ul{
+  width: 90%;
+  float: right;
+}
+@media (max-width: 768px){
+  ul{
+    float: none;
+  }
 }
