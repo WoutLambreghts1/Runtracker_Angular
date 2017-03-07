@@ -51,6 +51,7 @@ export class HistoryService {
           .subscribe(data => {
               if (data != null) {
                 data.forEach(x => {
+                  x.time = new Date(x.time);
                   let temp = new HistoryWrapper();
                   temp.type = 'tracking';
                   temp.makeTrackingHistory(x);
@@ -69,20 +70,10 @@ export class HistoryService {
                         historyWrapperElements.push(temp);
                       });
                     }
-                    console.log(historyWrapperElements);
 
                     // sort the wrapperelements on date
-                    historyWrapperElements.sort((a, b) => {
-                      if (a.type == 'competition' && b.type == 'competition') {
-                        return new Date(a.competition.time).getDate() - new Date(b.competition.time).getDate();
-                      } else if (a.type == 'competition' && b.type == 'tracking') {
-                        return new Date(a.competition.time).getDate() - new Date(b.tracking.time).getDate();
-                      } else if (a.type == 'tracking' && b.type == 'competition') {
-                        return new Date(a.tracking.time).getDate() - new Date(b.competition.time).getDate();
-                      } else {
-                        console.log(typeof a.tracking.time + ' --> ' + a.tracking.time);
-                        return new Date(a.tracking.time).getDate() - new Date(b.tracking.time).getDate();
-                      }
+                    historyWrapperElements.sort(function(a,b){
+                      return b.date.getTime() - a.date.getTime();
                     });
 
                     obs.next(historyWrapperElements);

@@ -1,0 +1,30 @@
+:host {
+  padding: 1.5rem 1rem;
+}
+
+.tracking-summary {
+  color: #777777;
+}
+
+.creation {
+  float: right;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a568c;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.winning-data {
+  margin: 0;
+}
+
+.winning-data > span {
+  margin-right: 2rem;
+}
+
+a {
+  text-decoration: none;
+}

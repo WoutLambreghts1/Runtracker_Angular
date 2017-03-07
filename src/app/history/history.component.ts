@@ -36,7 +36,12 @@ export class HistoryComponent implements OnInit {
   ];
   private lineChartLegend: boolean = false;
   private lineChartType: string = 'line';
-  private lineChartOptions: any = {responsive: true};
+  private lineChartOptions: any = {
+    responsive: true,
+    scales: {
+      xAxes: [{type: 'time'}]
+    }
+  };
 
   constructor(private historyService: HistoryService) {
   }
@@ -65,61 +70,62 @@ export class HistoryComponent implements OnInit {
     }
 
     this.setChartData(timeframe, data, filteredArray);
-    this.setChartLabels(timeframe);
+    this.setChartLabels(timeframe, filteredArray);
   }
 
   private setChartData(timeframe: string, data: string, filteredArray: HistoryWrapper[]) {
+
+    // filter for timeframe
     filteredArray = filteredArray.filter(x => {
-      if (x.type == 'competition') {
-        return this.checkTimeFrame(x.competition.time, timeframe);
-      } else {
-        return this.checkTimeFrame(x.tracking.time, timeframe);
-      }
+      return this.checkTimeFrame(x.date, timeframe);
     });
-    let result: number[];
+
+    // get the data
+    let result: any[];
     switch (data) {
       case 'Total duration':
-        result = filteredArray.map(x => {
-          if (x.type == 'competition') {
-            return x.competition.trackings[0].totalDuration;
+        result = filteredArray.map(fa => {
+          if (fa.type == 'competition') {
+            return fa.competition.trackings[0].totalDuration;
           } else {
-            return x.tracking.totalDuration;
+            return fa.tracking.totalDuration;
           }
         })
         ;
         break;
       case 'Total distance':
-        result = filteredArray.map(x => {
-          if (x.type == 'competition') {
-            return x.competition.trackings[0].totalDistance;
+        result = filteredArray.map(fa => {
+          if (fa.type == 'competition') {
+            return fa.competition.trackings[0].totalDistance;
           } else {
-            return x.tracking.totalDistance;
+            return fa.tracking.totalDistance;
           }
         })
         ;
         break;
       case 'Maximum speed':
-        result = filteredArray.map(x => {
-          if (x.type == 'competition') {
-            return x.competition.trackings[0].maxSpeed;
+        result = filteredArray.map(fa => {
+          if (fa.type == 'competition') {
+            return fa.competition.trackings[0].maxSpeed;
           } else {
-            return x.tracking.maxSpeed;
+            return fa.tracking.maxSpeed;
           }
         })
         ;
         break;
       case 'Average speed':
-        result = filteredArray.map(x => {
-          if (x.type == 'competition') {
-            return x.competition.trackings[0].avgSpeed;
+        result = filteredArray.map(fa => {
+          if (fa.type == 'competition') {
+            return fa.competition.trackings[0].avgSpeed;
           } else {
-            return x.tracking.avgSpeed;
+            return fa.tracking.avgSpeed;
           }
         })
         ;
         break;
     }
     console.log(result);
+
     this.lineChartData[0] = {data: result}
   }
 
@@ -151,48 +157,91 @@ export class HistoryComponent implements OnInit {
         result = dateToCheck >= timeframeBarrier;
         break;
     }
-    console.log('checktimeframe (' + timeframe + ') : ' + timeframeBarrier.toDateString() + ' ' + timeframeBarrier.toTimeString() + " ==> " + result);
+    //console.log('checktimeframe (' + timeframe + ') : ' + timeframeBarrier.toDateString() + ' ' + timeframeBarrier.toTimeString() + " ==> " + result);
     return result;
   }
 
-  private setChartLabels(timeframe: string) {
-    let now = new Date();
+  private setChartLabels(timeframe: string, filteredArray: HistoryWrapper[]) {
+
+    // filter for timeframe
+    filteredArray = filteredArray.filter(x => {
+      return this.checkTimeFrame(x.date, timeframe);
+    });
+
+    // get the data
+    let result = filteredArray.map(fa => {
+      return fa.date;
+    });
+    console.log(result);
+    this.lineChartLabels = result;
+
     switch (timeframe) {
       case 'Day':
-        let hours = [];
-        for (let i = 0; i <= 23; i++) {
-          hours.push(i);
-        }
-        this.lineChartLabels = hours;
+        this.lineChartOptions.scales = {
+          xAxes: [{
+            type: 'time', time: {
+              format: "HH:mm",
+              unit: 'hour',
+              unitStepSize: 2,
+              displayFormats: {
+                'minute': 'HH:mm',
+                'hour': 'HH:mm',
+              }
+            }
+          }]
+        };
         break;
       case 'Week':
-        this.lineChartLabels = ['Mo', 'Tu', 'We', 'Thu', 'Fri', 'Sat', 'Sun'];
+        this.lineChartOptions.scales = {
+          xAxes: [{
+            type: 'time', time: {
+              format: "ll",
+              unit: 'day',
+              unitStepSize: 1,
+              displayFormats: {
+                'day': 'll'
+              }
+            }
+          }]
+        };
         break;
       case 'Month':
-        let N = this.daysInMonth(now.getMonth(), now.getFullYear());
-        let days = [];
-        console.log(N);
-        for (let i = 1; i <= N; i++) {
-          days.push(i);
-        }
-        this.lineChartLabels = days;
+        this.lineChartOptions.scales = {
+          xAxes: [{
+            type: 'time', time: {
+              format: "ll",
+              unit: 'day',
+              unitStepSize: 1,
+              displayFormats: {
+                'day': 'll'
+              }
+            }
+          }]
+        };
         break;
       case 'Year':
-        this.lineChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        this.lineChartOptions.scales = {
+          xAxes: [{
+            type: 'time', time: {
+              format: "ll",
+              unit: 'day',
+              unitStepSize: 5,
+              displayFormats: {
+                'day': 'll'
+              }
+            }
+          }]
+        };
         break;
     }
   }
 
-  private daysInMonth(month, year) {
-    return new Date(year, month + 1, 0).getDate();
-  }
-
   private getMonday(d): Date {
-  d = new Date(d);
-  var day = d.getDay(),
-    diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
-  return new Date(d.setDate(diff));
-}
+    d = new Date(d);
+    var day = d.getDay(),
+      diff = d.getDate() - day + (day == 0 ? -6 : 1);
+    return new Date(d.setDate(diff));
+  }
 
   // chart events
   chartClicked(e: any): void {

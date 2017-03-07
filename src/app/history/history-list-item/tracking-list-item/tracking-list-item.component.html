@@ -2,9 +2,9 @@
 
 </div>
 <div class="tracking-summary">
-  <p class="creation">{{tracking?.time?.getDate()}}</p>
+  <p class="creation">{{tracking?.time | date:'fullDate'}}</p>
 
-  <h1>{{tracking?.time?.getDate()}} run</h1>
+  <h1>{{tracking?.time | date:'EEEE'}} run</h1>
 
   <p class="winning-data">
     <span>{{tracking?.totalDistance}} km</span>
