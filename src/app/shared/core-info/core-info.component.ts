@@ -13,13 +13,11 @@ export class CoreInfoComponent {
   setTrophies(hasTrophy: boolean) {
     if (hasTrophy) {
       return {
-        'background': 'gold',
-        'border': '2px solid darkgoldenrod',
+        'color': '#fae157',
       };
     } else {
       return {
-        'background': 'lightgray',
-        'border': '2px solid gray',
+        'color': 'lightgray',
       };
     }
   }

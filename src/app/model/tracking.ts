@@ -7,6 +7,7 @@ export class Tracking{
   totalDistance:number;
   maxSpeed:number;
   avgSpeed:number;
+  avgPace:number;
   competition:Competition;
   coordinates:coordinate[];
 }
