@@ -8,4 +8,10 @@ import {Competition} from "../../../model/competition";
 
 export class CompetitionListItemComponent {
   @Input() competition: Competition;
+  private duration:Date;
+
+  ngOnInit(): void {
+    this.duration = new Date(1970, 0, 1,0,0,0);
+    this.duration.setSeconds(this.competition.trackings[0].totalDuration);
+  }
 }

@@ -5,13 +5,12 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { ChartsModule } from 'ng2-charts';
 import {HistoryService} from "./history.service";
-import {TrackingListItemComponent} from "./history-list-item/tracking-list-item/tracking-list-item.component";
-import {CompetitionListItemComponent} from "./history-list-item/competition-list-item/competition-list-item.component";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HistoryRoutingModule, ChartsModule],
+  imports: [CommonModule, FormsModule, HistoryRoutingModule, ChartsModule,SharedModule],
   providers: [HistoryService],
-  declarations: [HistoryComponent, TrackingListItemComponent, CompetitionListItemComponent],
+  declarations: [HistoryComponent],
 })
 
 export class HistoryModule {
