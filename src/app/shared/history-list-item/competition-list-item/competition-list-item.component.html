@@ -1,13 +1,14 @@
-<div class="avatars">
+  <div class="avatars">
+    <div class="person" id="firstPerson"></div>
+    <div class="person" id="secondPerson"></div>
+  </div>
+  <div class="competition-summary">
+    <p class="creation">
+      <span><strong>Created by {{competition?.userCreated?.username}}</strong><br>{{competition?.time | date: 'yyyy/MM/dd HH:mm'}}</span>
 
-</div>
-<div class="competition-summary">
-  <p class="creation">
-    <span><strong>Created by {{competition?.userCreated?.username}}</strong><br>{{competition?.time | date: 'yyyy/MM/dd HH:mm'}}</span>
+    </p>
 
-  </p>
-
-  <h1>{{competition?.name}} <span>{{competition?.goal?.name}}</span></h1>
+    <h1>{{competition?.name}} <span>{{competition?.goal?.name}}</span></h1>
 
   <p class="winner">Won by <span>{{competition?.userWon?.username}}</span></p>
   <p class="winning-data">
@@ -16,4 +17,3 @@
     <span>{{competition?.trackings[0]?.avgSpeed}} | number : '1.0-2'  km/h</span>
   </p>
 </div>
-

@@ -1,8 +1,27 @@
 :host {
   padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.avatar {
+  padding-right: 3rem;
+}
+
+.person{
+  background: url("../../../../assets/avatars/black.png");
+  background-size: cover;
+
+  width: 70px;
+  height: 70px;
+
+  border: 2px solid #c1c1c1;
+  border-radius: 50%;
 }
 
 .tracking-summary {
+  width: 100%;
   color: #777777;
 }
 

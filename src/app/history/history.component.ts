@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {HistoryService} from "./history.service";
 import {HistoryWrapper} from "../model/history-wrapper";
+import {User} from "../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'history',
@@ -12,6 +14,7 @@ export class HistoryComponent implements OnInit {
 
   // Wrapper element for chronological overview with trackings AND competitions
   private historyWrapperElements: HistoryWrapper[];
+  private user: User;
 
   // select options
   private timeFrame = ['Day', 'Week', 'Month', 'Year'];
@@ -38,15 +41,14 @@ export class HistoryComponent implements OnInit {
   private lineChartType: string = 'line';
   private lineChartOptions: any = {
     responsive: true,
-    scales: {
-      xAxes: [{type: 'time'}]
-    }
+    scales: {}
   };
 
-  constructor(private historyService: HistoryService) {
+  constructor(private router: Router, private historyService: HistoryService) {
   }
 
   ngOnInit(): void {
+    this.historyService.getUser().subscribe(val => this.user = val, err => console.log(err));
     this.historyService.getAllHistoryEvents().subscribe((val) => {
       console.log(val);
       this.historyWrapperElements = val;

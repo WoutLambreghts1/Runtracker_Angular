@@ -1,10 +1,10 @@
-<div class="avatar">
+  <div class="avatar">
+    <img [src]="'../../../assets/avatars/'+user?.avatar+'.png'" class="person" id="firstPerson">
+  </div>
+  <div class="tracking-summary">
+    <p class="creation">{{tracking?.time | date:'fullDate'}}</p>
 
-</div>
-<div class="tracking-summary">
-  <p class="creation">{{tracking?.time | date:'fullDate'}}</p>
-
-  <h1>{{tracking?.time | date:'EEEE'}} run</h1>
+    <h1>{{tracking?.time | date:'EEEE'}} run</h1>
 
   <p class="winning-data">
     <span>{{(tracking?.totalDistance / 1000) | number : '1.0-2' }} km</span>
@@ -12,4 +12,3 @@
     <span>{{tracking?.avgSpeed | number : '1.0-2' }} km/h</span>
   </p>
 </div>
-

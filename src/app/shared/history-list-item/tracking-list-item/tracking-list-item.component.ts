@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Tracking} from "../../../model/tracking";
+import {User} from "../../../model/user";
 @Component({
   selector: 'tracking-list-item',
   templateUrl: 'tracking-list-item.component.html',
@@ -8,6 +9,8 @@ import {Tracking} from "../../../model/tracking";
 
 export class TrackingListItemComponent implements OnInit{
   @Input() tracking: Tracking;
+  @Input() user: User;
+
   private duration:Date;
 
 

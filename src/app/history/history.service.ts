@@ -5,6 +5,7 @@ import {Http, Headers, Response} from "@angular/http";
 import * as myGlobals from "./../globals";
 import {Competition} from "../model/competition";
 import {HistoryWrapper} from "../model/history-wrapper";
+import {User} from "../model/user";
 
 @Injectable()
 export class HistoryService {
@@ -18,6 +19,14 @@ export class HistoryService {
       this.authHeaderTwo.append('token', this.jwt);
       this.authHeaderTwo.append('Content-Type', 'application/json');
     }
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/users/getUser', {
+      headers: this.authHeader
+    })
+      .map((res: Response) => res.json())
+      .catch(err => this.handleErrorObservable(err))
   }
 
   getAllTrackings(): Observable<Tracking[]> {
@@ -72,7 +81,7 @@ export class HistoryService {
                     }
 
                     // sort the wrapperelements on date
-                    historyWrapperElements.sort(function(a,b){
+                    historyWrapperElements.sort(function (a, b) {
                       return b.date.getTime() - a.date.getTime();
                     });
 

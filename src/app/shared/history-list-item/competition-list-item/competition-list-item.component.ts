@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {Competition} from "../../../model/competition";
+import {Router} from "@angular/router";
 @Component({
   selector: 'competition-list-item',
   templateUrl: 'competition-list-item.component.html',
