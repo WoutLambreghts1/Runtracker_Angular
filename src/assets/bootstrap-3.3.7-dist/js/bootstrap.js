@@ -993,7 +993,7 @@ if (typeof jQuery === 'undefined') {
       var transition = $.support.transition && that.$element.hasClass('fade')
 
       if (!that.$element.parent().length) {
-        that.$element.appendTo(that.$body) // don't move modals dom position
+        that.$element.appendTo(that.$body) // don't move modals dom Position
       }
 
       that.$element
@@ -1934,7 +1934,7 @@ if (typeof jQuery === 'undefined') {
     this.scrollHeight = this.getScrollHeight()
 
     if (!$.isWindow(this.$scrollElement[0])) {
-      offsetMethod = 'position'
+      offsetMethod = 'Position'
       offsetBase   = this.$scrollElement.scrollTop()
     }
 
