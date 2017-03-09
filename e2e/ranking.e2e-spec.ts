@@ -34,19 +34,11 @@ describe('ranking', () => {
   });
 
   it('Should change buttons', () => {
-      btnFriend.click().then(() => {
-        browser.driver.sleep(1000);
-        expect(btnFriend.getAttribute('class')).toMatch('btn-primary');
-        expect(btnWorld.getAttribute('class')).toMatch('btn-default');
-      })
+    btnFriend.click().then(() => {
+      browser.driver.sleep(1000);
+      expect(btnFriend.getAttribute('class')).toMatch('btn-active');
+      expect(btnWorld.getAttribute('class')).toMatch('btn-default');
+    })
   });
-
-  it('Should change colum name', () => {
-
-    element(by.xpath('//*[@id="order-option"]/option[2]')).click().then(() => {
-      browser.driver.sleep(3000);
-      expect(element(by.className("option-text")).getText()).toBe('Average speed');
-    });
-  });
-
+  
 });
