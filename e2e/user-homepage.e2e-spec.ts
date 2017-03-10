@@ -32,6 +32,7 @@ describe('user-homepage', () => {
     let maxDistance = element(by.id('maxDistance'));
     let totalDistance = element(by.id('totalDistance'));
     let nrOfCompetitionsWon = element(by.id('nrOfCompetitionsWon'));
+    let feed = element(by.tagName("homepage-feed"));
 
     expect(ranTenKm.isPresent()).toBeTruthy();
     expect(ranTwentyKm.isPresent()).toBeTruthy();
@@ -42,5 +43,6 @@ describe('user-homepage', () => {
     expect(maxDistance.isPresent()).toBeTruthy();
     expect(totalDistance.isPresent()).toBeTruthy();
     expect(nrOfCompetitionsWon.isPresent()).toBeTruthy();
+    expect(feed.isPresent()).toBeTruthy();
   });
 });
