@@ -1,6 +1,27 @@
-<div class="container background-container">
-  <h1>{{tracking?.time | date:'fullDate'}}</h1>
-  <span>Core Data</span>
-  <span>Chart</span>
-  <span>Map</span>
+<div id="tracking-info" class="container background-container">
+  <h1>{{tracking?.time | date:'EEEE'}} run</h1>
+  <h2>{{tracking?.time | date:'HH:mm'}} {{tracking?.time | date:'fullDate'}}</h2>
+  <div class="tracking-info-coreData">
+    <p>{{tracking?.totalDistance}} km<span>Total Distance</span></p>
+    <p>{{tracking?.totalDuration}}<span>Total Duration</span></p>
+    <p>{{tracking?.maxSpeed | number: '1.0-2'}} km/h<span>Maximum Speed</span></p>
+    <p>{{tracking?.avgSpeed | number: '1.0-2'}}km/h<span>Average Speed</span></p>
+    <p>{{tracking?.avgPace}}<span>Average Pace</span></p>
+  </div>
+</div>
+
+<div id="tracking-chart" class="container background-container">
+  <div style="display: block;">
+    <canvas baseChart width="400" height="100"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+<div id="tracking-map" class="container background-container">
 </div>
