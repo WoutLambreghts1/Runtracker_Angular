@@ -2,8 +2,9 @@
 
 html, body, .container-fluid{
   padding: 0;
-  background: #e8e8e8;
+  background-image: url("./assets/one_in_a_million.png");
   font-family: 'Raleway', sans-serif;
+  background-repeat: repeat;
 }
 
 .background-container{
