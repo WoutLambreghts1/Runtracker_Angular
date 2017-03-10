@@ -57,6 +57,16 @@ describe('history', () => {
     });
   });
 
+  it('Detailspage should contain all elements', () => {
+    let map = element(by.id("tracking-map"));
+    let graph = element(by.tagName("canvas"));
+    let coreInfo = element(by.className("tracking-info-coreData"));
+
+    expect(map.isPresent()).toBeTruthy();
+    expect(graph.isPresent()).toBeTruthy();
+    expect(coreInfo.isPresent()).toBeTruthy();
+  });
+
 });
 
 

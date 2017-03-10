@@ -8,11 +8,12 @@ import {HistoryService} from "./history.service";
 import {SharedModule} from "../shared/shared.module";
 import {TrackingDetailComponent} from "./detail/tracking-detail/tracking-detail.component";
 import {CompetitionDetailComponent} from "./detail/competition-detail/competition-detail.component";
+import {SecondsToTimePipe} from "./detail/secondsToTimePipe";
 
 @NgModule({
   imports: [CommonModule, FormsModule, HistoryRoutingModule, ChartsModule,SharedModule],
   providers: [HistoryService],
-  declarations: [HistoryComponent, TrackingDetailComponent, CompetitionDetailComponent],
+  declarations: [HistoryComponent, TrackingDetailComponent, CompetitionDetailComponent, SecondsToTimePipe],
 })
 
 export class HistoryModule {
