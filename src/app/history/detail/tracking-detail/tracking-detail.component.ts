@@ -19,6 +19,7 @@ export class TrackingDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       this.trackingId = +params['id'];
+      this.historyService.getAllTrackings().subscribe(val => this.tracking = val.find(x => x.trackingId == this.trackingId));
     });
     console.log(this.trackingId);
   }
