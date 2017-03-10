@@ -49,7 +49,7 @@ export class TrackingDetailComponent implements OnInit {
 
   setChartData(tracking: Tracking){
     this.lineChartData[0] = {data: tracking.coordinates.map(x => x.speed)};
-    this.lineChartLabels = tracking.coordinates.map(x => (new Date((x.time)).getHours() + ":" +new Date(x.time).getMinutes() + ":" + new Date(x.time).getSeconds()));
+    this.lineChartLabels = tracking.coordinates.map(x => ((new Date((x.time)).getHours() -1) + ":" +new Date(x.time).getMinutes() + ":" + new Date(x.time).getSeconds()));
   }
 
   // chart events
