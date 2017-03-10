@@ -1,4 +1,4 @@
-import {coordinate} from "./coordinate";
+import {Coordinate} from "./coordinate";
 import {Competition} from "./competition";
 import {User} from "./user";
 export class Tracking{
@@ -10,6 +10,6 @@ export class Tracking{
   avgSpeed:number;
   avgPace:number;
   competition:Competition;
-  coordinates:coordinate[];
+  coordinates:Coordinate[];
   user:User;
 }

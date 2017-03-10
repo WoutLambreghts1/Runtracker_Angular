@@ -2,8 +2,10 @@
   <h1>{{tracking?.time | date:'EEEE'}} run</h1>
   <h2>{{tracking?.time | date:'HH:mm'}} {{tracking?.time | date:'fullDate'}}</h2>
   <div class="tracking-info-coreData">
-    <p>{{tracking?.totalDistance}} km<span>Total Distance</span></p>
-    <p>{{tracking?.totalDuration | SecondsToTime | date: 'HH:mm:ss'}}<span>Total Duration</span></p>
+    <p><span *ngIf="tracking?.totalDistance > 1000">{{(tracking?.totalDistance / 1000) | number: '1.0-2'}} km</span><span *ngIf="tracking?.totalDistance <= 1000">{{tracking?.totalDistance}} m</span>
+      <span>Total Distance</span>
+    </p>
+    <p>{{tracking?.totalDuration | SecondsToTime | date: 'H:mm:ss'}}<span>Total Duration</span></p>
     <p>{{tracking?.maxSpeed | number: '1.0-2'}} km/h<span>Maximum Speed</span></p>
     <p>{{tracking?.avgSpeed | number: '1.0-2'}}km/h<span>Average Speed</span></p>
     <p>{{tracking?.avgPace | SecondsToTime | date: 'mm:ss'}}<span>Average Pace</span></p>
