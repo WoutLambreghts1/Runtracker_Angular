@@ -1,21 +1,38 @@
 :host {
   padding: 1.5rem 1rem;
   display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.avatars {
+  padding-right: 3rem;
+  display: flex;
 }
 
 .person{
-  background: green;
-  width: 40px;
-  height: 40px;
+  background: gray;
+  background-size: cover;
+
+  width: 70px;
+  height: 70px;
+
+  border: 2px solid #c1c1c1;
+  border-radius: 50%;
 }
 
+#firstPerson{
+  margin-right: 1rem;
+}
 
 .competition-summary {
+  width: 100%;
   color: #777777;
 }
 
-.creation > span {
+.creation {
   float: right;
+  text-align: end;
 }
 
 h1 {
@@ -23,6 +40,7 @@ h1 {
   font-weight: 700;
   color: #0a568c;
   margin: 2rem 0 0.5rem 0;
+  margin-top:0;
 }
 
 .winner {

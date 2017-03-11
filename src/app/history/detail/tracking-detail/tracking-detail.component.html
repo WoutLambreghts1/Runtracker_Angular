@@ -1,14 +1,16 @@
 <div id="tracking-info" class="container background-container">
   <h1>{{tracking?.time | date:'EEEE'}} run</h1>
-  <h2>{{tracking?.time | date:'HH:mm'}} {{tracking?.time | date:'fullDate'}}</h2>
+  <h2>{{tracking?.time | date:'HH:mm'}} - {{tracking?.time | date:'fullDate'}}</h2>
   <div class="tracking-info-coreData">
-    <p><span *ngIf="tracking?.totalDistance > 1000">{{(tracking?.totalDistance / 1000) | number: '1.0-2'}} km</span><span *ngIf="tracking?.totalDistance <= 1000">{{tracking?.totalDistance}} m</span>
-      <span>Total Distance</span>
+    <p>
+      <span *ngIf="tracking?.totalDistance > 1000">{{(tracking?.totalDistance / 1000) | number: '1.0-2'}} km </span>
+      <span *ngIf="tracking?.totalDistance <= 1000">{{tracking?.totalDistance}} m </span>
+      <span class="data-desc">Total Distance</span>
     </p>
-    <p>{{tracking?.totalDuration | SecondsToTime | date: 'H:mm:ss'}}<span>Total Duration</span></p>
-    <p>{{tracking?.maxSpeed | number: '1.0-2'}} km/h<span>Maximum Speed</span></p>
-    <p>{{tracking?.avgSpeed | number: '1.0-2'}}km/h<span>Average Speed</span></p>
-    <p>{{tracking?.avgPace | SecondsToTime | date: 'mm:ss'}}<span>Average Pace</span></p>
+    <p>{{tracking?.totalDuration | SecondsToTime | date: 'H:mm:ss'}} <span class="data-desc">Total Duration</span></p>
+    <p>{{tracking?.maxSpeed | number: '1.0-2'}} km/h <span class="data-desc">Maximum Speed</span></p>
+    <p>{{tracking?.avgSpeed | number: '1.0-2'}} km/h <span class="data-desc">Average Speed</span></p>
+    <p>{{tracking?.avgPace | SecondsToTime | date: 'mm:ss'}} <span class="data-desc">Average Pace</span></p>
   </div>
 </div>
 

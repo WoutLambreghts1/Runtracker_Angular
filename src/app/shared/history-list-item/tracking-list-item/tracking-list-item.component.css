@@ -10,7 +10,7 @@
 }
 
 .person{
-  background: url("../../../../assets/avatars/black.png");
+  background: gray;
   background-size: cover;
 
   width: 70px;
