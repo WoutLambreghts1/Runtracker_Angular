@@ -51,7 +51,7 @@ export class TrackingDetailComponent implements OnInit {
   }
 
   setChartData(tracking:Tracking) {
-    this.lineChartData[0] = {data: tracking.coordinates.map(x => x.speed)};
+    this.lineChartData[0] = {data: tracking.coordinates.map(x => x.speed.toFixed(2))};
 
     //Prevent having too much labels
     let length = tracking.coordinates.length;
