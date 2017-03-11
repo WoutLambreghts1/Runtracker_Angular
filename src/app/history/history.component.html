@@ -37,14 +37,16 @@
   </div>
 
   <p *ngIf="historyWrapperElements == null || historyWrapperElements.length == 0">No trackings present.</p>
-  <div class="history-list col-xs-12" *ngFor="let h of historyWrapperElements">
-    <a *ngIf="h.tracking != null" [routerLink]="['/history/tracking', h.tracking.trackingId]">
-      <tracking-list-item class="col-xs-12" *ngIf="h.type == 'tracking'" [tracking]="h.tracking" [user]="user">
-      </tracking-list-item>
-    </a>
-    <a *ngIf="h.competition != null" [routerLink]="['/history/competition', h.competition.competitionId]">
-      <competition-list-item class="col-xs-12" *ngIf="h.type == 'competition'" [competition]="h.competition">
-      </competition-list-item>
-    </a>
+  <div class="pre-scrollable">
+    <div class="history-list col-xs-12" *ngFor="let h of historyWrapperElements">
+      <a *ngIf="h.tracking != null" [routerLink]="['/history/tracking', h.tracking.trackingId]">
+        <tracking-list-item class="col-xs-12" *ngIf="h.type == 'tracking'" [tracking]="h.tracking" [user]="user">
+        </tracking-list-item>
+      </a>
+      <a *ngIf="h.competition != null" [routerLink]="['/history/competition', h.competition.competitionId]">
+        <competition-list-item class="col-xs-12" *ngIf="h.type == 'competition'" [competition]="h.competition">
+        </competition-list-item>
+      </a>
+    </div>
   </div>
 </div>

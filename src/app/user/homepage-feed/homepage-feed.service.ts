@@ -10,13 +10,10 @@ import {HistoryWrapper} from "../../model/history-wrapper";
 export class HomepageFeedService {
   private jwt = localStorage.getItem('id_token');
   private authHeader = new Headers();
-  private authHeaderTwo = new Headers();
 
   constructor(private http: Http) {
     if (this.jwt) {
       this.authHeader.append('token', this.jwt);
-      this.authHeaderTwo.append('token', this.jwt);
-      this.authHeaderTwo.append('Content-Type', 'application/json');
     }
   }
 
