@@ -9,9 +9,12 @@ import {SharedModule} from "../shared/shared.module";
 import {TrackingDetailComponent} from "./detail/tracking-detail/tracking-detail.component";
 import {CompetitionDetailComponent} from "./detail/competition-detail/competition-detail.component";
 import {SecondsToTimePipe} from "./detail/secondsToTimePipe";
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HistoryRoutingModule, ChartsModule,SharedModule],
+  imports: [CommonModule, FormsModule, HistoryRoutingModule, ChartsModule,SharedModule, AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyDrRDabb3-ZhT6tP95Va4KXht343aLgWTc'
+  })],
   providers: [HistoryService],
   declarations: [HistoryComponent, TrackingDetailComponent, CompetitionDetailComponent, SecondsToTimePipe],
 })

@@ -27,5 +27,16 @@ p {
 
 #tracking-chart{
   padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+#tracking-map{
+  padding: 0;
+  margin-bottom: 3rem;
+}
+
+.sebm-google-map-container {
+  height: 30rem;
+  width: 100%;
 }
 

@@ -3,6 +3,8 @@ import {HistoryService} from "../../history.service";
 import {Tracking} from "../../../model/tracking";
 import {ActivatedRoute} from "@angular/router";
 import {Coordinate} from "../../../model/coordinate";
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import {SebmGoogleMap} from "angular2-google-maps/esm/core/directives/google-map";
 
 @Component({
   selector: 'trackingDetailComponent',
