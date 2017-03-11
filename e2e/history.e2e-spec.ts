@@ -61,10 +61,12 @@ describe('history', () => {
     let map = element(by.id("tracking-map"));
     let graph = element(by.tagName("canvas"));
     let coreInfo = element(by.className("tracking-info-coreData"));
+    let sebmGoogleMap = element(by.tagName("sebm-google-map"));
 
     expect(map.isPresent()).toBeTruthy();
     expect(graph.isPresent()).toBeTruthy();
     expect(coreInfo.isPresent()).toBeTruthy();
+    expect(sebmGoogleMap.isPresent()).toBeTruthy();
   });
 
 });
