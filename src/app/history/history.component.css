@@ -1,14 +1,38 @@
+h1{
+  font-size: 3rem;
+}
+
 .select-options, .select-options-time {
   margin: 1rem auto;
   display: flex;
   justify-content: center;
 }
 
+.select-options{
+  margin-bottom: 2rem;
+}
 select {
   font-size: medium;
   margin: 0 1rem;
   border: none;
   background: #e6e6e6;
+}
+
+.container{
+  margin-bottom: 3rem;
+}
+
+.container > p {
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.list-container{
+  padding: 0;
+}
+
+.pre-scrollable{
+  padding-top: 0.5rem;
 }
 
 .history-list {

@@ -28,8 +28,8 @@
   </div>
 </div>
 <div id="tracking-map" class="container background-container">
-  <sebm-google-map #myMap [latitude]="tracking?.coordinates[0]?.lat" [longitude]="tracking?.coordinates[0]?.lon" [zoom]="7" >
-    <sebm-google-map-polyline [strokeColor]>
+  <sebm-google-map #myMap [latitude]="tracking?.coordinates[0]?.lat" [longitude]="tracking?.coordinates[0]?.lon" [zoom]="15" >
+    <sebm-google-map-polyline [strokeColor]="'#FF0000'">
       <sebm-google-map-polyline-point *ngFor="let cor of tracking?.coordinates" [latitude]="cor.lat" [longitude]="cor.lon">
       </sebm-google-map-polyline-point>
     </sebm-google-map-polyline>
