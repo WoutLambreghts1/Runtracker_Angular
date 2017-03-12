@@ -1,0 +1,67 @@
+#competition-info{
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+}
+
+.competition-info-coreData-container{
+display: flex;
+}
+
+.competition-info-coreData{
+  margin-right: 10rem;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h2{
+  font-size: 2rem;
+  color: #868686;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+h3{
+  padding-bottom: 1rem;
+}
+
+.winner{
+  color: green;
+}
+
+h4{
+font-weight: 800;
+}
+
+p {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+
+.data-desc{
+  font-size:1.5rem;
+  margin-left: 1rem;
+  color: #868686;
+}
+
+#competition-chart{
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+#competition-map{
+  padding: 0;
+  margin-bottom: 3rem;
+  display: flex;
+}
+
+
+.sebm-google-map-container {
+  height: 30rem;
+  width: 100%;
+}
+
+.sebm-google-map-container:first-child{
+  border-right: 2px solid #d0d0d0;
+}

@@ -1,4 +1,67 @@
-<h1>{{competition?.name}}</h1>
-<span class="time">{{competition?.time.toDateString()}}</span>
-<h2>{{competition?.usersRun[0].username}} vs {{competition?.usersRun[1].username}}</h2>
-<h3>Won by <span class="winner">{{competition?.userWon.username}}</span></h3>
+<div id="competition-info" class="container background-container">
+  <h1>{{competition?.name}} {{competition?.goal?.name}}</h1>
+  <h2>{{competition?.time | date:'HH:mm'}} - {{competition?.time | date:'fullDate'}}</h2>
+  <h3>Won by <span class="winner">{{competition?.userWon.username}}</span></h3>
+  <div class="competition-info-coreData-container">
+    <div id="firstPerson" class="competition-info-coreData">
+      <h4>{{competition?.usersRun[0].username}}</h4>
+      <p>
+        <span *ngIf="competition?.trackings[0]?.totalDistance > 1000">{{(competition?.trackings[0]?.totalDistance / 1000) | number: '1.0-2'}} km </span>
+        <span
+          *ngIf="competition?.trackings[0]?.totalDistance <= 1000">{{competition?.trackings[0]?.totalDistance}} m </span>
+        <span class="data-desc">Total Distance</span>
+      </p>
+      <p>{{competition?.trackings[0]?.totalDuration | SecondsToTime | date: 'H:mm:ss'}} <span class="data-desc">Total Duration</span>
+      </p>
+      <p>{{competition?.trackings[0]?.maxSpeed | number: '1.0-2'}} km/h <span class="data-desc">Maximum Speed</span></p>
+      <p>{{competition?.trackings[0]?.avgSpeed | number: '1.0-2'}} km/h <span class="data-desc">Average Speed</span></p>
+      <p>{{competition?.trackings[0]?.avgPace | SecondsToTime | date: 'mm:ss'}} <span
+        class="data-desc">Average Pace</span></p>
+    </div>
+    <div id="secondPerson" class="competition-info-coreData">
+      <h4>{{competition?.usersRun[1].username}}</h4>
+      <p>
+        <span *ngIf="competition?.trackings[1]?.totalDistance > 1000">{{(competition?.trackings[1]?.totalDistance / 1000) | number: '1.0-2'}} km </span>
+        <span
+          *ngIf="competition?.trackings[1]?.totalDistance <= 1000">{{competition?.trackings[1]?.totalDistance}} m </span>
+        <span class="data-desc">Total Distance</span>
+      </p>
+      <p>{{competition?.trackings[1]?.totalDuration | SecondsToTime | date: 'H:mm:ss'}} <span class="data-desc">Total Duration</span>
+      </p>
+      <p>{{competition?.trackings[1]?.maxSpeed | number: '1.0-2'}} km/h <span class="data-desc">Maximum Speed</span></p>
+      <p>{{competition?.trackings[1]?.avgSpeed | number: '1.0-2'}} km/h <span class="data-desc">Average Speed</span></p>
+      <p>{{competition?.trackings[1]?.avgPace | SecondsToTime | date: 'mm:ss'}} <span
+        class="data-desc">Average Pace</span></p>
+    </div>
+  </div>
+</div>
+
+<div id="competition-chart" class="container background-container">
+  <div style="display: block;">
+    <canvas baseChart width="400" height="100"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+
+<div id="competition-map" class="container background-container">
+  <sebm-google-map #myMap [latitude]="competition?.trackings[0]?.coordinates[0]?.lat" [longitude]="competition?.trackings[0]?.coordinates[0]?.lon" [zoom]="15" >
+    <sebm-google-map-polyline [strokeColor]="'#FF0000'">
+      <sebm-google-map-polyline-point *ngFor="let cor of competition?.trackings[0]?.coordinates" [latitude]="cor.lat" [longitude]="cor.lon">
+      </sebm-google-map-polyline-point>
+    </sebm-google-map-polyline>
+  </sebm-google-map>
+
+  <sebm-google-map #myMap [latitude]="competition?.trackings[1]?.coordinates[0]?.lat" [longitude]="competition?.trackings[1]?.coordinates[0]?.lon" [zoom]="15" >
+    <sebm-google-map-polyline [strokeColor]="'#FF0000'">
+      <sebm-google-map-polyline-point *ngFor="let cor of competition?.trackings[1]?.coordinates" [latitude]="cor.lat" [longitude]="cor.lon">
+      </sebm-google-map-polyline-point>
+    </sebm-google-map-polyline>
+  </sebm-google-map>
+</div>
