@@ -53,6 +53,14 @@ export class HistoryService {
       .catch(this.handleErrorObservable);
   }
 
+  getCompetition(competitionId): Observable<Competition> {
+    return this.http.get(myGlobals.BACKEND_BASEURL + '/api/competitions/' + competitionId, {
+        headers: this.authHeader
+      })
+      .map((res: Response) => res.json())
+      .catch(this.handleErrorObservable);
+  }
+
   getAllHistoryEvents(): Observable<any> {
     //let obs1 = this.getAllTrackings();
     //let obs2 = this.getAllCompetitions();
