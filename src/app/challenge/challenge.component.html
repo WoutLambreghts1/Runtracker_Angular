@@ -2,14 +2,14 @@
   <h1>Live challenges</h1>
   <h2>Watch people challenge each other! <span class="glyphicon glyphicon-flag"></span></h2>
 
-   <div id="live-competitions">
-      <ul class="challengeList table-responsive">
-        <li class="challengeListItem" data-toggle="modal" (click)="onClickSetCompetition(competition)"
-            data-target="#competitionModal" *ngFor="let competition of competitionsLive">
-          <challenge-item [competition]="competition"></challenge-item>
-        </li>
-      </ul>
-    </div>
+  <div id="live-competitions">
+    <ul class="challengeList table-responsive">
+      <li class="challengeListItem" data-toggle="modal" (click)="onClickSetCompetition(competition)"
+          data-target="#competitionModal" *ngFor="let competition of competitionsLive">
+        <challenge-item [competition]="competition"></challenge-item>
+      </li>
+    </ul>
+  </div>
 
 
   <!-- Modal live challenge -->
@@ -19,17 +19,19 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-info">
-            <i class="fa fa-television" aria-hidden="true"></i> {{competitionSelected.name}}  (started on {{competitionSelected.time | date: 'yyyy/MM/dd HH:mm'}})
-          </h4>
+          <h4 class="modal-title">{{competitionSelected.name}}</h4>
+          <h5>Started on {{competitionSelected.time | date:'yyyy/MM/dd HH:mm'}}</h5>
         </div>
 
         <div class="modal-body">
-            <player-information [player]="competitionSelected.usersRun[0]" [startpos]="startPosOne" id="player-one" class="col-xs-3"></player-information>
+          <player-information [player]="competitionSelected.usersRun[0]" id="player-one"
+                              class="col-xs-3"></player-information>
 
-            <challenge-screen [competition]="competitionSelected" id="challenge-screen" class="col-xs-6"></challenge-screen>
+          <challenge-screen [competition]="competitionSelected" [hashmap]="hashmap" id="challenge-screen"
+                            class="col-xs-6"></challenge-screen>
 
-            <player-information [player]="competitionSelected.usersRun[1]" [startpos]="startPosTwo" id="player-two" class="col-xs-3"></player-information>
+          <player-information [player]="competitionSelected.usersRun[1]" id="player-two"
+                              class="col-xs-3"></player-information>
         </div>
 
       </div>

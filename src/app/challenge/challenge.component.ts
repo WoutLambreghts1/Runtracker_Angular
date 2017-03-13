@@ -1,10 +1,14 @@
-import {Component,OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ChallengeService} from "./challenge.service";
 import {AuthService} from "./../authentication/auth.service";
 import {Competition} from "../model/competition";
-import {Goal} from "../model/goal";
 import {User} from "../model/user";
 import {Position} from "../model/position";
+import {MQTTService} from "../mqtt/mqtt.service";
+import {ConfigService} from "../mqtt/config/config.service";
+import {Packet} from 'mqtt';
+import {Subscription} from "rxjs";
+import {MQTTPacket, MQTTPacketType, TrackingPacket} from "../mqtt/packet/mqtt.packet";
 
 @Component({
   selector: 'challenge',
@@ -13,35 +17,49 @@ import {Position} from "../model/position";
   providers: [ChallengeService]
 })
 
-export class ChallengeComponent implements OnInit{
-  private competitionsLive:Competition[] = [];
-  private competitionSelected:Competition = new Competition();
+export class ChallengeComponent implements OnInit, OnDestroy {
+  private competitionsLive: Competition[] = [];
+  private competitionSelected: Competition = new Competition();
 
-  private startPosOne:Position;
-  private startPosTwo:Position;
+  private startPosOne: Position;
+  private startPosTwo: Position;
 
-  constructor(private challengeService:ChallengeService, private auth:AuthService) {
-    let u1:User = new User("","","","");
-    let u2:User = new User("","","","");
-    this.competitionSelected.usersRun = [u1,u2];
+  private compMessages: Subscription;
 
+  private hashmap: { [key: number]: number; } = {}; // Implementation of a hashmap
+
+
+  constructor(private challengeService: ChallengeService, private auth: AuthService, private mqttService: MQTTService, private configService: ConfigService) {
+    let u1: User = new User("", "", "", "");
+    let u2: User = new User("", "", "", "");
+    this.competitionSelected.usersRun = [u1, u2];
 
     //Set start positions for both players
-    this.startPosOne = new Position(50.52,4.22);
-    this.startPosTwo = new Position(51.2192,4.4029);
+    this.startPosOne = new Position(50.52, 4.22);
+    this.startPosTwo = new Position(51.2192, 4.4029);
   }
 
-  onClickSetCompetition(c:Competition){
-    this.competitionSelected=c;
+  onClickSetCompetition(c: Competition) {
+    this.competitionSelected = c;
+    this.configService.getConfigWithCompTopic(c.competitionId).then(config => {
+      this.mqttService.configure(config);
+      this.mqttService.try_connect().then(() => {
+        this.on_connect();
+      }).catch(() => {
+        this.on_error();
+      });
+    });
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.challengeService.getLiveCompetitions().subscribe(
       (competitions) => {
-        if(competitions != null){
+        if (competitions != null) {
           competitions.forEach(c => c.time = new Date(c.time));
         }
-        this.competitionsLive = competitions ;
+        this.competitionsLive = competitions.sort(function (a, b) {
+          return b.time.getTime() - a.time.getTime();
+        });
       },
       error => {
         console.log(error as string);
@@ -49,6 +67,61 @@ export class ChallengeComponent implements OnInit{
     );
   }
 
+  ngOnDestroy(): void {
+    this.compMessages.unsubscribe();
+    this.mqttService.disconnect();
+  }
 
+  /** Callback on_connect to queue */
+  public on_connect = () => {
 
+    // Store local reference to Observable
+    // for use with template ( | async )
+    // Subscribe a function to be run on_next message
+    // this.userMessages = this.mqttService.userMessages;
+    this.compMessages = this.mqttService.compMessages.subscribe(this.on_next);
+
+    // this.userMessages = this.userMessages.subscribe(this.on_next);
+  };
+
+  /** Consume a message from the _mqService */
+  public on_next = (message: Packet) => {
+    let mqttPacket: MQTTPacket = JSON.parse(message.toString());
+    if (mqttPacket.type === MQTTPacketType.TRACKING) {
+      let trackingPacket: TrackingPacket = JSON.parse(message.toString());
+
+      this.hashmap[trackingPacket.userId] = trackingPacket.totalDistance;
+      console.log(this.hashmap);
+
+      /*
+       if (trackingPacket.userId === this.currUserId) {
+       this.currUserPacketCount++;
+       this.currUserTotalDistance = trackingPacket.totalDistance;
+       } else {
+       this.challengerPacketCount++;
+       this.challengerTotalDistance = trackingPacket.totalDistance;
+       }
+       if (this.currUserId === this.competition.userCreated.userId && !this.sendWinPacket) {
+       if (this.currUserTotalDistance * 1000 >= this.competition.goal.distance) {
+       this.sendWinPacket = true;
+
+       let winPacket: WinPacket = new WinPacket(this.competition.competitionId, this.currUserId);
+       this.mqttService.publishInCompTopic(JSON.stringify(winPacket), 2);
+       } else if (this.challengerTotalDistance * 1000 >= this.competition.goal.distance) {
+       this.sendWinPacket = true;
+
+       let challenger = this.competition.usersRun.find((user) => {
+       return user.userId !== this.currUserId
+       });
+
+       let winPacket: WinPacket = new WinPacket(this.competition.competitionId, challenger.userId);
+       this.mqttService.publishInCompTopic(JSON.stringify(winPacket), 2);
+       }
+       }*/
+    }
+  };
+
+  public on_error = () => {
+    console.error('Ooops, error in HomePage');
+  };
 }
