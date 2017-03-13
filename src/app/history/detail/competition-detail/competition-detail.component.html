@@ -4,7 +4,7 @@
   <h3>Won by <span class="winner">{{competition?.userWon.username}}</span></h3>
   <div class="competition-info-coreData-container">
     <div id="firstPerson" class="competition-info-coreData">
-      <h4>{{competition?.usersRun[0].username}}</h4>
+      <h4>{{competition?.usersRun[1].username}}</h4>
       <p>
         <span *ngIf="competition?.trackings[0]?.totalDistance > 1000">{{(competition?.trackings[0]?.totalDistance / 1000) | number: '1.0-2'}} km </span>
         <span
@@ -19,7 +19,7 @@
         class="data-desc">Average Pace</span></p>
     </div>
     <div id="secondPerson" class="competition-info-coreData">
-      <h4>{{competition?.usersRun[1].username}}</h4>
+      <h4>{{competition?.usersRun[0].username}}</h4>
       <p>
         <span *ngIf="competition?.trackings[1]?.totalDistance > 1000">{{(competition?.trackings[1]?.totalDistance / 1000) | number: '1.0-2'}} km </span>
         <span
