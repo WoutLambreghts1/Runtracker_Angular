@@ -40,8 +40,9 @@ export class CompetitionDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       this.competitionId = +params['id'];
-      this.historyService.getAllCompetitions().subscribe(val => {
-        this.competition = val.find(x => x.competitionId == this.competitionId);
+      this.historyService.getCompetition(this.competitionId).subscribe(val => {
+        this.competition = val;
+        console.log(val);
         this.setChartData(this.competition);
       });
     });
