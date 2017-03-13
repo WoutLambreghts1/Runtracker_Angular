@@ -21,9 +21,6 @@ export class ChallengeComponent implements OnInit, OnDestroy {
   private competitionsLive: Competition[] = [];
   private competitionSelected: Competition = new Competition();
 
-  private startPosOne: Position;
-  private startPosTwo: Position;
-
   private compMessages: Subscription;
 
   private hashmap: { [key: number]: number; } = {}; // Implementation of a hashmap
@@ -33,10 +30,6 @@ export class ChallengeComponent implements OnInit, OnDestroy {
     let u1: User = new User("", "", "", "");
     let u2: User = new User("", "", "", "");
     this.competitionSelected.usersRun = [u1, u2];
-
-    //Set start positions for both players
-    this.startPosOne = new Position(50.52, 4.22);
-    this.startPosTwo = new Position(51.2192, 4.4029);
   }
 
   onClickSetCompetition(c: Competition) {
@@ -56,10 +49,10 @@ export class ChallengeComponent implements OnInit, OnDestroy {
       (competitions) => {
         if (competitions != null) {
           competitions.forEach(c => c.time = new Date(c.time));
+          this.competitionsLive = competitions.sort(function (a, b) {
+            return b.time.getTime() - a.time.getTime();
+          });
         }
-        this.competitionsLive = competitions.sort(function (a, b) {
-          return b.time.getTime() - a.time.getTime();
-        });
       },
       error => {
         console.log(error as string);
@@ -68,7 +61,9 @@ export class ChallengeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.compMessages.unsubscribe();
+    if (this.compMessages != null) {
+      this.compMessages.unsubscribe();
+    }
     this.mqttService.disconnect();
   }
 
@@ -92,32 +87,6 @@ export class ChallengeComponent implements OnInit, OnDestroy {
 
       this.hashmap[trackingPacket.userId] = trackingPacket.totalDistance;
       console.log(this.hashmap);
-
-      /*
-       if (trackingPacket.userId === this.currUserId) {
-       this.currUserPacketCount++;
-       this.currUserTotalDistance = trackingPacket.totalDistance;
-       } else {
-       this.challengerPacketCount++;
-       this.challengerTotalDistance = trackingPacket.totalDistance;
-       }
-       if (this.currUserId === this.competition.userCreated.userId && !this.sendWinPacket) {
-       if (this.currUserTotalDistance * 1000 >= this.competition.goal.distance) {
-       this.sendWinPacket = true;
-
-       let winPacket: WinPacket = new WinPacket(this.competition.competitionId, this.currUserId);
-       this.mqttService.publishInCompTopic(JSON.stringify(winPacket), 2);
-       } else if (this.challengerTotalDistance * 1000 >= this.competition.goal.distance) {
-       this.sendWinPacket = true;
-
-       let challenger = this.competition.usersRun.find((user) => {
-       return user.userId !== this.currUserId
-       });
-
-       let winPacket: WinPacket = new WinPacket(this.competition.competitionId, challenger.userId);
-       this.mqttService.publishInCompTopic(JSON.stringify(winPacket), 2);
-       }
-       }*/
     }
   };
 
