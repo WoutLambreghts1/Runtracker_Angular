@@ -1,4 +1,4 @@
-<span class="name" *ngIf="competition.goal" class="goal">{{competition.name}}</span>
+<span class="name" *ngIf="competition.goal" class="goal">{{competition?.usersRun[0].username}} VS {{competition?.usersRun[1].username}}</span>
 
 <div class="challenge-summary">
   <span id="live">Live</span>

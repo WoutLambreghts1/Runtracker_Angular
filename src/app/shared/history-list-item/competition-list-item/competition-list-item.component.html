@@ -8,7 +8,7 @@
     {{competition?.time | date:'fullDate'}}
   </p>
 
-  <h1>{{competition?.name}} <span>{{competition?.goal?.name}}</span></h1>
+  <h1>{{competition?.usersRun[0].username}} VS {{competition?.usersRun[1].username}}</h1>
 
   <p class="winner">Won by <span>{{competition?.userWon?.username}}</span></p>
   <p class="winning-data">

@@ -1,5 +1,5 @@
 <div id="competition-info" class="container background-container">
-  <h1>{{competition?.name}} {{competition?.goal?.name}}</h1>
+  <h1>{{competition?.usersRun[0].username}} VS {{competition?.usersRun[1].username}}</h1>
   <h2>{{competition?.time | date:'HH:mm'}} - {{competition?.time | date:'fullDate'}}</h2>
   <h3>Won by <span class="winner">{{competition?.userWon.username}}</span></h3>
   <div class="competition-info-coreData-container">

@@ -8,9 +8,12 @@
   justify-content: center;
 }
 
-.modal-content {
-  min-width: 100rem;
-  min-height: 60rem;
+.modal-body{
+  display: flex;
+}
+
+.modal-content{
+  width: 100%;
 }
 
 h4 {
@@ -50,13 +53,4 @@ h2 {
   border-bottom: none;
 }
 
-#player-one {
-  float: left;
-  min-height: 60vh;
-}
-
-#player-two {
-  float: right;
-  min-height: 60vh;
-}
 
