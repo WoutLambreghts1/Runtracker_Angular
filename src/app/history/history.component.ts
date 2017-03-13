@@ -21,7 +21,7 @@ export class HistoryComponent implements OnInit {
   private activeTimeFrame = 'Month';
   private historyTypes = ['Competition', 'Tracking', 'All'];
   private activeHistoryType = 'All';
-  private data = ['Average speed', 'Maximum speed', 'Total distance', 'Total duration'];
+  private data = ['Average speed', 'Maximum speed', 'Total distance', 'Total duration (in s)'];
   private activeData = 'Average speed';
 
   // Chart parameters
@@ -85,12 +85,12 @@ export class HistoryComponent implements OnInit {
     // get the data
     let result: any[];
     switch (data) {
-      case 'Total duration':
+      case 'Total duration (in s)':
         result = filteredArray.map(fa => {
           if (fa.type == 'competition') {
-            return fa.competition.trackings[0].totalDuration;
+            return fa.competition.trackings[0].totalDuration.toFixed(2);
           } else {
-            return fa.tracking.totalDuration;
+            return fa.tracking.totalDuration.toFixed(2);
           }
         })
         ;
@@ -98,9 +98,9 @@ export class HistoryComponent implements OnInit {
       case 'Total distance':
         result = filteredArray.map(fa => {
           if (fa.type == 'competition') {
-            return fa.competition.trackings[0].totalDistance;
+            return (fa.competition.trackings[0].totalDistance/1000).toFixed(2);
           } else {
-            return fa.tracking.totalDistance;
+            return (fa.tracking.totalDistance/1000).toFixed(2);
           }
         })
         ;
@@ -108,9 +108,9 @@ export class HistoryComponent implements OnInit {
       case 'Maximum speed':
         result = filteredArray.map(fa => {
           if (fa.type == 'competition') {
-            return fa.competition.trackings[0].maxSpeed;
+            return fa.competition.trackings[0].maxSpeed.toFixed(2);
           } else {
-            return fa.tracking.maxSpeed;
+            return fa.tracking.maxSpeed.toFixed(2);
           }
         })
         ;
@@ -118,9 +118,9 @@ export class HistoryComponent implements OnInit {
       case 'Average speed':
         result = filteredArray.map(fa => {
           if (fa.type == 'competition') {
-            return fa.competition.trackings[0].avgSpeed;
+            return fa.competition.trackings[0].avgSpeed.toFixed(2);
           } else {
-            return fa.tracking.avgSpeed;
+            return fa.tracking.avgSpeed.toFixed(2);
           }
         })
         ;
@@ -269,4 +269,5 @@ export class HistoryComponent implements OnInit {
     this.activeTimeFrame = e;
     this.setChart(this.activeTimeFrame, this.activeData, this.activeHistoryType);
   }
+
 }
