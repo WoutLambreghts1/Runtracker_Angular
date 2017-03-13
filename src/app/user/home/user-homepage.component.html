@@ -1,5 +1,7 @@
-<main class="container">
-  <h1 id="greeting" class="col-xs-12 background-container">{{greeting}} {{user.username}}!</h1>
-  <core-info [coreInfo]="coreInfo" class="col-xs-12 background-container"></core-info>
-  <homepage-feed class="col-xs-12 background-container"></homepage-feed>
-</main>
+<div class="container background-container">
+  <h1 id="greeting">{{greeting}} {{user.username}}!</h1>
+</div>
+<div class="container background-container">
+  <core-info [coreInfo]="coreInfo" class="col-xs-12 "></core-info>
+</div>
+<homepage-feed></homepage-feed>

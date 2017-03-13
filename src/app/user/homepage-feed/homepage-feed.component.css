@@ -1,5 +1,13 @@
-:host {
-  padding: 2rem 10rem;
+.background-container{
+  padding: 0;
+  margin-bottom: 3rem;
+}
+
+h3{
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid #d0d0d0;
 }
 .history-list {
   border-bottom: 1px solid #e8e8e8;

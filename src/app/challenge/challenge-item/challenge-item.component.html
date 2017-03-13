@@ -1,7 +1,7 @@
-<span class="name" *ngIf="competition.goal" class="goal">{{competition?.usersRun[0].username}} VS {{competition?.usersRun[1].username}}</span>
+<span class="name" *ngIf="competition?.goal" class="goal">{{competition?.usersRun[0]?.username}} VS {{competition?.usersRun[1]?.username}}</span>
 
 <div class="challenge-summary">
   <span id="live">Live</span>
   <span *ngIf="competition.goal==true">{{competition.goal.name}}</span>
-  <span class="date" *ngIf="competition.time"><strong>Started on</strong> {{competition.time | date: 'yyyy/MM/dd HH:mm'}}</span>
+  <span class="date" *ngIf="competition?.time"><strong>Started on</strong> {{competition?.time | date: 'yyyy/MM/dd HH:mm'}}</span>
 </div>
