@@ -2,9 +2,24 @@
   min-height: 80%;
   padding: 1rem 3rem;
 }
-.modal-content{
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content {
   min-width: 100rem;
   min-height: 60rem;
+}
+
+h4 {
+  font-weight: 700;
+}
+
+h5 {
+  color: #868686;
+  margin: 0.5rem 0;
 }
 
 h2 {
@@ -34,11 +49,13 @@ h2 {
 .challengeListItem:last-child {
   border-bottom: none;
 }
-#player-one{
+
+#player-one {
   float: left;
   min-height: 60vh;
 }
-#player-two{
+
+#player-two {
   float: right;
   min-height: 60vh;
 }

@@ -31,6 +31,7 @@
     "chart.js": "^2.5.0",
     "core-js": "^2.4.1",
     "express": "^4.14.1",
+    "mqtt": "^2.4.0",
     "ng2-charts": "^1.5.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "2.2.1",
     "@types/jasmine": "2.5.38",
+    "@types/mqtt": "0.0.33",
     "codelyzer": "~1.0.0-beta.3",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",

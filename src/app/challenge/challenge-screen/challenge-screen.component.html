@@ -1,4 +1,4 @@
-<div (click)="onclickUpdate()" id="game-visualisation">
+<!--<div (click)="onclickUpdate()" id="game-visualisation">
   <h4><strong>Finish in: </strong><br>
     <span *ngIf="competition.goal" id="distance-to-go">{{competition.goal.distance}} meters</span></h4>
   <ul class="timeline">
@@ -14,5 +14,8 @@
       </div>
     </li>
   </ul>
+</div>-->
+<div *ngFor="let challenger of competition?.usersRun">
+  <div>{{challenger?.userId}}</div>
+  <div>{{hashmap[challenger?.userId]}}</div>
 </div>
-

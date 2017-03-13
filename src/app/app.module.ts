@@ -14,6 +14,8 @@ import {HomePageComponent} from "./homepage/homepage.component";
 import {PageNotFoundComponent} from "./PageNotFound.component";
 import {CommonModule} from "@angular/common";
 import {HeaderComponent} from "./homepage/header/header.component";
+import {MQTTService} from "./mqtt/mqtt.service";
+import {ConfigService} from "./mqtt/config/config.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {HeaderComponent} from "./homepage/header/header.component";
   ],
   providers: [
     AUTH_PROVIDERS,
-    AuthService
+    AuthService,
+    MQTTService,
+    ConfigService
   ],
   bootstrap: [AppComponent],
 })
