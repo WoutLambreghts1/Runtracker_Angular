@@ -79,7 +79,7 @@ describe('header-navigation', () => {
     });
   });
 
-  it('Challenge should navigate to /ranking', () => {
+  it('Ranking should navigate to /ranking', () => {
     navRanking.click().then(() => {
       browser.driver.sleep(2000);
       expect(browser.getCurrentUrl()).toBe(myGlobals.FRONTEND_BASEURL + '/ranking');
