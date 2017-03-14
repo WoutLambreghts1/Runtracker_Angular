@@ -1,5 +1,7 @@
-<h1>Goal: {{competition?.goal}}</h1>
+<h1>Goal: {{competition?.goal?.name}}</h1>
 <div *ngFor="let challenger of competition?.usersRun">
   <div>{{hashmap[challenger?.userId]}}</div>
-  <div class="competition-progress"></div>
+  <div class="competition-progressbar">
+    <div class="competition-progress" [ngStyle]="setProgressbar(hashmap[challenger?.userId])"></div>
+  </div>
 </div>
