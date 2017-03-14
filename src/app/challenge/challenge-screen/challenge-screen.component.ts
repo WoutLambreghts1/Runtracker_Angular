@@ -16,6 +16,15 @@ export class ChallengeScreenComponent implements OnInit {
   }
 
   setProgressbar(progress) {
-    return {'height': (progress / this.competition.goal.distance * 100) + '%'}
+    let result = 0;
+    if (this.competition != null && this.competition.goal != null) {
+      result = (progress / this.competition.goal.distance * 100);
+      if (result > 100) {
+        result = 100;
+      } else if (result < 0) {
+        result = 0;
+      }
+    }
+    return {'height': result + '%'}
   }
 }
