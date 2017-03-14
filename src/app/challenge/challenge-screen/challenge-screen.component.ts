@@ -11,35 +11,20 @@ export class ChallengeScreenComponent implements OnInit {
   @Input() competition: Competition;
   @Input() hashmap: { [key: number]: number; };
 
-  private badgeOne;
-  private badgeTwo;
-
-  private percentFromFinishP1;
-  private percentFromFinishP2;
-
-
   ngOnInit(): void {
-/*
-    this.badgeOne = document.getElementById('badge-player-one');
-    this.badgeTwo = document.getElementById('badge-player-two');
-
-    this.percentFromFinishP1 = 100;
-    this.percentFromFinishP2 = 100;
-
-    this.updateBadge(this.badgeOne, this.percentFromFinishP1);
-    this.updateBadge(this.badgeTwo, this.percentFromFinishP2);*/
 
   }
 
-  private updateBadge(badge, percentFromFinish: number) {
-    badge.style.top = percentFromFinish.toString() + "%";
+  setProgressbar(progress) {
+    let result = 0;
+    if (this.competition != null && this.competition.goal != null) {
+      result = (progress / this.competition.goal.distance * 100);
+      if (result > 100) {
+        result = 100;
+      } else if (result < 0) {
+        result = 0;
+      }
+    }
+    return {'height': result + '%'}
   }
-
-  //TEST
-  onclickUpdate(): void {
-    if ((this.percentFromFinishP1 - 10 >= 0))
-      this.percentFromFinishP1 -= 10;
-    this.updateBadge(this.badgeOne, this.percentFromFinishP1);
-  }
-
 }
