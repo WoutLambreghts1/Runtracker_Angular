@@ -3,7 +3,6 @@ import {ChallengeService} from "./challenge.service";
 import {AuthService} from "./../authentication/auth.service";
 import {Competition} from "../model/competition";
 import {User} from "../model/user";
-import {Position} from "../model/position";
 import {MQTTService} from "../mqtt/mqtt.service";
 import {ConfigService} from "../mqtt/config/config.service";
 import {Packet} from 'mqtt';
