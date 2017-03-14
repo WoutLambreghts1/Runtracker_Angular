@@ -1,5 +1,5 @@
 <div>
-  <img [src]="'../../../assets/avatars/'+player.avatar+'.png'" class="center-block img-circle profilepic" alt="avatar">
+  <img *ngIf="player.avatar" [src]="'../../../assets/avatars/'+player.avatar+'.png'" class="center-block img-circle profilepic" alt="avatar">
   <h3 class="username">{{player.username}}</h3>
   <p class="text-center"><strong>Wins: </strong>{{player.nrOfCompetitionsWon}}</p>
 </div>
