@@ -11,3 +11,6 @@ ul{
     float: none;
   }
 }
+#logout{
+  cursor: pointer;
+}
