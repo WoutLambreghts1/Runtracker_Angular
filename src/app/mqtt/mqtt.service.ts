@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Config} from './config';
 import {TransportService, TransportState} from './transport.service';
 
+import 'mqtt';
 import {Client, Packet, connect} from 'mqtt';
 import {ClientOptions} from 'mqtt';
 
