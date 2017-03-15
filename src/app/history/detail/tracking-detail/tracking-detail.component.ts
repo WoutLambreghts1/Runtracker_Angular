@@ -83,7 +83,7 @@ export class TrackingDetailComponent implements OnInit {
 
   private formatTime(seconds) {
     let date = new Date(seconds);
-    let hh = ((date.getHours()-1) < 10) ? "0" + (date.getHours()-1) : (date.getHours()-1);
+    let hh = ((date.getHours()-1) < 10) ? "0" + (date.getHours()) : (date.getHours());
     let mm = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
     let ss = (date.getSeconds() < 10) ? "0" + date.getSeconds() : date.getSeconds();
     return hh + ":" + mm + ":" + ss;
