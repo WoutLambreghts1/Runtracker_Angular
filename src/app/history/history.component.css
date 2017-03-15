@@ -1,4 +1,4 @@
-h1{
+h1 {
   font-size: 3rem;
 }
 
@@ -7,10 +7,14 @@ h1{
   display: flex;
   justify-content: center;
 }
+select:active, select:focus{
+  outline: none !important;
+}
 
-.select-options{
+.select-options {
   margin-bottom: 2rem;
 }
+
 select {
   font-size: medium;
   margin: 0 1rem;
@@ -18,7 +22,7 @@ select {
   background: #e6e6e6;
 }
 
-.container{
+.container {
   margin-bottom: 3rem;
 }
 
@@ -27,11 +31,11 @@ select {
   padding-top: 1.5rem;
 }
 
-.list-container{
+.list-container {
   padding: 0;
 }
 
-.pre-scrollable{
+.pre-scrollable {
   padding-top: 0.5rem;
 }
 

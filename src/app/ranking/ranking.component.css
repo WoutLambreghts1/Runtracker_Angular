@@ -1,37 +1,62 @@
-tbody tr:first-child{
+.background-container {
+  margin-bottom: 3rem;
+}
+
+tbody tr:first-child {
   font-weight: bold;
 }
-#orderby{
+
+#orderby {
   margin-top: 5rem;
   margin-bottom: 3rem;
   text-align-last: center;
   font-weight: bold;
 }
-.gold{
+
+.gold {
   color: #fae157;
 }
-.option-text{
+
+.option-text {
   font-weight: bold;
 }
-th{
+
+th {
   background-color: #dedede;
 }
-tr{
+
+tr {
   cursor: pointer;
 }
-thead{
+
+thead {
   border-bottom: 0.3rem solid darkgray;
 }
-.btn-active{
+
+.btn-active {
   background-color: #dedede;
 }
-.fa-globe{
-  color: #378013;
+
+.fa-globe, .fa-users {
+  color: #2e87fe;
 }
-.fa-users{
-  color: cornflowerblue;
+
+.btn-active {
+  color: white;
+  background: #2e87fe;
+  border: 1px solid #2e87fe;
 }
-button{
+
+.btn-active > .fa-globe, .btn-active > .fa-users {
+  color: white;
+}
+
+button {
   border: 0.1rem solid darkgray;
+  outline: none;
+}
+
+button:focus, button:active {
+  outline: none !important;
 }
 

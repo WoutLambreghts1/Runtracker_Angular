@@ -51,3 +51,7 @@ h6 {
 .img-thumbnail{
   background: skyblue;
 }
+
+button:active, button:focus{
+  outline: none !important;
+}

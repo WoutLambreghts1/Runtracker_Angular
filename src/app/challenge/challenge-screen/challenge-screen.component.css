@@ -1,15 +1,37 @@
 :host {
   display: flex;
+  flex-direction: column;
 }
 
-.competition-progressbar{
-  background: gray;
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.challengers-progress {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.one-challenger-progress{
+  text-align: center;
+  margin: auto;
+}
+
+.progress-value{
+  margin-bottom: 1rem;
+}
+
+.competition-progressbar {
+  background: #dadada;
   width: 1rem;
   height: 30rem;
+  margin: auto;
 }
 
-.competition-progress{
-  background: red;
+.competition-progress {
+  background: #0286e4;
   width: 100%;
   height: 80%;
 }
