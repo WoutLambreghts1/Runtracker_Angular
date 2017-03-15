@@ -33,7 +33,17 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
   color: #0a568c;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 2rem 0 0.5rem 0;
+  margin-top:0;
+}
+
+.runner {
+  margin-bottom: 2rem;
+}
+
+.runner > span {
+  font-weight: 600;
+  color: #4a4a4a;
 }
 
 .winning-data {

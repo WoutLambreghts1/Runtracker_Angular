@@ -21,12 +21,12 @@ export class TrackingDetailComponent implements OnInit {
   private lineChartLabels:Array<any> = [];
   private lineChartColors:Array<any> = [
     {
-      backgroundColor: '#2ddeff',
+      backgroundColor: 'rgba(12, 214, 239, 0.2)',
       borderColor: '#2e87fe',
-      pointBackgroundColor: '#6388ef',
-      pointBorderColor: '#0cd6ef',
-      pointHoverBackgroundColor: '#80d234',
-      pointHoverBorderColor: '#168b19'
+      pointBackgroundColor: '#2e87fe',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#2e87fe'
     }
   ];
   private lineChartLegend:boolean = false;
