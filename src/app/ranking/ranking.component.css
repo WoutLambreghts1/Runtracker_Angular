@@ -21,6 +21,10 @@ tbody tr:first-child {
   font-weight: bold;
 }
 
+table{
+  border: 1px solid #ddd;
+}
+
 th {
   background-color: #dedede;
 }
