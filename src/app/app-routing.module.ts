@@ -5,7 +5,7 @@ import {PageNotFoundComponent} from "./PageNotFound.component";
 import {AuthGuard} from "./authentication/authguard";
 
 export const routes: Routes = [
-  {path: 'home', loadChildren: 'app/user/user-homepage.module#UserHomepageModule'},
+  {path: 'home', loadChildren: 'app/user/user-homepage.module#UserHomepageModule',canActivate:[AuthGuard]},
   {path: 'challenge', loadChildren: 'app/challenge/challenge.module#ChallengeModule', canActivate:[AuthGuard]},
   {path: 'history', loadChildren: 'app/history/history.module#HistoryModule', canActivate:[AuthGuard]},
   {path: 'friends', loadChildren: 'app/friends/friends.module#FriendsModule', canActivate:[AuthGuard]},
