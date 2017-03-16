@@ -1,16 +1,31 @@
+* {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar {
+  background: #2e87fe;
+}
+
 .navbar-nav > li > .active {
   text-decoration: underline;
   font-weight: bold;
 }
-ul{
+
+ul {
   width: 90%;
   float: right;
 }
-@media (max-width: 768px){
-  ul{
+
+@media (max-width: 768px) {
+  ul {
     float: none;
   }
 }
-#logout{
+
+#logout {
   cursor: pointer;
 }

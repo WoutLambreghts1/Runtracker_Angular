@@ -36,7 +36,7 @@ export class RankingComponent implements OnInit{
     this.friends = true;
     this.rankingService.getFriends(option).subscribe(
       (users) => {
-        this.users = users.slice(0,10);
+        this.users = users;
       },
       error => {
         console.log(error as string);

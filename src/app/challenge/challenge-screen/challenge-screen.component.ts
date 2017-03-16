@@ -10,12 +10,19 @@ import {Competition} from "../../model/competition";
 export class ChallengeScreenComponent implements OnInit {
   @Input() competition: Competition;
   @Input() hashmap: { [key: number]: number; };
+  private numberIsNan = true;
 
   ngOnInit(): void {
 
   }
 
   setProgressbar(progress) {
+    if (isNaN(progress)) {
+      progress = 0;
+      this.numberIsNan = true;
+    } else {
+      this.numberIsNan = false;
+    }
     let result = 0;
     if (this.competition != null && this.competition.goal != null) {
       result = ((progress * 1000) / this.competition.goal.distance * 100);

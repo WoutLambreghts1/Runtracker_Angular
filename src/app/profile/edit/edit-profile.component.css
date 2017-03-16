@@ -31,9 +31,9 @@ h6 {
 }
 
 #profilepic {
-  border: 0.3rem solid white;
+  border: 0.3rem solid #c1c1c1;
   height: 15rem;
-  width: 16rem;
+  width: 15rem;
   margin-bottom: 2rem;
 }
 
