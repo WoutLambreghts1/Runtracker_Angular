@@ -16,6 +16,7 @@ import {CommonModule} from "@angular/common";
 import {HeaderComponent} from "./homepage/header/header.component";
 import {MQTTService} from "./mqtt/mqtt.service";
 import {ConfigService} from "./mqtt/config/config.service";
+import {AuthGuard} from "./authentication/authguard";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {ConfigService} from "./mqtt/config/config.service";
     AUTH_PROVIDERS,
     AuthService,
     MQTTService,
-    ConfigService
+    ConfigService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })

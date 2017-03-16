@@ -3,6 +3,7 @@ import {UserHomepageService} from "./user-homepage.service";
 import {User} from "../../model/user";
 import {CoreInfo} from "../../model/coreinfo";
 import {Router} from "@angular/router";
+import {AuthService} from "../../authentication/auth.service";
 
 @Component({
   selector: 'userHomepage',

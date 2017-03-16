@@ -5,7 +5,7 @@ import {Competition} from "../model/competition";
 import {User} from "../model/user";
 import {MQTTService} from "../mqtt/mqtt.service";
 import {ConfigService} from "../mqtt/config/config.service";
-import {Packet} from "mqtt";
+import {Packet} from 'mqtt';
 import {Subscription} from "rxjs";
 import {MQTTPacket, MQTTPacketType, TrackingPacket} from "../mqtt/packet/mqtt.packet";
 
