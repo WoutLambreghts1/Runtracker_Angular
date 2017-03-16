@@ -51,7 +51,7 @@ export class HistoryComponent implements OnInit {
     this.historyService.getUser().subscribe(val => this.user = val, err => console.log(err));
     this.historyService.getAllHistoryEvents().subscribe((val) => {
       console.log(val);
-      (val.length > 25)?this.historyWrapperElements = val.slice(0,25):this.historyWrapperElements = val;
+      this.historyWrapperElements = val;
       this.setChart(this.activeTimeFrame, this.activeData, this.activeHistoryType);
     }, err => console.log(err));
   }

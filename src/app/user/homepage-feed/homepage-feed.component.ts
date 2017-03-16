@@ -14,7 +14,7 @@ export class HomepageFeedComponent implements OnInit {
   ngOnInit():void {
     this.homepageFeedService.getAllHistoryEvents().subscribe((val) => {
       console.log(val);
-      (val.length > 25)?this.historyWrapperElements = val.slice(0,25):this.historyWrapperElements = val;
+      this.historyWrapperElements = val;
     }, err => console.log(err));
   }
 
