@@ -1,9 +1,9 @@
 <h1>{{competition?.goal?.name}}</h1>
 <div class="challengers-progress">
-<div class="one-challenger-progress" *ngFor="let challenger of competition?.usersRun">
-  <div class="progress-value">{{hashmap[challenger?.userId]*1000 | number: '1.0-2'}}</div>
-  <div class="competition-progressbar">
-    <div class="competition-progress" [ngStyle]="setProgressbar(hashmap[challenger?.userId])"></div>
+  <div class="one-challenger-progress" *ngFor="let challenger of competition?.usersRun">
+    <div class="progress-value">{{hashmap[challenger?.userId]*1000 | number: '1.2-2'}}</div>
+    <div class="competition-progressbar">
+      <div class="competition-progress" [ngStyle]="setProgressbar(hashmap[challenger?.userId])"></div>
+    </div>
   </div>
-</div>
 </div>
