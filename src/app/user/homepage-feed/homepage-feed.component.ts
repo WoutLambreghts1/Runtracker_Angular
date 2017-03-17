@@ -13,7 +13,6 @@ export class HomepageFeedComponent implements OnInit {
 
   ngOnInit():void {
     this.homepageFeedService.getAllHistoryEvents().subscribe((val) => {
-      console.log(val);
       this.historyWrapperElements = val;
     }, err => console.log(err));
   }

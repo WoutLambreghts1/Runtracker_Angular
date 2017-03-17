@@ -68,6 +68,7 @@ export class HomepageFeedService {
                       return b.date.getTime() - a.date.getTime();
                     });
 
+
                     obs.next(historyWrapperElements);
                     obs.complete();
                   }

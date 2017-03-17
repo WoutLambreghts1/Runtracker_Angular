@@ -1,6 +1,5 @@
 <div class="container background-container">
   <h1>History</h1>
-
   <div class="select-options-time">
     <select [(ngModel)]="activeTimeFrame" (ngModelChange)="onTimeFrameChange($event)">
       <option *ngFor="let tf of timeFrame">
@@ -45,7 +44,8 @@
         <tracking-list-item class="col-xs-12" *ngIf="h.type == 'tracking'" [tracking]="h.tracking" [user]="user">
         </tracking-list-item>
       </a>
-      <a *ngIf="h.competition != null && h.competition.trackings.length > 0" [routerLink]="['/history/competition', h.competition.competitionId]">
+      <a *ngIf="h.competition != null && h.competition.trackings.length > 0"
+         [routerLink]="['/history/competition', h.competition.competitionId]">
         <competition-list-item class="col-xs-12" *ngIf="h.type == 'competition'" [competition]="h.competition">
         </competition-list-item>
       </a>

@@ -50,7 +50,6 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     this.historyService.getUser().subscribe(val => this.user = val, err => console.log(err));
     this.historyService.getAllHistoryEvents().subscribe((val) => {
-      console.log(val);
       this.historyWrapperElements = val;
       this.setChart(this.activeTimeFrame, this.activeData, this.activeHistoryType);
     }, err => console.log(err));
@@ -126,7 +125,6 @@ export class HistoryComponent implements OnInit {
         ;
         break;
     }
-    console.log(result);
 
     this.lineChartData[0] = {data: result}
   }
@@ -159,7 +157,6 @@ export class HistoryComponent implements OnInit {
         result = dateToCheck >= timeframeBarrier;
         break;
     }
-    //console.log('checktimeframe (' + timeframe + ') : ' + timeframeBarrier.toDateString() + ' ' + timeframeBarrier.toTimeString() + " ==> " + result);
     return result;
   }
 
@@ -174,7 +171,6 @@ export class HistoryComponent implements OnInit {
     let result = filteredArray.map(fa => {
       return fa.date;
     });
-    console.log(result);
     this.lineChartLabels = result;
 
     switch (timeframe) {

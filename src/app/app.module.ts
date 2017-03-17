@@ -20,7 +20,7 @@ import {AuthGuard} from "./authentication/authguard";
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, HomePageComponent, PageNotFoundComponent, HeaderComponent
+    AppComponent, LoginComponent, HomePageComponent, HeaderComponent
   ],
   imports: [
     CommonModule,

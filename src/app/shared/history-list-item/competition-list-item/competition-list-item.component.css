@@ -63,3 +63,21 @@ h1 {
 a {
   text-decoration: none;
 }
+
+@media (max-width: 650px){
+  .creation {
+    float: none;
+    text-align: left;
+  }
+}
+
+@media (max-width: 400px){
+  .avatars{
+    flex-direction: column;
+  }
+
+  #firstPerson{
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}

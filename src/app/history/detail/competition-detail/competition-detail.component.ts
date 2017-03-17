@@ -50,7 +50,6 @@ export class CompetitionDetailComponent implements OnInit {
       this.competitionId = +params['id'];
       this.historyService.getCompetition(this.competitionId).subscribe(val => {
         this.competition = val;
-        console.log(val);
         this.setChartData(this.competition);
       });
     });

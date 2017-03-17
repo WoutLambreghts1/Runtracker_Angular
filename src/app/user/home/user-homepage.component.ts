@@ -17,7 +17,7 @@ export class UserHomepageComponent implements OnInit {
   private coreInfo;
   private greeting = 'Hello';
 
-  constructor(private router: Router, private userHomepageService: UserHomepageService) {
+  constructor(private router: Router, private userHomepageService: UserHomepageService, private auth: AuthService) {
     if (router.url.split("=").length > 1) {
       userHomepageService.storeUserTokens(router.url);
       this.router.navigateByUrl("/home");
