@@ -8,6 +8,7 @@ import {ConfigService} from "../mqtt/config/config.service";
 import {Packet} from 'mqtt';
 import {Subscription} from "rxjs";
 import {MQTTPacket, MQTTPacketType, TrackingPacket} from "../mqtt/packet/mqtt.packet";
+import {TransportState} from "../mqtt/transport.service";
 
 @Component({
   selector: 'challenge',
@@ -33,14 +34,28 @@ export class ChallengeComponent implements OnInit, OnDestroy {
 
   onClickSetCompetition(c: Competition) {
     this.competitionSelected = c;
-    this.configService.getConfigWithCompTopic(c.competitionId).then(config => {
-      this.mqttService.configure(config);
-      this.mqttService.try_connect().then(() => {
-        this.on_connect();
-      }).catch(() => {
-        this.on_error();
+    if (this.mqttService.state.getValue() !== TransportState.CLOSED){
+      this.mqttService.disconnect().then(() => {
+        this.compMessages.unsubscribe();
+        this.configService.getConfigWithCompTopic(c.competitionId).then(config => {
+          this.mqttService.configure(config);
+          this.mqttService.try_connect().then(() => {
+            this.on_connect();
+          }).catch(() => {
+            this.on_error();
+          });
+        });
+      })
+    } else {
+      this.configService.getConfigWithCompTopic(c.competitionId).then(config => {
+        this.mqttService.configure(config);
+        this.mqttService.try_connect().then(() => {
+          this.on_connect();
+        }).catch(() => {
+          this.on_error();
+        });
       });
-    });
+    }
   }
 
   ngOnInit(): void {
@@ -62,6 +77,7 @@ export class ChallengeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.compMessages != null) {
       this.compMessages.unsubscribe();
+      this.compMessages = null;
     }
     this.mqttService.disconnect();
   }
