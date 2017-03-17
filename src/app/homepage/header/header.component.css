@@ -10,6 +10,10 @@
   background: #2e87fe;
 }
 
+.navbar-brand{
+  letter-spacing: 0.4rem;
+}
+
 .navbar-nav > li > .active {
   text-decoration: underline;
   font-weight: bold;
