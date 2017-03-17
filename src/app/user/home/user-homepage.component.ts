@@ -3,7 +3,6 @@ import {UserHomepageService} from "./user-homepage.service";
 import {User} from "../../model/user";
 import {CoreInfo} from "../../model/coreinfo";
 import {Router} from "@angular/router";
-import {AuthService} from "../../authentication/auth.service";
 
 @Component({
   selector: 'userHomepage',
@@ -17,7 +16,7 @@ export class UserHomepageComponent implements OnInit {
   private coreInfo;
   private greeting = 'Hello';
 
-  constructor(private router: Router, private userHomepageService: UserHomepageService, private auth: AuthService) {
+  constructor(private router: Router, private userHomepageService: UserHomepageService) {
     if (router.url.split("=").length > 1) {
       userHomepageService.storeUserTokens(router.url);
       this.router.navigateByUrl("/home");
@@ -32,7 +31,6 @@ export class UserHomepageComponent implements OnInit {
     }, err => console.error(err));
     this.setGreeting();
   }
-
 
   setGreeting() {
     let now = new Date();
