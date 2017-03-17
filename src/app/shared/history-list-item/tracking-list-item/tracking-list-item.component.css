@@ -9,7 +9,7 @@
   padding-right: 3rem;
 }
 
-.person{
+.person {
   background: gray;
   background-size: cover;
 
@@ -34,7 +34,7 @@ h1 {
   font-weight: 700;
   color: #0a568c;
   margin: 2rem 0 0.5rem 0;
-  margin-top:0;
+  margin-top: 0;
 }
 
 .runner {
@@ -56,4 +56,10 @@ h1 {
 
 a {
   text-decoration: none;
+}
+
+@media (max-width: 400px) {
+  .creation {
+    float: none;
+  }
 }
